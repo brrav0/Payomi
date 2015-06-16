@@ -13,7 +13,8 @@ To do:
 - Format with each header (print out once online)
 - manage the time
 - help moving backward
->>> NO MORE WORK TO DO NEED TO WORK ON APP-505 FOR POSTGRES/CORRECTION AND MIGRATION
+- check database production vs. development
+- additional information for admin look at everything users/clients/banks... and overall status of whats going on
 
 Done:
 - Enhanced model testing
