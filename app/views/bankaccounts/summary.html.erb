@@ -1,0 +1,97 @@
+<script>
+  $(function () { 
+    $("[data-toggle='tooltip']").tooltip(); 
+});
+</script>
+
+<div class="row">
+
+	<div class="col-md-2 background">
+		<br>
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="user"> <%= @user.name %></span>
+		<hr>
+		<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> COMPTES<br>
+
+		<%= link_to "Ajouter un compte", new_bankaccount_path, :class => "sidelink" %><br>
+		<%= link_to "Voir les comptes", bankaccounts_path, :class => "sidelink" %>
+		<hr>
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span> CLIENTS<br>
+		<%= link_to "Ajouter un client", new_client_path, :class => "sidelink" %><br>
+		<%= link_to "Voir vos clients", clients_path, :class => "sidelink"  %><br>
+		<%= link_to "Ajouter un contact client", new_clientcontact_path, :class => "sidelink" %><br>
+		<%= link_to "Voir les contacts clients", clientcontacts_path, :class => "sidelink" %>
+		<hr>
+	</div>
+
+	<div class="col-md-1">
+	</div>
+
+	  <div class="col-md-9">
+		  <h2>Rapport d'activité de la circularisation</h2>
+		  <%= link_to "Exporter le rapport (PDF)", report_path(@bankaccount.id, format: "pdf") %>
+		  <hr>
+	
+
+
+
+		<div class="row">
+			<div class="col-md-6">
+			<h4>Information client</h4>
+                        Nom : <%= @client.name %><br>
+                        Numéro et rue : <%= @client.number_and_street %><br>
+                        Code Postal : <%= @client.zip_code %><br>
+                        Ville : <%= @client.city %><br><br>
+    			Signataire autorisé : <%= @clientcontact.email %>
+			</div>
+
+			<div class="col-md-6">
+			    <h4>Information Commissaire aux comptes</h4><br>
+			    Nom : <%= @user.name %><br>
+                            Email : <%= @user.email %><br>
+			</div>
+		</div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-12">
+		            <h4>Circularisation</h4>
+                            Banque : <%= @bank.name %><br>
+			    Référence : <%= @bankaccount.number %><br>
+			    Devise : <%= @bankaccount.currency %><br>
+			    Solde : <%= @bankaccount.balance %><br><br>
+                            <b>Résultat : Montant confirmé par la banque</b>
+                  </div>
+                </div>
+
+                <hr>
+		 <div class="row">
+                  <div class="col-md-12">
+		            <h4>Suivi d'activité</h4>
+		            <table class="table table-condensed">
+ 				<tr>
+					<th>Description</th>
+					<th>Email</th>
+					<th>Date et heure</th>
+				</tr>
+                                <tr>
+					<td>Signature</td>
+					<td><%= @clientcontact.email %></td>
+					<td><%= @bankaccount.signed %></td>
+				</tr>
+				<tr>
+					<td>Envoi</td>
+					<td><%= @user.email %></td>
+					<td><%= @bankaccount.issued %></td>
+				</tr>
+				<tr>
+					<td>Réponse</td>
+					<td><%= @bankcontact.email %></td>
+					<td><%= @bankaccount.answered %></td>
+				</tr>
+                            </table>
+                  </div>
+
+                </div>
+	</div>
+
+</div>

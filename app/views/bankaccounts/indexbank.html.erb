@@ -1,0 +1,55 @@
+<div class="row">
+
+<div class="col-md-2 background">
+<br>
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="user"> <%= @user.name %></span>
+<hr>
+<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> COMPTES<br>
+
+<%= link_to "Ajouter un compte", new_bankaccount_path, :class => "sidelink" %><br>
+<%= link_to "Voir les comptes", bankaccounts_path, :class => "sidelink" %>
+<hr>
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span> CLIENTS<br>
+<%= link_to "Ajouter un client", new_client_path, :class => "sidelink" %><br>
+<%= link_to "Voir vos clients", clients_path, :class => "sidelink"  %><br>
+<%= link_to "Ajouter un contact client", new_clientcontact_path, :class => "sidelink" %><br>
+<%= link_to "Voir les contacts clients", clientcontacts_path, :class => "sidelink" %>
+<hr>
+</div>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-9">
+<h2>Récapitulatif des comptes circularisés</h2>
+<hr>
+<table class="table table-hover">
+
+  <tr>
+    <th>Banque</th>
+    <th>Client</th>
+    <th>Numéro de compte</th>
+    <th>Devise</th>
+    <th>Solde</th>
+    <th>Action</th>
+  </tr>
+
+<% @bankaccounts.each do |bankaccount| %>
+  <tr>
+    <td><%= bankaccount.bank.name %></td>
+    <td><%= bankaccount.client.name %></td>
+    <td><%= bankaccount.number %></td>
+    <td><%= bankaccount.currency %></td>
+    <td><%= bankaccount.balance %></td> 
+    <td><%= show_action_depending_on_bankaccount_status(bankaccount) %></td>
+  </tr>
+
+
+<% end %>
+</table>
+
+
+
+</div>
+
+</div>

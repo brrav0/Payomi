@@ -1,0 +1,23 @@
+module BankaccountsHelper
+
+def show_action_depending_on_bankaccount_status(bankaccount)
+
+#@bankaccountid = bankaccount.id
+@id = bankaccount.id
+
+if bankaccount.shared.nil? 
+  bankaccount = bankaccount.id
+  render '/bankaccounts/shared'
+    elsif bankaccount.signed.nil? && current_user.clientcontact?
+      render '/bankaccounts/signed'
+        elsif bankaccount.issued.nil?
+          render '/bankaccounts/issued'
+            else
+              render '/bankaccounts/answered'
+
+end
+
+
+end
+
+end

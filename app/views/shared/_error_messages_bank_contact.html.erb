@@ -1,0 +1,12 @@
+ <% if @bank_contact.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@bank_contact.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @bank_contact.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

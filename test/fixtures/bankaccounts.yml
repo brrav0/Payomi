@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  currency: MyString
+  balance: 9.99
+  client_id: 1
+  bank_id: 1
+  shared: 2015-06-05 17:06:23
+  signed: 2015-06-05 17:06:23
+  issued: 2015-06-05 17:06:23
+  answered: 2015-06-05 17:06:23
+  comments: MyString
+
+two:
+  number: MyString
+  currency: MyString
+  balance: 9.99
+  client_id: 1
+  bank_id: 1
+  shared: 2015-06-05 17:06:23
+  signed: 2015-06-05 17:06:23
+  issued: 2015-06-05 17:06:23
+  answered: 2015-06-05 17:06:23
+  comments: MyString

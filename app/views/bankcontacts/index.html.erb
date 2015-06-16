@@ -1,0 +1,8 @@
+<h1>Vos contact banques</h1>
+
+
+<% @bankcontacts.each do |bankcontact| %>
+
+<h3><%= bankcontact.bank.name%> | <%= link_to bankcontact.first_name, bankcontact %> | <%= link_to "Supprimer le contact", bankcontact, method: :delete, data: { confirm: "Sûr?" } %></h3>
+
+<% end %>

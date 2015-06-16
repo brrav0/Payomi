@@ -1,0 +1,30 @@
+
+<% provide(:title, 'Ajout Banque') %>
+
+<h3>Ajout d'une nouvelle banque</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@bank) do |f| %>
+      <%= render 'shared/error_messages_bank' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :number_and_street %>
+      <%= f.text_field :number_and_street, class: 'form-control' %>
+
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code, class: 'form-control' %>
+
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+<%= f.submit "Ajoutez banque", class: "btn btn-primary" %>
+
+<% end %>
+
+  </div>
+</div>
+
+

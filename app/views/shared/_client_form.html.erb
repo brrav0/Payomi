@@ -1,0 +1,7 @@
+  <%= form_for(@client) do |f| %><%#- should not Client.new but @client need to be double-check in the controller%>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :name, placeholder: "Test..." %>
+  </div>
+  <%= f.submit "Ajoutez", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Vos contact clients</h1>
+
+
+<% @clientcontacts.each do |clientcontact| %>
+
+<h3><%= link_to clientcontact.first_name, clientcontact %> | <%= link_to "Supprimer le contact", clientcontact, method: :delete, data: { confirm: "Sûr?" } %></h3>
+
+<% end %>

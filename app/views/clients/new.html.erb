@@ -1,0 +1,30 @@
+
+<% provide(:title, 'Ajout Client') %>
+
+<h3>Ajout des nouveaux clients</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@client) do |f| %>
+      <%= render 'shared/error_messages_client' %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :number_and_street, "Numéro et rue" %>
+      <%= f.text_field :number_and_street, class: 'form-control' %>
+
+      <%= f.label :zip_code, "Code postal" %>
+      <%= f.text_field :zip_code, class: 'form-control' %>
+
+      <%= f.label :city, "Ville" %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+<%= f.submit "Ajoutez client", class: "btn btn-primary" %>
+
+<% end %>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,31 @@
+
+<% provide(:title, 'Ajouter un contact banque') %>
+
+<h3>Ajout un contact banque</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@bankcontact) do |f| %>
+      <%= render 'shared/error_messages_bankcontact' %>
+ 
+      <%= f.label :bank_id, "Banque" %>
+      <%= f.collection_select :bank_id, Bank.all, :id, :name %>
+
+      <%= f.label :first_name, "Prénom" %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+
+      <%= f.label :last_name, "Nom de famille" %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+
+      <%= f.label :email, "Email" %>
+      <%= f.text_field :email, class: 'form-control' %>
+
+
+<%= f.submit "Ajoutez contact pour une banque", class: "btn btn-primary" %>
+
+<% end %>
+
+  </div>
+</div>
+
+
