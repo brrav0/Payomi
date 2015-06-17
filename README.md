@@ -20,6 +20,7 @@ To do:
 - limit differences between dev and prod
 - send real email in prod env
 - re-work on the login including reset - related test / preview of the email in development environment (chapt 10) to speed up development
+- travailler sur les images du pipelines
 
 Done:
 - Enhanced model testing
