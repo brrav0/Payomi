@@ -19,6 +19,7 @@ To do:
 - connect to heroku with pgadmin3
 - limit differences between dev and prod
 - send real email in prod env
+- re-work on the login including reset - related test / preview of the email in development environment (chapt 10) to speed up development
 
 Done:
 - Enhanced model testing
