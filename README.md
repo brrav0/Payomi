@@ -1,6 +1,7 @@
 == README
 
 To do:
+- finalize sending of emails in all circumstances
 - email address pre-filled when through links
 - deployment on server (free) for final issuance of email
 - more specifically
@@ -15,6 +16,9 @@ To do:
 - help moving backward
 - check database production vs. development
 - additional information for admin look at everything users/clients/banks... and overall status of whats going on
+- connect to heroku with pgadmin3
+- limit differences between dev and prod
+- send real email in prod env
 
 Done:
 - Enhanced model testing
