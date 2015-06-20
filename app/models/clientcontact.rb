@@ -4,4 +4,10 @@ class Clientcontact < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
+
+def send_notification_to_clientcontact
+UserMailer.notification_clientcontact(self).deliver_now
+end
+
+
 end

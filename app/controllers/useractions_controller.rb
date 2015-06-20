@@ -1,8 +1,12 @@
 class UseractionsController < ApplicationController
 
+#items hereunder should be refactored to be documented in bankaccounts models
 def share
   @bankaccount = Bankaccount.find(params[:id])
   if @bankaccount.update_attribute(:shared, Time.new)
+    @client = @bankaccount.client
+    @clientcontact = Clientcontact.find_by(client: @client)
+    @clientcontact.send_notification_to_clientcontact
     flash[:info]="La circularisation a été envoyée au signataire autorisé pour signature."
     redirect_to bankaccounts_url
   else

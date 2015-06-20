@@ -1,7 +1,7 @@
  <% if @bankcontact.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@bankcontact.errors.count, "error") %>.
+      Le formulaire contient <%= pluralize(@bankcontact.errors.count, "erreur") %>.
     </div>
     <ul>
     <% @bankcontact.errors.full_messages.each do |msg| %>

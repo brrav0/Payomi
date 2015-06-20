@@ -1,7 +1,7 @@
  <% if @client.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@client.errors.count, "error") %>.
+      Le formulaire contient <%= pluralize(@client.errors.count, "erreur") %>.
     </div>
     <ul>
     <% @client.errors.full_messages.each do |msg| %>

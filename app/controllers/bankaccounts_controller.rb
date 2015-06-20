@@ -3,6 +3,7 @@ class BankaccountsController < ApplicationController
 def index
 
   @user = current_user
+  #if user is logged and an auditor
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
 
 #  for real application before deletion
@@ -16,13 +17,14 @@ def index
   end
 
   render 'bankaccounts/indexuser'
-
+  #if user is a clientcontact
   elsif logged_in? && current_user.clientcontact?
 
   email = current_user.email
   clientcontact = Clientcontact.find_by(email: email)
   @id = clientcontact.client_id
   @client = clientcontact.client.name
+  #if shared is not nil, then the confirmation is expecting to be signed
   @bankaccounts = Bankaccount.where("client_id = ?", @id).where.not(shared: nil) 
   render 'bankaccounts/indexclient'
 

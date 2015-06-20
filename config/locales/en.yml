@@ -21,3 +21,95 @@
 
 en:
   hello: "Hello world"
+  dinformation: "d'information"
+  activerecord:
+    attributes:
+      user:
+        name: "Le nom"
+        email: "L'adresse email"
+        password: "Le mot de passe"
+      accountingfirm:
+        name: "Le nom du cabinet"
+        number_and_street: "L'adresse du cabinet"
+        zip_code: "Le code postal du cabinet"
+        city: "La ville du cabinet"
+      bankaccount:
+        number: "Le numéro de compte"
+        currency: "La devise du compte"
+        balance: "Le solde du compte"
+      bankcontact:
+        first_name: "Le prénom"
+        last_name: "Le nom"
+        email: "L'adresse email"
+      bank:
+        name: "Le nom de la banque"
+        number_and_street: "L'adresse de la banque"
+        zip_code: "Le code postal de la banque"
+        city: "La ville de la banque"
+      clientcontact:
+        first_name: "Le prénom de votre contact client"
+        last_name: "Le nom de votre contact client"
+        email: "L'adresse email de votre contact client"
+        number_and_street: "L'adresse de votre client"
+        zip_code: "Le code postal de votre client"
+        city: "La ville de votre client"
+      client:
+        name: "Le nom de votre client"
+        number_and_street: "L'adresse de votre client"
+        zip_code: "Le code postal de votre client"
+        city: "La ville de votre client"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "est obligatoire"
+            email:
+              blank: "est obligatoire"
+#              invalid: "n'est pas valide"
+            password:
+              blank: "est obligatoire"
+        accountingfirm:
+          attributes:
+            name:
+              blank: "est obligatoire"
+            number_and_street:
+              blank: "est obligatoire"
+            zip_code:
+              blank: "est obligatoire"
+            city:
+              blank: "est obligatoire"
+        bankaccount:
+          attributes:
+            number:
+              blank: "est obligatoire"
+            currency:
+              blank: "est obligatoire"
+            balance:
+              blank: "est obligatoire"
+        bankcontact:
+          attributes:
+            first_name:
+              blank: "est obligatoire"
+            last_name:
+              blank: "est obligatoire"
+            email:
+              blank: "est obligatoire"
+        bank:
+          attributes:
+            name:
+              blank: "est obligatoire"
+            number_and_street:
+              blank: "est obligatoire"
+            zip_code:
+              blank: "est obligatoire"
+            city:
+              blank: "est obligatoire"
+        clientcontact:
+          attributes:
+            number_and_street:
+              blank: "est obligatoire"
+            zip_code:
+              blank: "est obligatoire"
+            city:
+              blank: "est obligatoire"

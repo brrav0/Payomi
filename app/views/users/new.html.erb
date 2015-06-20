@@ -1,11 +1,16 @@
   <% provide(:title, 'Inscription') %>
-<h1>Sign up</h1>
+<h1>Inscription</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
 
       <%= render 'shared/error_messages', object: f.object %>
+
+
+      <%= f.label :clientcontact, "Vous êtes ?" %>
+      <%#= f.text_field :clientcontact, class: 'form-control' %>
+      <%= f.select(:clientcontact, options_for_select([['Commissaire aux comptes', false],['Client', true]])) %>
 
       <%= f.label :name, "Nom" %>
       <%= f.text_field :name, class: 'form-control' %>

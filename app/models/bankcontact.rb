@@ -7,4 +7,8 @@ class Bankcontact < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }, uniqueness: {case_sensitive: false }
 
+def send_notification_to_bankcontact
+UserMailer.notification_bankcontact(self).deliver_now
+end
+
 end

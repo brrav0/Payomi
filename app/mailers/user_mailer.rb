@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   #
   def account_activation(user)
       @user = user
-    mail to: user.email, subject: "Account activation"
+    mail to: user.email, subject: "Activation de votre compte"
 
   end
 
@@ -19,8 +19,18 @@ class UserMailer < ApplicationMailer
   def password_reset(user)
 
    @user = user
-    mail to: user.email, subject: "Password reset"
-
+    mail to: user.email, subject: "Ré-initialisation de votre mot de passe"
 
   end
+
+  def notification_clientcontact(clientcontact)
+    @clientcontact = clientcontact
+    mail to: clientcontact.email, subject: "Votre commissaire aux comptes vous demande de signer une circularisation"
+  end
+
+  def notification_bankcontact(bankcontact)
+    @bankcontact = bankcontact
+    mail to: bankcontact.email, subject: "Vous avez des circularisations en attente de réponse"
+  end
+
 end
