@@ -1,12 +1,16 @@
 
 <% provide(:title, 'Ajouter un compte') %>
 
-<h3>Ajout un compte</h3>
-
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h2>Ajouter un compte</h2>
+<hr>
+</div>
+</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@bankaccount) do |f| %>
-      <%= render 'shared/error_messages_bankaccount' %>
+      <%= render 'shared/error_messages', object:f.object %>
  
       <%= f.label :bank_id, "Banque" %>
       <%= f.collection_select :bank_id, Bank.all, :id, :name %>

@@ -1,13 +1,16 @@
 
 <% provide(:title, 'Ajouter un contact client') %>
 
-<h3>Ajout un contact client</h3>
-
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h2>Ajout un contact client</h2>
+<hr>
+</div>
+</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@clientcontact) do |f| %>
-      <%= render 'shared/error_messages_clientcontact' %>
-      <%#= render 'shared/error_messages', object: f.object %>
+      <%= render 'shared/error_messages', object: f.object %>
  
       <%= f.label :client_id, "Client" %>
       <%= f.collection_select :client_id, current_user.clients, :id, :name %>
