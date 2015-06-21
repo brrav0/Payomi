@@ -104,6 +104,7 @@ en:
           attributes:
             name:
               blank: "est obligatoire"
+              too_long: "est trop long"
             number_and_street:
               blank: "est obligatoire"
             zip_code:

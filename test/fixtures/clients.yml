@@ -5,11 +5,23 @@ one:
   number_and_street: MyString
   zip_code: MyString
   city: MyString
-  user_id: 1
-
+#  user: michael
+  created_at: <%= 10.minutes.ago %>
+ 
 two:
   name: MyString
   number_and_street: MyString
   zip_code: MyString
   city: MyString
-  user_id: 1
+#  user: michael
+  created_at: <%= 2.hours.ago %>  
+
+most_recent:
+  name: MyString
+  number_and_street: MyString
+  zip_code: MyString
+  city: MyString
+#  user: michael
+  created_at: <%= Time.zone.now %>  
+
+

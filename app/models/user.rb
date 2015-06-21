@@ -8,16 +8,16 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
 
 
-  validates :name,  presence: true, length: { maximum: 50 }
+  validates :name,  presence: true, length: { maximum: 20 }
  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
-
+  validates :email, uniqueness: true
   validates :email, format: { with: VALID_EMAIL_REGEX, message: 'revoir votre adresse email' }
   validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisé. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' }, if: :auditor?
   validates :email, email: true, if: :not_an_auditor?
   has_secure_password
-  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, length: { minimum: 6 }
   
   #Check that the user being created is an auditor
   def auditor?

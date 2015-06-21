@@ -1,4 +1,4 @@
-  # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
+ # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at
@@ -13,11 +13,9 @@ class UserMailerPreview < ActionMailer::Preview
   # http://localhost:3000/rails/mailers/user_mailer/password_reset
   def password_reset
     user = User.first
-    UserMailer.password_reset
+    user.reset_token = User.new_token
+    UserMailer.password_reset(user)
+
+
   end
-   # Preview this email at
-  # http://localhost:3000/rails/mailers/user_mailer/notification_clientcontact
-  def notification_clientcontact
-    UserMailer.notification_clientcontact
- end
 end
