@@ -5,3 +5,4 @@ To do:
 - enhance testing
 - deploy latest version on Heroku
 - test live within close circle
+- connection to Heroku database ideally through psql (rails console not enough)
