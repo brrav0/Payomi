@@ -1,8 +1,16 @@
-<h1>Vos clients</h1>
+
+<div class="row">
+<%= render 'shared/navbaruser' %>
+</div>
+<div class="row">
+<div class="col-md-offset-2">
+<h2>Vos clients</h2>
 
 
 <% @clients.each do |client| %>
 
-<h3><%= link_to client.name, client %> | <%= link_to "Supprimer le client", client, method: :delete, data: { confirm: "Sûr ? " } %></h3>
+<h11><%= link_to client.name, client %> | <%= link_to "Supprimer le client", client, method: :delete, data: { confirm: "Sûr ? " } %></h11>
 
 <% end %>
+</div>
+</div>

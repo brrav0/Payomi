@@ -4,8 +4,8 @@ class Bankaccount < ActiveRecord::Base
   belongs_to :bank
   validates :client_id, presence: true
   validates :bank_id, presence: true
-  validates :number, presence: true
-  validates :currency, presence: true, length: { maximum: 3 }
+  validates :number, presence: true, length: { is: 11 }
+  validates :currency, presence: true, length: { is: 3 }
   validates :balance, presence: true
 
 

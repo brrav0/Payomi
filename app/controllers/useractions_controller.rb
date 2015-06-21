@@ -3,7 +3,7 @@ class UseractionsController < ApplicationController
 #items hereunder should be refactored to be documented in bankaccounts models
 def share
   @bankaccount = Bankaccount.find(params[:id])
-  if @bankaccount.update_attribute(:shared, Time.new)
+  if @bankaccount.update_attribute(:shared, Time.now.to_formatted_s(:short))
     @client = @bankaccount.client
     @clientcontact = Clientcontact.find_by(client: @client)
     @clientcontact.send_notification_to_clientcontact
@@ -17,7 +17,7 @@ end
 
 def sign
   @bankaccount = Bankaccount.find(params[:id])
-  if @bankaccount.update_attribute(:signed, Time.new)
+  if @bankaccount.update_attribute(:signed, Time.now.to_formatted_s(:short))
     flash[:info]="La circularisation est signée. Votre commissaire aux comptes peut désormais l'acheminer à votre banque."
     redirect_to bankaccounts_url
   else
@@ -28,7 +28,7 @@ end
 
 def issue
   @bankaccount = Bankaccount.find(params[:id])
-  if @bankaccount.update_attribute(:issued, Time.new)
+  if @bankaccount.update_attribute(:issued, Time.now.to_formatted_s(:short))
     flash[:info]="La circularisation a été envoyée."
     redirect_to bankaccounts_url
   else
@@ -52,7 +52,7 @@ end
 
 def answer
   @bankaccount = Bankaccount.find(params[:id])
-  if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.new)
+  if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
     flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."
     redirect_to bankaccounts_url
   else
@@ -66,7 +66,7 @@ def answer_with_comments
 
   if params[:conf]
 
-    if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.new)
+    if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
       flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."
       redirect_to bankaccounts_url
     else

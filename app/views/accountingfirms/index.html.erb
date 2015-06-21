@@ -1,0 +1,17 @@
+<div class="row">
+<%= render 'shared/navbaradmin'%>
+</div>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h2>Vos Banques</h2>
+<hr>
+
+
+<% @banks.each do |bank| %>
+
+<h3><%= link_to bank.name, bank %> | <%= link_to "Supprimer la banque", bank, method: :delete, data: { confirm: "sûr?" } %></h3>
+
+<% end %>
+</div>
+</div>

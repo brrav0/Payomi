@@ -1,53 +1,4 @@
-<%#- all if logged in part can be deleted as different template are rendered directly by the controller %>
-<% if logged_in? %>
-      <div class="col-md-4">
 
-          <% if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact? %>
-
-          <h5>Comptes</h5>
-            <%= link_to "Ajouter un compte", new_bankaccount_path %><br><br>
-            <%= link_to "Voir les comptes", bankaccounts_path %><br><br>
-<br><br>
-          <h5>Clients</h5>
-            <%= link_to "Ajouter un client", new_client_path %><br><br>
-            <%= link_to "Voir vos clients", clients_path %><br><br>
-            <%= link_to "Ajouter un contact client", new_clientcontact_path %><br><br>
-            <%= link_to "Voir les contacts clients", clientcontacts_path %><br><br>
-          <% end %>
-
-          <% if logged_in? && current_user.admin? %>
-
-          <h4>To be restricted to admin down the road</h4>
-            <%= link_to "Ajouter une banque", new_bank_path %><br><br>
-            <%= link_to "Voir les banques", banks_path %><br><br>
-            <%= link_to "Voir tous les comptes", bankaccounts_path %><br><br>
-            <%= link_to "Ajouter un contact banque", new_bankcontact_path %><br><br>
-            <%= link_to "Voir les contacts banque", bankcontacts_path %><br><br>
-            <%= link_to "Voir les utilisateurs", users_path %><br><br>
-
-          <% end %>
-
-          <% if logged_in? && current_user.bankcontact? %>
-            <h4>Liens pour le contact banque</h4>
-            <%= link_to "Voir les comptes en attente de réponse", indexbankcontact_path %>
-          <% end %>
-
-          <% if logged_in? && current_user.clientcontact? %>
-            <h4>Liens pour le contact client</h4>
-              <%= link_to "Voir les comptes en attente de signature ", indexclientcontact_path %>
-          <% end %>
-
-      </div>
-
-      <div class="col-md-8">
-
-      List of bankaccounts.
-
-      </div>
-      </div>
-
-<% else %>
-<%#- should only keep the part here under %>
     <div style="background:white" class="jumbotron">
       <h1>Bienvenue sur Circularisation.com</h1>
       <div class="row">
@@ -135,5 +86,5 @@
  </div>
  </div>
 
-<% end %>
+
 

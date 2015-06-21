@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :clients,          only: [:new, :create, :destroy, :show, :index]
   resources :banks,          only: [:new, :create, :show, :index, :destroy]
+  resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy]
   resources :signatories,          only: [:new, :create, :show, :index]
   resources :bank_contacts,          only: [:new, :create, :show, :index]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]

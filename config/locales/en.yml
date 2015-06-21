@@ -83,6 +83,7 @@ en:
           attributes:
             number:
               blank: "est obligatoire"
+                 is: "doit contenir 11 chiffres et/ou lettres"
             currency:
               blank: "est obligatoire"
             balance:
@@ -103,6 +104,7 @@ en:
               blank: "est obligatoire"
             zip_code:
               blank: "est obligatoire"
+                 is: "doit contenir 5 chiffres"
             city:
               blank: "est obligatoire"
         clientcontact:
@@ -113,3 +115,11 @@ en:
               blank: "est obligatoire"
             city:
               blank: "est obligatoire"
+        accountingfirm:
+          attributes:
+            number_and_street:
+              blank: "est obligatoire"
+            zip_code:
+              blank: "est obligatoire"
+            city:
+              blamk: "est obligatoire"

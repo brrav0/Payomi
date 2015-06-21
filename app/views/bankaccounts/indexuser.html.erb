@@ -4,51 +4,14 @@
     $("[data-toggle='tooltip']").tooltip(); 
 });
 </script>
-<div class="row">
 
-<div class="col-md-2 background">
-<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="user"> <%= @user.name %></span>
-</div>
+<div class="row">
 <!-- Split button -->
-<div class="text-right">
-
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">Clients</button>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><span class="divider"></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Ajouter un client</a></li>
-    <li><a href="#">Voir vos clients</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Ajouter un contact client</a></li>
-    <li><a href="#">Voir vos contacts client</a></li>
-  </ul>
-</div>
-
-
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">Comptes</button>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Ajouter un compte</a></li>
-    <li><a href="#">Voir les comptes</a></li>
-  </ul>
-</div>
-
-</div>
+<%#- partial beginning%>
+<%= render "shared/navbaruser" %>
+<%#- partial end %>
 </div>
 <div class="row">
-
-
-
-
 <div class="col-md-12">
 <h2>Récapitulatif de vos circularisations</h2>
 
