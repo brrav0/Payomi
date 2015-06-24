@@ -38,11 +38,10 @@ test "zip_code should not be less than 5 characters" do
 assert_not @client.valid?
 end
 
-#Create an unknown testing error see model
-#test "zip_code should not be more than 5 characters" do
-#@client.zip_code = "aaaaaa"
-#assert_not @client.valid?
-#end
+test "zip_code should not be more than 5 characters" do
+@client.zip_code = "aaaaaa"
+assert_not @client.valid?
+end
 
 test "city should be present" do
 @client.city = "   "

@@ -7,12 +7,26 @@ def setup
 end
 
 test "should be valid" do
+assert @bankcontact.valid?
+end
+
+test "should have a bank_id" do
 @bankcontact.bank_id = nil
 assert_not @bankcontact.valid?
 end
 
 test "first name should be present" do
 @bankcontact.first_name = "   "
+assert_not @bankcontact.valid?
+end
+
+test "first name should not be too long" do
+@bankcontact.first_name = "a" * 51
+assert_not @bankcontact.valid?
+end
+
+test "last name should not be too long" do
+@bankcontact.last_name = "a" * 51
 assert_not @bankcontact.valid?
 end
 
@@ -27,7 +41,7 @@ assert_not @bankcontact.valid?
 end
 
 test "email should not be too long" do
-@bankcontact.email = "a" * 244 + "@example.com"
+@bankcontact.email = "a" * 256
 assert_not @bankcontact.valid?
 end
 

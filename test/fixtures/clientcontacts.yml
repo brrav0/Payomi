@@ -1,20 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  client_id: 
-
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  client_id: 
-
 xavier:
   first_name: Xavier
   last_name: Niel
   email: xavier.niel@fre.fr
-  client_id: 
+  client_id: 1 
   

@@ -25,18 +25,35 @@ test "account number should be present" do
 assert_not @bankaccount.valid?
 end
 
+test "account number should not be less than 11 digits and/or letters" do
+@bankaccount.number = "aaaaaaaaaa"
+assert_not @bankaccount.valid?
+end
+
+test "account number should not be more than 11 digits and/or letters" do
+@bankaccount.number = "aaaaaaaaaaaa"
+assert_not @bankaccount.valid?
+end
+
 test "account currency should be present" do
 @bankaccount.currency = "   "
 assert_not @bankaccount.valid?
 end
 
-test "account balance should be present" do
-@bankaccount.balance = "   "
+test "account currency should not be less than 3 letters" do
+@bankaccount.currency = "aa"
 assert_not @bankaccount.valid?
 end
 
-test "account currency should be 3 letter" do
-@bankaccount.currency = "a" * 4
+test "account currency should not be more than 3 letters" do
+@bankaccount.currency = "aaaa"
+assert_not @bankaccount.valid?
+end
+
+
+test "account balance should be present" do
+@bankaccount.balance = "   "
+assert_not @bankaccount.valid?
 end
 
 end

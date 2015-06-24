@@ -24,6 +24,7 @@ en:
     formats:
       short: '%F'
   hello: "Hello world"
+  
   dinformation: "d'information"
   activerecord:
     attributes:
@@ -31,6 +32,7 @@ en:
         name: "Le nom"
         email: "L'adresse email"
         password: "Le mot de passe"
+        password_confirmation: "La confirmation du mot de passe"
       accountingfirm:
         name: "Le nom du cabinet"
         number_and_street: "L'adresse du cabinet"
@@ -72,6 +74,8 @@ en:
 #              invalid: "n'est pas valide"
             password:
               blank: "est obligatoire"
+            password_confirmation:
+              equal_to: "ne correspond pas"
         accountingfirm:
           attributes:
             name:

@@ -1,27 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  number_and_street: MyString
-  zip_code: MyString
-  city: MyString
-#  user: michael
-  created_at: <%= 10.minutes.ago %>
- 
-two:
-  name: MyString
-  number_and_street: MyString
-  zip_code: MyString
-  city: MyString
-#  user: michael
-  created_at: <%= 2.hours.ago %>  
 
 most_recent:
   name: MyString
   number_and_street: MyString
   zip_code: MyString
-  city: MyString
-#  user: michael
-  created_at: <%= Time.zone.now %>  
+  city: 99999
 
 
