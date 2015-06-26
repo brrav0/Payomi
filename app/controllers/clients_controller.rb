@@ -43,4 +43,5 @@ class ClientsController < ApplicationController
     redirect_to root_url if @client.nil?
   end
 
+
 end

@@ -3,14 +3,14 @@
 </div>
 
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-<h2>Vos Banques</h2>
+<div class="col-md-offset-2">
+<h2>Les firmes d'audit enregistrées</h2>
 <hr>
 
 
-<% @banks.each do |bank| %>
+<% @accountingfirms.each do |accountingfirm| %>
 
-<h3><%= link_to bank.name, bank %> | <%= link_to "Supprimer la banque", bank, method: :delete, data: { confirm: "sûr?" } %></h3>
+<h11><%= link_to accountingfirm.name, accountingfirm %> | <%= link_to "Supprimer la firme", accountingfirm, method: :delete, data: { confirm: "Êtes-vous bien sûr?" } %></h11>
 
 <% end %>
 </div>

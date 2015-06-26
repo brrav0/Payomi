@@ -1,8 +1,18 @@
-<h1>Vos contact banques</h1>
+<div class="row">
+<%= render 'shared/navbaradmin' %>
+</div>
+<div class="row">
+<div class="col-md-offset-2">
+
+
+<h2>Vos contact banques</h2>
 
 
 <% @bankcontacts.each do |bankcontact| %>
 
-<h3><%= bankcontact.bank.name%> | <%= link_to bankcontact.first_name, bankcontact %> | <%= link_to "Supprimer le contact", bankcontact, method: :delete, data: { confirm: "Sûr?" } %></h3>
+<h11><%= bankcontact.bank.name%> | <%= link_to bankcontact.first_name, bankcontact %> | <%= link_to "Supprimer le contact", bankcontact, method: :delete, data: { confirm: "Sûr?" } %></h11><br>
 
 <% end %>
+
+</div>
+</div>

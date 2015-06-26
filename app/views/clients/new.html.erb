@@ -1,5 +1,12 @@
 <div class="row">
-<%= render "shared/navbaruser"%>
+<% if logged_in? && current_user.admin? %>
+<%= render "shared/navbaradmin"%>
+<% else %>
+<%= render 'shared/navbaruser' %>
+<% end %>
+
+
+
 </div>
 
 <div class="row">

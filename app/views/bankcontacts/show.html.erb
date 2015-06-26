@@ -2,14 +2,13 @@
 <%= render 'shared/navbaradmin' %>
 </div>
 <div class="row">
-<% provide(:title, @bank.name) %>
+<% provide(:title, @bankcontact.first_name) %>
   <aside class="col-md-4">
     <section class="bank_info">
     <h11>
-    <%= @bank.name %>
-    <%= @bank.number_and_street %>
-    <%= @bank.zip_code %>
-    <%= @bank.city %>
+    <%= @bankcontact.first_name %>
+    <%= @bankcontact.last_name %>
+    <%= @bankcontact.email %>
     </h11>
     </section>
   </aside>

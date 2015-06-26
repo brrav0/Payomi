@@ -63,6 +63,7 @@ def create
   @bankaccount = Bankaccount.new(bankaccount_params)
   if @bankaccount.save
     flash[:info]="Le compte bancaire a été sauvegardé"
+    redirect_to root_url
   else
     render '/bankaccount/new'
   end

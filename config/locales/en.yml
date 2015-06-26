@@ -74,8 +74,9 @@ en:
 #              invalid: "n'est pas valide"
             password:
               blank: "est obligatoire"
+              confirmation: "ne correspond pas %{attributes}"
             password_confirmation:
-              equal_to: "ne correspond pas"
+              confirmation: "ne correspond pas"
         accountingfirm:
           attributes:
             name:

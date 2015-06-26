@@ -1,5 +1,11 @@
 <div class="row"
+<% if logged_in? && current_user.admin? %>
+<%= render 'shared/navbaradmin' %>
+<% else %>
 <%= render 'shared/navbaruser' %>
+<% end %>
+
+
 </div>
 <div class="row">
 <div class="col-md-offset-2">
@@ -8,7 +14,7 @@
 
 <% @clientcontacts.each do |clientcontact| %>
 
-<h11><%= link_to clientcontact.first_name, clientcontact %> | <%= link_to "Supprimer le contact", clientcontact, method: :delete, data: { confirm: "Sûr?" } %></h11>
+<h11><%= link_to clientcontact.first_name, clientcontact %> | <%= link_to "Supprimer le contact", clientcontact, method: :delete, data: { confirm: "Sûr?" } %></h11><br>
 
 <% end %>
 </div>

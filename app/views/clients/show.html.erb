@@ -1,5 +1,12 @@
 <div class="row">
+<% if logged_in? && current_user.admin? %>
 <%= render 'shared/navbaruser' %>
+<% else %>
+<%= render 'shared/navbaradmin' %>
+<% end %>
+
+
+
 </div>
 <div class="row">
 <% provide(:title, @client.name) %>

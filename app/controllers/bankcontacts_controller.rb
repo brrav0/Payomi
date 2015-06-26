@@ -1,4 +1,7 @@
 class BankcontactsController < ApplicationController
+  before_action :admin_user
+  before_action :logged_in_user
+
 
 def index
   @bankcontacts = Bankcontact.all
@@ -35,6 +38,17 @@ def bankcontact_params
   params.require(:bankcontact).permit(:first_name, :last_name, :email, :bank_id)
 end
 
+def logged_in_user
+  unless logged_in?
+    store_location
+    flash[:danger] = "Veuillez vous connecter."
+    redirect_to login_url
+  end
+end
+
+def admin_user
+  redirect_to(root_url) unless current_user.admin?
+end
 
 
 end

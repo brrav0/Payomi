@@ -1,7 +1,8 @@
 class AccountingfirmsController < ApplicationController
+  before_action :admin_user
 
 def index
-  @accountingfirm = Accountingfirm.all
+  @accountingfirms = Accountingfirm.all
 end
 
 def new
@@ -32,6 +33,10 @@ private
 
 def accountingfirm_params
   params.require(:accountingfirm).permit(:name, :number_and_street, :zip_code, :city)
+end
+
+def admin_user
+  redirect_to(root_url) unless current_user.admin?
 end
 
 

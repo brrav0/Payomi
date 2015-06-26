@@ -1,6 +1,14 @@
- <% provide(:title, 'All users') %>
-<h1>All users</h1>
+<div class="row">
+<%= render 'shared/navbaradmin'%>
+</div>
 
+
+<div class="row">
+<div class="col-md-offset-2">
+
+<% provide(:title, 'All users') %>
+<h2>All users</h2>
+<hr>
 <%= will_paginate %>
 
 <ul class="users">
@@ -8,3 +16,6 @@
 </ul>
 
 <%= will_paginate %>
+
+</div>
+</div>

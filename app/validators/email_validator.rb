@@ -1,10 +1,12 @@
 # app/validators/email_validator.rb
 
 class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-
-    unless Clientcontact.where(email: :email).exists?
-      record.errors[attribute] << (options[:message] || "n'a pas été pré-authentifiée par votre commissaire aux comptes.")
+  def validate_each(record, attribute, email)
+     
+    unless Clientcontact.where(email: email).exists?
+       
+       #record.errors[:email] << "On a besoin d'une addresse pré-authentifiée"
+       record.errors[attribute] << (options[:message] || "doit être pré-authentifiée par votre commissaire aux comptes")
     end
   end
 
