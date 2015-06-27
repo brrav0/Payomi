@@ -1,11 +1,11 @@
 == README
 
 To do:
-- enhance testing
-- deploy latest version on Heroku
-- test live within close circles
-- write contact / about & FAQ / legal mention / terms and conditions
-- work on editing client & bankaccounts when correction are necessary - we need to think of what can be changed and what should not (bankaccounts number for instance and/or address email for cliencontact)
+1) deploy latest version on Heroku
+2) test live within close circles
+3) enhance testing
+4) write contact / about & FAQ / legal mention / terms and conditions
+5) work on editing client & bankaccounts when correction are necessary - we need to think of what can be changed and what should not (bankaccounts number for instance and/or address email for cliencontact)
 
 
 Questions:
