@@ -19,6 +19,11 @@
     @user = User.new
   end
 
+  def new_bankuser
+    @user = User.new
+    render 'new_bankuser'
+  end
+
   def create
     @user = User.new(user_params)
     @email = @user.email
@@ -38,6 +43,11 @@
     else
       render 'new'
     end
+  end
+
+  def create_bankuser
+    @user = User.new(user_params)
+    @user.update_attribute(:bankcontact, true)
   end
 
   def edit
@@ -84,7 +94,7 @@
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :clientcontact)
+                                   :password_confirmation, :clientcontact, :bankcontact)
     end
 
 

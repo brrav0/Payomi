@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'users/bankcontactupdate/:id' => 'users#bankcontactupdate', as: 'bankcontactupdate'
   get 'users/clientcontactupdate/:id' => 'users#clientcontactupdate', as: 'clientcontactupdate'
 
+  get 'bankuser/new' => 'users#new_bankuser' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

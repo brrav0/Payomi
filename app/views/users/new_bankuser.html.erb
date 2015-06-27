@@ -1,0 +1,33 @@
+  <% provide(:title, 'Inscription contact banque') %>
+
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+<h1>Inscription contact banque</h1>
+<hr>
+</div>
+</div>
+<div class="row">
+  <%#- code hereunder create a 3 margin left, a 6-wide form and by default leaves a 3 right margin %>
+  <div class="col-md-offset-3 col-md-6">
+    <%= form_for(@user) do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, "Mot de passe" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Créer le compte du contact banque", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

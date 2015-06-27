@@ -1,7 +1,15 @@
 class ClientcontactsController < ApplicationController
 
 def index
-  @clientcontacts = Clientcontact.all
+  if current_user.admin?
+    @clientcontacts = Clientcontact.all
+  else
+    clients = current_user.clients
+    @clientcontacts = Array.new
+    clients.each do |client|  
+    @clientcontacts += client.clientcontacts
+    end
+  end
 end
 
 def new
@@ -30,5 +38,7 @@ private
 def clientcontact_params
   params.require(:clientcontact).permit(:first_name, :last_name, :email)
 end
+
+
 
 end
