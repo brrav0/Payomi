@@ -11,6 +11,10 @@ def new
   @bankcontact = Bankcontact.new
 end
 
+def show
+  @bankcontact = Bankcontact.find(params[:id])
+end
+
 def create
 
   bank_id = params[:bank_id]
@@ -34,7 +38,6 @@ end
 private
 
 def bankcontact_params
-# params.require(:bankcontact).permit(:first_name, :last_name, :email)
   params.require(:bankcontact).permit(:first_name, :last_name, :email, :bank_id)
 end
 

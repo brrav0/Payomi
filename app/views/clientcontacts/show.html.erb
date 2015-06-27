@@ -1,0 +1,20 @@
+<div class="row">
+<% if logged_in? && current_user.admin? %>
+<%= render 'shared/navbaradmin' %>
+<% else %>
+<%= render 'shared/navbaruser' %>
+<% end %>
+</div>
+<div class="row">
+<% provide(:title, @clientcontact.first_name) %>
+  <aside class="col-md-4">
+    <section class="bank_info">
+    <h11>
+    <%= @clientcontact.first_name %>
+    <%= @clientcontact.last_name %><br>
+    <%= @clientcontact.email %><br>
+    </h11>
+    </section>
+  </aside>
+</div>
+    

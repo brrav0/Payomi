@@ -4,7 +4,12 @@ class ClientsController < ApplicationController
 
 
   def index
-    @clients = current_user.clients
+    if current_user.admin?
+      @clients = Client.all
+    else
+      @clients = current_user.clients
+    end
+
   end
 
 
@@ -13,7 +18,11 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = current_user.clients.find(params[:id])
+    if current_user.admin?
+      @client = Client.find(params[:id])
+    else
+      @client = current_user.clients.find(params[:id])
+    end
   end
 
   def create
@@ -35,7 +44,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :number_and_street, :zip_code, :city)
+    params.require(:client).permit(:name, :number_and_street, :zip_code, :city, :user_id)
   end
 
   def correct_user

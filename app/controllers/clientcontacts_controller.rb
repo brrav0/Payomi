@@ -16,6 +16,10 @@ def new
   @clientcontact = Clientcontact.new
 end
 
+def show
+  @clientcontact = Clientcontact.find(params[:id])
+end
+
 def create
   client = Client.find(params[:clientcontact][:client_id])
   @clientcontact = client.clientcontacts.build(clientcontact_params)
