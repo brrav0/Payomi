@@ -72,6 +72,7 @@ en:
             email:
               blank: "est obligatoire"
 #              invalid: "n'est pas valide"
+              taken: "est déjà utilisée"
             password:
               blank: "est obligatoire"
               confirmation: "ne correspond pas %{attributes}"
@@ -105,6 +106,7 @@ en:
               blank: "est obligatoire"
             email:
               blank: "est obligatoire"
+              taken: "est déjà utilisée"
         bank:
           attributes:
             name:

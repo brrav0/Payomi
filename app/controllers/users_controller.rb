@@ -29,9 +29,9 @@
     @email = @user.email
     
     if Clientcontact.where(email: @email).exists?
-      @user.update_attribute(:clientcontact, true)
+      @user.update_attribute(:role, 'CLI')
     elsif Bankcontact.where(email: @email).exists?
-      @user.update_attribute(:bankcontact, true) 
+      @user.update_attribute(:role, 'BAN') 
     end
 
     
@@ -94,7 +94,7 @@
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :clientcontact, :bankcontact)
+                                   :password_confirmation, :clientcontact, :bankcontact, :role)
     end
 
 

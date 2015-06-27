@@ -14,17 +14,17 @@ class User < ActiveRecord::Base
   CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
   validates :email, uniqueness: true
   validates :email, format: { with: VALID_EMAIL_REGEX, message: 'revoir votre adresse email' }
-  validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisé. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' }, if: :auditor?
+  validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisée. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' }, if: :auditor?
   validates :email, email: true, if: :not_an_auditor?
   has_secure_password
   validates :password, length: { minimum: 6 }
   
   #Check that the user being created is an auditor
   def auditor?
-    self.clientcontact == false
+    self.role == 'AUD'
   end  
   def not_an_auditor?
-    self.clientcontact == true
+    self.role != 'AUD'
   end
 
 

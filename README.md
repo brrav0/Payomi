@@ -13,7 +13,7 @@ To do:
 - no user should be able to change his/her email adresss - this should be given up and a new accounts should be setup
 - setup a kind of database to validate the possible email extension for auditors
 - dans le formulaire on choisit cac ou non-cac - si non cac il faut pour la validation que l'adresse soit soit dans la base bankcontact ou clientcontact si oui en fonction de la base on créé un profil client ou un profil banque
-
+- missing show/update for clientcontact (maybe others)
 
 Questions:
 - discuss the architecture overall
