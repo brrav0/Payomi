@@ -20,9 +20,17 @@ scheduler.every("10h") do
 
 @bank = Bank.find(1)
 @bankcontact = Bankcontact.first#loop additional contacts when inserted into the database
-if !@bank.bankaccounts.where.not(issued:nil).where(answered:nil).empty?
-@bankcontact.send_notification_to_bankcontact
-end
-end
+  if !@bank.bankaccounts.where.not(issued:nil).where(answered:nil).empty?
+    @bankcontact.send_notification_to_bankcontact
+  end
 
+@bank = Bank.find(2)
+@bankcontact = Bankcontact.first#loop additional contacts when inserted into the database
+  if !@bank.bankaccounts.where.not(issued:nil).where(answered:nil).empty?
+    @bankcontact.send_notification_to_bankcontact
+  end
+
+
+
+end
 

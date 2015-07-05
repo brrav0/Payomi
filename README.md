@@ -6,6 +6,10 @@ To do:
 3) enhance testing
 4) write contact / about & FAQ / legal mention / terms and conditions
 5) work on editing client & bankaccounts when correction are necessary - we need to think of what can be changed and what should not (bankaccounts number for instance and/or address email for cliencontact)
+- test the scheduler
+- email sent formatting and wording
+- test live of the daily notification
+- contact client/client should be merged in one single table with possibilty of changing them together if necessary two different view is not the best
 
 
 Questions:

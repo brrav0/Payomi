@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   get 'bankuser/new' => 'users#new_bankuser' 
 
+  get 'test'=>'tests#scheduler'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
