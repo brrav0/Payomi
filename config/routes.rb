@@ -10,22 +10,20 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 #  get 'static_pages/about'
   get 'about' => 'static_pages#about'
+  get 'contact' => 'static_pages#contact'
 #  get 'static_pages/help'
   get 'help' => 'static_pages#help'
-  get 'contact' => 'static_pages#contact'
   get 'signup' => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  resources :contacts, only: [:new, :create]
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts,          only: [:create, :destroy]
   resources :clients,          only: [:new, :create, :destroy, :show, :index]
   resources :banks,          only: [:new, :create, :show, :index, :destroy]
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy]
-  resources :signatories,          only: [:new, :create, :show, :index]
-  resources :bank_contacts,          only: [:new, :create, :show, :index]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
  

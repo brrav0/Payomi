@@ -10,7 +10,7 @@ To do:
 - email sent formatting and wording
 - test live of the daily notification
 - contact client/client should be merged in one single table with possibilty of changing them together if necessary two different view is not the best
-
+6) email sending function is not developped (not necessary)
 
 Questions:
 - discuss the architecture overall

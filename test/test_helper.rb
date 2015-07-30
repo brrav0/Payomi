@@ -23,11 +23,6 @@ class ActiveSupport::TestCase
       session[:user_id] = user.id
     end
   end
-  #Logs in a test user but different from above for simplicity (merge both down the road)
-  def log_in_as2(user, options = {})
-      post login_path, session: { email:       user.email,
-                                  password:    user.password}
-  end
 
 
 
