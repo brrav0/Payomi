@@ -11,6 +11,22 @@ To do:
 - test live of the daily notification
 - contact client/client should be merged in one single table with possibilty of changing them together if necessary two different view is not the best
 6) email sending function is not developped (not necessary)
+7) simple_form to upgrade forms (error message next to field, mandatory field, rradio button)
+8) rake for schedule-add ons on heroku
+9) see change in client and presentation (see simple form and organization of navigation)
+10) Ajax #240 search pagination
+11) Authologic omniauth
+12) Client side validation #263
+13) Active admin #283
+14) Number to currency for euro
+15) https #357 secure the transfer
+16) Fortgot password à traduire sur la page de changement en français / reset password - message d'erreur de pré-authentification (see how the reset is done because the reset does not know whether a auditor or contact is resetting so some validation may not be included when reset)
+17) changer la formulation de l'email d'activation
+18) L'identification client ne marche pas - le contactclient n'est pas identifié comme tel (URGENT)
+19) ecran d'accueil des clients et mal centré
+20) reset password ne marche pas avec les banques par exemple on revient simplement sur le site au lieu d'activer et pourtant cela semble marcher avec ladmin
+21) faire des roles manuels
+22) Ajouter banque / cac / client pour clarifier les écrans d'accueil
 
 Questions:
 - discuss the architecture overall

@@ -8,6 +8,8 @@ class Bankcontact < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX }, uniqueness: {case_sensitive: false }
 
 def send_notification_to_bankcontact
+
+#system "rake notify_banks"
 UserMailer.notification_bankcontact(self).deliver_now
 end
 
