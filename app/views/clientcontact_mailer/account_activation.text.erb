@@ -1,0 +1,5 @@
+Bonjour <%= @user.name %>,
+
+Bienvenue sur Circularisation.com ! Cliquez sur le lien ci-dessous pour activer votre compte :
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

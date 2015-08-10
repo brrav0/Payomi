@@ -10,7 +10,7 @@ class Clientcontact < ActiveRecord::Base
 
 
 def send_notification_to_clientcontact
-UserMailer.notification_clientcontact(self).deliver_now
+ClientcontactMailer.notification_clientcontact(self).deliver_now
 end
 
 

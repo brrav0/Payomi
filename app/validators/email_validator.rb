@@ -1,4 +1,5 @@
-# app/validators/email_validator.rb
+# Description - validators of certain email address to restrict access to the site
+# app/validators/email_validator.rb 
 
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, email)

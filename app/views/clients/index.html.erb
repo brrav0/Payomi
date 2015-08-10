@@ -1,3 +1,11 @@
+  <script>
+
+  $(function () { 
+    $("[data-toggle='tooltip']").tooltip(); 
+});
+</script>
+
+
 <div class="row">
 <% if logged_in? && current_user.admin? %>
 <%= render 'shared/navbaradmin' %>
@@ -5,15 +13,39 @@
 <%= render 'shared/navbaruser' %>
 <% end %>
 </div>
+
 <div class="row">
-<div class="col-md-offset-2">
+<div class="col-md-12">
+
 <h2>Vos clients</h2>
+
+<table class="table table-hover table-condensed">
+
+  <tr>
+    <th>Nom</th>
+    <th>Adresse</th>
+    <th>Signataire</th>
+    <th>Email</th>
+    <th>Gestion</th>
+  </tr>
 
 
 <% @clients.each do |client| %>
+  <tr>
+    <td><%= client.name %></td>
+    <td><%= client.number_and_street %> <%= client.city %> <%= client.zip_code %></td>
+    <td><%= client.first_name %> <%= client.last_name %></td>
+    <td><%= client.email %></td>
 
-<h11><%= link_to client.name, client %> | <%= link_to "Supprimer le client", client, method: :delete, data: { confirm: "Sûr ? " } %></h11><br>
 
+<td>
+<%= link_to "Voir", client_path(client) %> |
+<%= link_to "Éditer", edit_client_path(client) %> |
+<%= link_to "Supprimer", client, method: :delete, data: { confirm: "Sûr ? " } %>
+</td>
+  </tr>
 <% end %>
+</table>
+
 </div>
 </div>

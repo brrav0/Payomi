@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 #  get 'static_pages/about'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
-  get 'notify' => 'static_pages#notify'
+  get 'test1' => 'users#test1'
+  get 'test2' => 'users#test2'
 #  get 'static_pages/help'
   get 'help' => 'static_pages#help'
   get 'signup' => 'users#new'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :clients,          only: [:new, :create, :destroy, :show, :index]
+  resources :clients,          only: [:new, :create, :destroy, :show, :index, :edit, :update]
   resources :banks,          only: [:new, :create, :show, :index, :destroy]
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]

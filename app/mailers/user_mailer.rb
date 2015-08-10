@@ -5,6 +5,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.account_activation.subject
   #
+  def email_test
+    mail to: "bastien.ravandison@gmail.com", subject: "test pour rake"
+  end
+
   def account_activation(user)
       @user = user
     mail to: user.email, subject: "Activation de votre compte"
@@ -32,5 +36,8 @@ class UserMailer < ApplicationMailer
     @bankcontact = bankcontact
     mail to: bankcontact.email, subject: "Vous avez des circularisations en attente de réponse"
   end
-
+  
+  def test_sentence
+    puts "from the UserMailer"
+  end
 end

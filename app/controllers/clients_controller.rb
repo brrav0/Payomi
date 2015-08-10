@@ -16,6 +16,19 @@ class ClientsController < ApplicationController
   def new
     @client = current_user.clients.build 
   end
+ 
+  def edit
+    @client = Client.find(params[:id])
+  end 
+
+  def update
+    @client = Client.find(params[:id])
+    if @client.update(client_params)
+      redirect_to clients_path
+    else
+      render 'edit'
+    end
+  end
 
   def show
     if current_user.admin?
@@ -29,7 +42,7 @@ class ClientsController < ApplicationController
    @client = current_user.clients.build(client_params)
     if @client.save
       flash[:success] = "Le client a été créé."
-      redirect_to root_url
+      redirect_to clients_path
     else
       render '/clients/new'
     end
@@ -44,7 +57,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :number_and_street, :zip_code, :city, :user_id)
+    params.require(:client).permit(:name, :number_and_street, :zip_code, :city, :user_id, :first_name, :last_name, :email, :phone_number)
   end
 
   def correct_user

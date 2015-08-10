@@ -5,11 +5,17 @@
    before_action :admin_user, only: [:destroy, :index]
 
   def index
-
       @users = User.paginate(page: params[:page])
-
   end
 
+  def test1
+    UserMailer.email_test.deliver_now
+    redirect_to root_url
+  end
+  def test2
+    system "rake mytest"
+    redirect_to root_url
+  end
 
   def show
     @user = User.find(params[:id])
@@ -28,10 +34,10 @@
     @user = User.new(user_params)
     @email = @user.email
     
-    if Clientcontact.where(email: @email).exists?
-      @user.update_attribute(:role, 'CLI')
+    if Client.where(email: @email).exists?
+      @user.update_attribute(:clientcontact, true)
     elsif Bankcontact.where(email: @email).exists?
-      @user.update_attribute(:role, 'BAN') 
+      @user.update_attribute(:bankcontact, true) 
     end
 
     

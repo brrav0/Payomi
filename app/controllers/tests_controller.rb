@@ -7,4 +7,8 @@ def scheduler
   @bankaccounts = Bankaccount.includes(bank: :bankcontacts).where.not(issued:nil).where(answered:nil)
 
 end
+
+def test_from_scheduler
+  puts "test from controller"
+end
 end

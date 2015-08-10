@@ -1,6 +1,9 @@
-desc "Notify banks"
-task :notify_banks => :environment do  
-bankcontact = Bankcontact.find(5)
-#UserMailer.notification_bankcontact(bankcontact).deliver_now
-bankcontact.send_notification_to_bankcontact
+task :mytest => :environment do
+  #puts "test"
+  #mail to: contact.email, subject: "Votre commissaire aux comptes vous demande de signer une circularisation"
+  #user = User.find(1)
+  #puts user.email
+  User.test
+
 end
+
