@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
 #  get 'static_pages/about'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
+  get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   get 'test1' => 'users#test1'
   get 'test2' => 'users#test2'
 #  get 'static_pages/help'

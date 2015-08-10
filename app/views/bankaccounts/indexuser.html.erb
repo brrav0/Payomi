@@ -18,13 +18,13 @@
 <table class="table table-hover table-condensed">
 
   <tr>
-    <th>Banque</th>
-    <th>Client</th>
-    <th>Numéro de compte</th>
-    <th>Devise</th>
-    <th>Solde</th>
+    <th><%= link_to "Banque", :sort => "bank" %></th>
+    <th><%= link_to "Client", :sort => "client" %></th>
+    <th><%= link_to "Numéro de compte", :sort => "number" %></th>
+    <th><%= link_to "Devise", :sort => "currency" %></th>
+    <th><%= link_to "Solde", :sort => "balance" %></th>
     <th><button type="button" class="custom-button-default" data-toggle="tooltip" data-placement="top" title="
-Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsque vous êtes en attente de l'intervention de l'une de ces deux parties prenantes.">Action</button></th>
+Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsque vous êtes en attente de l'intervention de l'une de ces deux parties prenantes."><%= link_to "Action", :sort => "action" %></button></th>
 
   </tr>
 

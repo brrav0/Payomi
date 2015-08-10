@@ -186,9 +186,16 @@ font-family: arial;
 text-align: left;
 }
 
+h13 {
+text-align: justify;
+text-justify: inter-word;
+font-size:0.9em;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  font-size:0.9em;
 }
 
 .divider {

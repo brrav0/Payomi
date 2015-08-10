@@ -11,5 +11,9 @@ class Client < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true
   validates :phone_number, presence: true
+
+  def self.search(query)
+    where("name like ?","%#{query}%") 
+  end
   
 end

@@ -5,13 +5,21 @@ class ClientsController < ApplicationController
 
   def index
     if current_user.admin?
-      @clients = Client.all
+      if params[:search]
+        @clients = Client.search(params[:search])
+      else
+        @clients = Client.page(params[:page])
+      end
     else
-      @clients = current_user.clients
+        @clients = current_user.clients
     end
-
   end
 
+  def search
+    if params[:search]
+      @clients = User.search(params[:search])
+    end
+  end  
 
   def new
     @client = current_user.clients.build 
