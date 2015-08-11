@@ -48,20 +48,14 @@ $gray-medium-light: #eaeaea;
 }
 
 .dropdown:hover {
-    background:#3b3535;
-  color: #ece6e6;
+ background:#3b3535;
+ color: #ece6e6;
 }
 
-ul.nav li:hover {
+ul.nav li:active {
   #background:#3b3535;
   background:blue;
   color: #ece6e6;
-}
-
-
-ul.nav li:active {
-  background:blue;
-  color: #ece6e6;        
 }
 
 select {
@@ -132,7 +126,8 @@ h1 {
 h2 {
   font-size: 2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-top: 8px;
+  margin-bottom: 10px;
   text-align: left;
   font-weight: normal;
   color: $gray-light;
@@ -454,6 +449,13 @@ horizontal-align: center;
 border: 0;
 background: none;
 }
+
+.round {
+    background:grey;
+    border-color: grey; 
+    margin-left: 10px;
+}
+
 
 .left {
 text-align: left;

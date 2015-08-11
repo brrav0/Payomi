@@ -16,21 +16,20 @@
 
 <div class="row">
 
+<div class="col-md-2">
 <h2>Vos clients</h2>
 </div>
-
-
-<div class="row">
-<div class="col-md-3 col-md-offset-9">
-  <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Clients", class: "form-control" %>
-    <%= submit_tag "Chercher", :name => nil, class: "btn btn-primary btn-search" %>
-  <% end %>
+<div class="col-md-offset-8 col-md-2">
+<br>
+<%= link_to "Ajouter un Client", new_client_path, class: "btn btn-primary round" %>
 </div>
+
+<div class="col-md-offset-7 col-md-3"><br>
 </div>
 <br>
-<div class="row">
 
+<div class="row">
+<div class="col-md-10">
 <table class="table table-hover table-condensed">
 
   <tr>
@@ -58,5 +57,11 @@
 <% end %>
 </table>
 <%= will_paginate @clients %>
-
+</div>
+<div class="col-md-2">
+  <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Clients", class: "form-control" %>
+    <%= submit_tag "Filtrer", :name => nil, class: "btn btn-primary btn-search btn-size-xs" %>
+  <% end %>
+</div>
 </div>

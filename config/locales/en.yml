@@ -24,6 +24,9 @@ en:
     formats:
       short: '%F'
   hello: "Hello world"
+  will_paginate:
+    previous_label: "&#8592; Précédent"
+    next_label: "Suivant &#8594;"
   
   dinformation: "d'information"
   activerecord:
