@@ -6,15 +6,22 @@
 </script>
 
 <div class="row">
-<!-- Split button -->
-<%#- partial beginning%>
 <%= render "shared/navbaruser" %>
-<%#- partial end %>
 </div>
-<div class="row">
-<div class="col-md-12">
-<h2>Récapitulatif de vos circularisations</h2>
 
+<div class="row">
+<div class="col-md-2">
+<h2>Circularisations</h2>
+</div>
+
+<div class="col-md-offset-8 col-md-2">
+<br>
+     <%= link_to "Ajouter un compte", new_bankaccount_path, class: "btn btn-primary round" %>
+</div>
+
+<br><br><br><br>
+<div class="row">
+<div class="col-md-10">
 <table class="table table-hover table-condensed">
 
   <tr>
@@ -41,9 +48,15 @@ Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsqu
 
 <% end %>
 </table>
-
-
-
+<%= will_paginate @bankaccounts1 %>
 </div>
+
+  <div class="col-md-2">
+  <%= form_tag(bankaccounts_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Comptes", class: "form-control" %>
+    <%= submit_tag "Filtrer", :number => nil, class: "btn btn-primary btn-search btn-size-xs" %>
+  <% end %>
+</div>
+
 
 </div>

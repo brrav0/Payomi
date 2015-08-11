@@ -2,10 +2,23 @@
 <%= render 'shared/navbaradmin'%>
 </div>
 
+
 <div class="row">
-<div class="col-md-12">
-<h2>Suivi des circularisations</h2>
-<hr>
+  <div class="col-md-2">
+  <h2>Circularisations</h2>
+  </div>
+
+  <div class="col-md-offset-8 col-md-2">
+  <br>
+    <%= link_to "Ajouter un compte", new_bankaccount_path, class: "btn btn-primary round" %>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row">
+<div class="col-md-10">
+
 <table class="table table-hover">
 
   <tr>
@@ -38,9 +51,14 @@
 
 <% end %>
 </table>
-
-
-
+<%= will_paginate @bankaccounts %>
 </div>
 
+  <div class="col-md-2">
+  <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Comptes", class: "form-control" %>
+    <%= submit_tag "Filtrer", :number => nil, class: "btn btn-primary btn-search btn-size-xs" %>
+  <% end %>
 </div>
+</div>
+

@@ -16,6 +16,8 @@ def index
     @bankaccounts +=client.bankaccounts
   end
 
+  @bankaccounts1 = @bankaccounts.paginate(page: params[:page], per_page: 5)
+
   render 'bankaccounts/indexuser'
   #if user is a clientcontact
   elsif logged_in? && current_user.clientcontact?
@@ -39,7 +41,12 @@ def index
 
   elsif logged_in? && current_user.admin?
 
-  @bankaccounts = Bankaccount.all
+  #@bankaccounts = Bankaccount.all
+    if params[:search]
+      @bankaccounts = Bankacccount.search(params[:search]).page([:page]).per_page(5)
+    else
+      @bankaccounts = Bankaccount.paginate(:page => params[:page], :per_page => 5)
+    end
   render 'bankaccounts/indexadmin'
 
   else

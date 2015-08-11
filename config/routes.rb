@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :clients,          only: [:new, :create, :destroy, :show, :index, :edit, :update]
-  resources :banks,          only: [:new, :create, :show, :index, :destroy]
-  resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy]
+  resources :banks,          only: [:new, :create, :show, :index, :destroy, :edit]
+  resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
  

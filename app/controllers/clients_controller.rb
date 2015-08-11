@@ -12,7 +12,14 @@ class ClientsController < ApplicationController
         @clients = Client.paginate(:page => params[:page], :per_page => 5)
       end
     else
-        @clients = current_user.clients
+
+      if params[:search]
+        @clients = current_user.clients.search(params[:search]).page(params[:page]).per_page(5)
+        #@clients = Client.paginate(:page => params[:page], :per_page => 5)
+      else
+        @clients = current_user.clients.paginate(:page => params[:page], :per_page => 5)
+      end
+      #  @clients = current_user.clients
     end
   end
 
