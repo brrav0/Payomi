@@ -53,12 +53,17 @@ $gray-medium-light: #eaeaea;
 }
 
 ul.nav li:hover {
-  background:#3b3535;
+  #background:#3b3535;
+  background:blue;
   color: #ece6e6;
 }
 
 
-        
+ul.nav li:active {
+  background:blue;
+  color: #ece6e6;        
+}
+
 select {
   background-color: #ffffff;
   height: 34px;
@@ -469,6 +474,7 @@ text-decoration: none;
 .btn-confirm {width: 15%;}
 
 .btn-reject {width: 40%;}
+.btn-search {width: 40%;}
 
 .form-comments {width: 50% }
 

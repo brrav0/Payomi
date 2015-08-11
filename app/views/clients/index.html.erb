@@ -15,14 +15,21 @@
 </div>
 
 <div class="row">
-<div class="col-md-12">
 
 <h2>Vos clients</h2>
+</div>
 
+
+<div class="row">
+<div class="col-md-3 col-md-offset-9">
   <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Clients" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Clients", class: "form-control" %>
+    <%= submit_tag "Chercher", :name => nil, class: "btn btn-primary btn-search" %>
+  <% end %>
+</div>
+</div>
+<br>
+<div class="row">
 
 <table class="table table-hover table-condensed">
 
@@ -44,13 +51,12 @@
 
 
 <td>
-<%= link_to "Voir", client_path(client) %> |
 <%= link_to "Éditer", edit_client_path(client) %> |
 <%= link_to "Supprimer", client, method: :delete, data: { confirm: "Sûr ? " } %>
 </td>
   </tr>
 <% end %>
 </table>
-<%= page @clients %>
-</div>
+<%= will_paginate @clients %>
+
 </div>

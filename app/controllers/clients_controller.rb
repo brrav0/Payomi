@@ -6,9 +6,10 @@ class ClientsController < ApplicationController
   def index
     if current_user.admin?
       if params[:search]
-        @clients = Client.search(params[:search])
+        @clients = Client.search(params[:search]).page(params[:page]).per_page(5)
+        #@clients = Client.paginate(:page => params[:page], :per_page => 5)
       else
-        @clients = Client.page(params[:page])
+        @clients = Client.paginate(:page => params[:page], :per_page => 5)
       end
     else
         @clients = current_user.clients
