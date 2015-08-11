@@ -13,6 +13,9 @@ gem 'prawnto', '0.1.1'
 gem 'prawnto_2', :require => 'prawnto'
 gem 'prawn-table'
 gem 'rufus-scheduler'
+gem 'devise'
+gem 'activeadmin', '~> 1.0.0.pre1'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'rb-readline'

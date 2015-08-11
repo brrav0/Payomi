@@ -36,7 +36,8 @@ def index
   bankcontact = Bankcontact.find_by(email: email)
   @id = bankcontact.bank_id
   @bank = bankcontact.bank.name
-  @bankaccounts = Bankaccount.where("bank_id = ?", @id).where.not(issued: nil)
+  @bankaccounts = Bankaccount.where("bank_id = ?", @id).where.not(issued: nil) 
+  @bankaccounts1 = @bankaccounts.paginate(page: params[:page], per_page: 5)
   render 'bankaccounts/indexbank'
 
   elsif logged_in? && current_user.admin?

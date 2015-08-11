@@ -4,59 +4,13 @@ To do:
 1) deploy latest version on Heroku
 2) test live within close circles
 3) enhance testing
-4) write contact / about & FAQ / legal mention / terms and conditions
-5) work on editing client & bankaccounts when correction are necessary - we need to think of what can be changed and what should not (bankaccounts number for instance and/or address email for cliencontact)
-- test the scheduler
-- email sent formatting and wording
-- test live of the daily notification
-- contact client/client should be merged in one single table with possibilty of changing them together if necessary two different view is not the best
-6) email sending function is not developped (not necessary)
-7) simple_form to upgrade forms (error message next to field, mandatory field, rradio button)
-8) rake for schedule-add ons on heroku
-9) see change in client and presentation (see simple form and organization of navigation)
-10) Ajax #240 search pagination
-11) Authologic omniauth
-12) Client side validation #263
-13) Active admin #283
-14) Number to currency for euro
-15) https #357 secure the transfer
-16) Fortgot password à traduire sur la page de changement en français / reset password - message d'erreur de pré-authentification (see how the reset is done because the reset does not know whether a auditor or contact is resetting so some validation may not be included when reset)
-17) changer la formulation de l'email d'activation
-18) L'identification client ne marche pas - le contactclient n'est pas identifié comme tel (URGENT)
-19) ecran d'accueil des clients et mal centré
-20) reset password ne marche pas avec les banques par exemple on revient simplement sur le site au lieu d'activer et pourtant cela semble marcher avec ladmin
-21) faire des roles manuels
-22) Ajouter banque / cac / client pour clarifier les écrans d'accueil
-
-Questions:
-- discuss the architecture overall
-- skinny controller fat models - ie? example of share/sign...
-- testing - what is done what to test?
-- Framework for testing?
-- Framework for login?
-- Heroku and other possibility of application
-- Management of the database - save? Back-up? Change local vs. remote?
-- Change in the database directly with psql? Never?
-- Admin view - everything useless access direclty through database access
-- which server Puma? What is the difference?
-- Best practice in terms of security test is_logged_in and amdin? seems redundant
-- How do you usually manage deletion with dependent items / belongs to - prevent from deletion - error messages stating that there is dependent items? Check if presence before deleting
-
-
-Done:
-- missing show/update for clientcontact (maybe others)
-- dans le formulaire on choisit cac ou non-cac - si non cac il faut pour la validation que l'adresse soit soit dans la base bankcontact ou clientcontact si oui en fonction de la base on créé un profil client ou un profil banque
-- the bank account should be created by the bank guy at least so it can choose its password this should be done by sending a link which point to a different create controller than the usual one used within users - should be created with an initial password? other specific view
-- admin views does not access all clients but only those it has created. Admin should not create client but access all other clients
-- connection to Heroku database ideally through psql (rails console not enough)
-- admin (and probably other view) when I do show on bank resources navbar vanishes
-- admin missing links to add a contact bank
-- after adding an account should be redirected to the list of account - not the random test page
-- When a client logs in but he has already logged in error is email address already taken instead of "you are already registered"
-- Welcome screen of client not centered as it should be (go on right)
-- Somehow it says that it is not pre-authentified which does not seem to be true
-- When you click on account (sign) same for the rest the classification changes and the account go at the bottom some how
-- Issue look at Bruno - do not see all bankaccounts he should see especially those that are done - double check the query
-- issue if passwords do not match - application says does not in english and not in French
-- reinforce authorization especially make sure that some users profile cannot access other resources make sure this is tested
-- show client show the navbaradmin instead of navbar users
+4) test the scheduler / rake for schedule-add ons on heroku
+5) see change in client and presentation (see simple form and organization of navigation)
+6) Ajax #240 search pagination
+7) Client side validation #263
+8) Active admin #283
+9) Back-up of database
+10) Extension of dashboard similar that auditor for client and bank
+11) Leave to the client the option not to sign the requested confirmation
+12) Change the icon for the user
+13) Leave the option for the bank to see the final report as well so they can know what they confirmed

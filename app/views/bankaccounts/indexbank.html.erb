@@ -1,14 +1,20 @@
+
+
+
+
 <div class="row">
-<div class="col-md-2 background">
-<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="user"> <%= @user.name %></span>
-</div>
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="user"> <%= @user.name %></span><br>
 </div>
 
 
 <div class="row">
-<div class="col-md-9">
-<h2>Récapitulatif des comptes circularisés</h2>
-<hr>
+
+<h2>Vos Circularisations en attente de réponse</h2><br>
+<%#- nothing - no need to add a button add account for banks %>
+</div>
+<div class="row">
+<div class="col-md-10">
+
 <table class="table table-hover">
 
   <tr>
@@ -33,9 +39,13 @@
 
 <% end %>
 </table>
-
-
-
+<%= will_paginate @bankaccounts1 %>
+</div>
+ <div class="col-md-2">
+  <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Comptes", class: "form-control" %>
+    <%= submit_tag "Filtrer", :number => nil, class: "btn btn-primary btn-search btn-size-xs" %>
+  <% end %>
 </div>
 
 </div>
