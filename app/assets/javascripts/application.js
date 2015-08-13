@@ -15,3 +15,21 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+//$(document).ready(function () {
+ 
+//alert("document ready");
+ 
+//});
+
+function validate()
+      {
+         var textarea = document.getElementById('bankaccount_comments');
+      
+         if(textarea.value == "" )
+        {
+            alert("Veuillez fournir la raison du rejet de la circularisation");
+            return false;
+        } else {
+            return true;}
+}

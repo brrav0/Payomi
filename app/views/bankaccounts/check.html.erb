@@ -4,24 +4,21 @@
 });
 </script>
 
-<div class="row">
 
-	<div class="col-md-2 background">
-		<br>
-		<span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="user"> <%= @user.name %></span>
-		<hr>
-		<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> CIRCULARISATION<br>
-
-		<%= link_to "Voir les circularisations", bankaccounts_path, :class => "sidelink" %>
-		<hr>
-	</div>
-
-	<div class="col-md-1">
-	</div>
-
-	  <div class="col-md-9">
+	  <div class="row">
+            <div class="col-md-4">
 		  <h2>Détail de la circularisation</h2>
 		  <hr>
+            </div>
+            <div class="col-md-offset-5 col-md-3">
+              <ul class="nav nav-tabs">
+    <li class="<%= is_active? bankaccounts_path %>">
+      <%= link_to "Revenir aux circularisations", bankaccounts_path %>
+    </li>
+  </ul>
+
+            </div>
+          </div>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -30,7 +27,7 @@
                         Numéro et rue : <%= @client.number_and_street %><br>
                         Code Postal : <%= @client.zip_code %><br>
                         Ville : <%= @client.city %><br><br>
-    			Signataire autorisé : <%= @clientcontact.email %>
+    			Signataire autorisé : <%= @client.email %>
 			</div>
 
 			<div class="col-md-6">
@@ -50,15 +47,15 @@
 
 		  
 		  <%= form_for (@bankaccount) do |f| %>
-		  <%= f.label :comments, "Commentaires" %>
+                  <%= render 'shared/error_messages_bankaccount' %>
+		  <%= f.label :comments,"Commentaires" %>
 		  <%=f.text_area :comments, class: 'form-control form-comments', rows: '3' %>
- 		  <%#- weird to create two submit button a patch route but somehow had trouble to pass @bankaccount as a parameter afterward %>
-		  <%= f.submit "Confirmer", :name=>"conf", class: "btn btn-lg btn-primary btn-confirm" %>
-		  <%= f.submit "Rejeter (commentaires obligatoires)", class: "btn btn-lg btn-primary btn-reject" %>
 
-		  <%#= link_to "Confimer", answer_path(@id), data: {confirm: "Veuillez confirmer votre réponse. Cette action est irréversible."}, class: "btn btn-lg btn-primary" %>
-		  <%#= link_to "Rejeter (commentaire obligatoire)", reject_path(@id), data: {confirm: "Veuillez confirmer que vous souhaitez rejeter la circularisation."}, class: "btn btn-lg btn-primary" %>
+		  <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm" %>
+		  <%= f.submit "Rejeter (commentaires obligatoires)", class: "btn btn-lg btn-primary btn-reject" %>
 		  <% end %>
+
+
                   </div>
                 </div>
 
@@ -74,7 +71,7 @@
 				</tr>
                                 <tr>
 					<td>Signature</td>
-					<td><%= @clientcontact.email %></td>
+					<td><%= @client.email %></td>
 					<td><%= @bankaccount.signed %></td>
 				</tr>
 				<tr>
@@ -91,6 +88,4 @@
                   </div>
 
                 </div>
-	</div>
 
-</div>

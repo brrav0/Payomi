@@ -15,5 +15,10 @@ class Client < ActiveRecord::Base
   def self.search(query)
     where("name like ?","%#{query}%") 
   end
+
+  def send_notification_to_client
+    ClientcontactMailer.notification_clientcontact(self).deliver_now
+  end
+
   
 end

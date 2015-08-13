@@ -5,12 +5,14 @@
 });
 </script>
 
-<% if @bankaccount.answered == "9999-09-09 13:09:09.000000" %> 
 
-<a data-toggle="tooltip" data-placement="right" title="La circularisation a fait l'objet d'une réponse. Aucune autre action n'est nécessaire.">Rejetée</a>
+<% if "#{@bankaccount.answer}" == 'rejetée' %>
+<a data-toggle="tooltip" data-placement="right" title="La circularisation a fait l'objet d'une réponse. Aucune autre action n'est nécessaire.">
+<%= link_to "Rejetée", report_path(@id)%></a>
 
 <% else %>
 
-<a data-toggle="tooltip" data-placement="right" title="La circularisation a fait l'objet d'une réponse. Aucune autre action n'est nécessaire.">Confirmée</a>
+<a data-toggle="tooltip" data-placement="right" title="La circularisation a fait l'objet d'une réponse. Aucune autre action n'est nécessaire.">
+<%= link_to "Confirmée", report_path(@id) %></a>
 
 <% end %>

@@ -7,6 +7,8 @@ class Bankaccount < ActiveRecord::Base
   validates :number, presence: true, length: { is: 11 }
   validates :currency, presence: true, length: { is: 3 }
   validates :balance, presence: true
+  validates :comments, presence: true
+
 
 
 

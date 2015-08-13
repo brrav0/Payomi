@@ -23,9 +23,11 @@ def index
   elsif logged_in? && current_user.clientcontact?
 
   email = current_user.email
-  clientcontact = Clientcontact.find_by(email: email)
-  @id = clientcontact.client_id
-  @client = clientcontact.client.name
+  #clientcontact = Client.find_by(email: email)
+  #@id = clientcontact.client_id
+  @client = Client.find_by(email: email)
+  @id = @client.id
+  #@client = clientcontact.client.name
   #if shared is not nil, then the confirmation is expecting to be signed
   @bankaccounts = Bankaccount.where("client_id = ?", @id).where.not(shared: nil) 
   render 'bankaccounts/indexclient'
@@ -73,7 +75,7 @@ def create
     flash[:info]="Le compte bancaire a été sauvegardé"
     redirect_to root_url
   else
-    render '/bankaccount/new'
+    render '/bankaccounts/new'
   end
 end
 

@@ -5,8 +5,7 @@ def share
   @bankaccount = Bankaccount.find(params[:id])
   if @bankaccount.update_attribute(:shared, Time.now.to_formatted_s(:short))
     @client = @bankaccount.client
-    @clientcontact = Clientcontact.find_by(client: @client)
-    @clientcontact.send_notification_to_clientcontact
+    #@client.send_notification_to_clientcontact
     flash[:info]="La circularisation a été envoyée au signataire autorisé pour signature."
     redirect_to bankaccounts_url
   else
@@ -63,33 +62,49 @@ end
 
 def answer_with_comments
   @bankaccount = Bankaccount.find(params[:id])
+  #all that stuff hereunder became necessary after some code refactoring - no idea why
+  @client = @bankaccount.client
+  @user = current_user
+  @cac = @client.user
+  @id = @bankaccount.id
+  @bank = @bankaccount.bank
+  @bankcontact = Bankcontact.find_by(bank: @bank)
 
   if params[:conf]
 
-    if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
-      flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."
-      redirect_to bankaccounts_url
+   #update_attribue (singular) does not go through the classic validation process
+   #f @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "confirmée") && 
+    @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
+    @bankaccount.update_attribute(:answer, "confirmée")
+    if !params[:bankaccount][:comments].empty?
+      @bankaccount.update_attribute(:comments, params[:bankaccount][:comments])
+      flash[:info]="Votre réponse a été communiquée au commissaire aux comptes avec vos commentaires."
+    redirect_to bankaccounts_url
     else
-      flash[:info]="Une erreur est survenue. Veuillez nous contacter."
-      redirect_to bankaccounts_url
+    flash[:info]="Votre réponse a été communiquée au commissaire aux comptes sans commentaires."
+    redirect_to bankaccounts_url
     end
-
   else
 
-    if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.new(9999, 9, 9, 9, 9, 9))
-      flash[:info]="La circularisation a bien été rejetée."  
+  if @bankaccount.update_attributes(bankaccount_comments_params)
+    @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
+    @bankaccount.update_attribute(:answer, "rejetée")
+    flash[:info]="Votre rejet de la circularisation a été communiquée au commissaire aux compte avec vos commentaires."
+   # if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "rejetée") 
+  #  if @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "rejetée") && @bankaccount.update_attribute(:comments, params[:comments])
+   #   flash[:info]="La circularisation a bien été rejetée."  
       redirect_to bankaccounts_url
-    else
-      flash[:info]="Une erreur est survenue. Veuillez nous contacter."
-      redirect_to bankaccounts_url
-    end
-
+   else
+   #   flash[:info]="Une erreur est survenue. Veuillez nous contacter."
+     render 'bankaccounts/check'
+   # end
+  end
 end
 end
 
 def reject
   @bankaccount = Bankaccount.find(params[:id])
-  if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.new(9999, 9, 9, 9, 9, 9))
+  if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:comments, params[:comments])
     flash[:info]="La circularisation a bien été rejetée."
     redirect_to bankaccounts_url
   else
@@ -113,6 +128,8 @@ end
 def reset_bank_only
   @bankaccount = Bankaccount.find(params[:id])
   @bankaccount.update_attribute(:answered, nil)
+  @bankaccount.update_attribute(:answered, nil)
+  @bankaccount.update_attribute(:answer, nil)
   @bankaccount.update_attribute(:comments, nil)
   
   flash[:info]="La réponse de la banque a été réinitialisée."
@@ -132,6 +149,11 @@ end
 private
 
 def bankaccount_params
+  params.require(:bankaccount).permit(:answered,:answer,:comments)
+end
+
+
+def bankaccount_comments_params
   params.require(:bankaccount).permit(:comments)
 end
 

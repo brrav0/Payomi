@@ -9,8 +9,21 @@ def new
   @bank = Bank.new
 end
 
+def edit
+  @bank = Bank.find(params[:id])
+end
+
 def show
   @bank = Bank.find(params[:id])
+end
+
+def update
+  @bank = Bank.find(params[:id])
+  if @bank.update(bank_params)
+    redirect_to banks_path
+  else
+    render 'edit'
+  end
 end
 
 def create
