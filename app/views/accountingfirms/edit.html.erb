@@ -1,0 +1,43 @@
+<div class="row">
+<% if logged_in? && current_user.admin? %>
+<%= render "shared/navbaradmin"%>
+<% else %>
+<%= render 'shared/navbaruser' %>
+<% end %>
+
+
+
+</div>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h2>Modifier un cabinet</h2>
+<hr>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for :accountingfirm, url: accountingfirm_path(@accountingfirm), method: :patch do |f| %>
+      <%#= render 'shared/error_messages_client' %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name, "Nom" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :number_and_street, "Numéro et rue" %>
+      <%= f.text_field :number_and_street, class: 'form-control' %>
+
+      <%= f.label :zip_code, "Code postal" %>
+      <%= f.text_field :zip_code, class: 'form-control' %>
+
+      <%= f.label :city, "Ville" %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+<%= f.submit "Modifiez le cabinet", class: "btn btn-primary" %>
+
+<% end %>
+
+  </div>
+</div>
+
+
