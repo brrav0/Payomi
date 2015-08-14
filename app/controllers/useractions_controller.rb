@@ -75,7 +75,7 @@ def answer_with_comments
    #update_attribue (singular) does not go through the classic validation process
    #f @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "confirmée") && 
     @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
-    @bankaccount.update_attribute(:answer, "confirmée")
+    @bankaccount.update_attribute(:answer, 'confirmee')
     if !params[:bankaccount][:comments].empty?
       @bankaccount.update_attribute(:comments, params[:bankaccount][:comments])
       flash[:info]="Votre réponse a été communiquée au commissaire aux comptes avec vos commentaires."
@@ -88,7 +88,7 @@ def answer_with_comments
 
   if @bankaccount.update_attributes(bankaccount_comments_params)
     @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))
-    @bankaccount.update_attribute(:answer, "rejetée")
+    @bankaccount.update_attribute(:answer, 'rejetee')
     flash[:info]="Votre rejet de la circularisation a été communiquée au commissaire aux compte avec vos commentaires."
    # if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "rejetée") 
   #  if @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short)) && @bankaccount.update_attribute(:answer, "rejetée") && @bankaccount.update_attribute(:comments, params[:comments])
