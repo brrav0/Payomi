@@ -22,8 +22,8 @@
 
 			<div class="col-md-6">
 			    <h4>Information Commissaire aux comptes</h4><br>
-			    Nom : <%= @user.name %><br>
-                            Email : <%= @user.email %><br>
+			    Nom : <%= @cac.name %><br>
+                            Email : <%= @cac.email %><br>
 			</div>
 		</div>
                 <hr>
@@ -38,7 +38,8 @@
                             Résultat : la circularisation est <%="#{@bankaccount.answer}"%>
                             </br>
                             Commentaires :
-                              <% if @bankaccount.comments.empty? %>
+                              <% if @bankaccount.comments.nil? %>
+                              Aucun commentaire.
                               <% else %>
                               <%= @bankaccount.comments %>
                               <% end %>
@@ -64,7 +65,7 @@
 				</tr>
 				<tr>
 					<td>Envoi</td>
-					<td><%= @user.email %></td>
+					<td><%= @cac.email %></td>
 					<td><%= @bankaccount.issued %></td>
 				</tr>
 				<tr>

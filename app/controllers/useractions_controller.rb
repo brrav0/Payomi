@@ -121,6 +121,7 @@ def report
   @bankcontact = Bankcontact.find_by(bank: @bank)  
   @user = current_user
   @data = :id
+  @cac = @client.user
   #not sure why I could not use a regular report template - somehow it created an indefinite loop 
   render '/bankaccounts/summary/'
 end

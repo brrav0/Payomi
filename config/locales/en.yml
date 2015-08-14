@@ -45,6 +45,7 @@ en:
         number: "Le numéro de compte"
         currency: "La devise du compte"
         balance: "Le solde du compte"
+        comments: "La section commentaire"
       bankcontact:
         first_name: "Le prénom"
         last_name: "Le nom"
@@ -101,6 +102,8 @@ en:
               blank: "est obligatoire"
             balance:
               blank: "est obligatoire"
+            comments:
+              blank: "est obligatoire en cas de rejet de la circularisation"
         bankcontact:
           attributes:
             first_name:
