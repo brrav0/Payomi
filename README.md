@@ -14,3 +14,4 @@ To do:
 11) Leave to the client the option not to sign the requested confirmation
 12) Change the icon for the user
 13) Leave the option for the bank to see the final report as well so they can know what they confirmed
+14) See final state
