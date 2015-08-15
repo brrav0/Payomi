@@ -40,7 +40,7 @@
       @user.update_attribute(:bankcontact, true) 
     end
 
-    
+    #only hereunder is the save into the database 
     if @user.save
   @user.send_activation_email
       flash[:info] = "Consultez vos emails pour activer votre compte."
@@ -99,8 +99,8 @@
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :clientcontact, :bankcontact, :role)
+      #params.require(:user).permit(:name, :email,:password,:password_confirmation,:clientcontact,:bankcontact,:role)
+      params.require(:user).permit(:name, :email,:password,:password_confirmation)
     end
 
 

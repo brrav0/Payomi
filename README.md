@@ -14,4 +14,4 @@ To do:
 11) Leave to the client the option not to sign the requested confirmation and add additional information including the auditor in the table + beef up the email
 12) Change the icon for the user
 13) Leave the option for the bank to see the final report as well so they can know what they confirmed
-14) See final state
+14) refactor the action_depend_on_status thing to get something more robust and potentially testable

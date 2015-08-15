@@ -11,14 +11,23 @@ class User < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 20 }
  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
- # CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
+  CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
   validates :email, uniqueness: true
   validates :email, format: { with: VALID_EMAIL_REGEX, message: 'revoir votre adresse email' }
- # validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisée. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' }
- # validates :email, email: true
+  validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisée. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' },:if => :auditor?
+  #validates :email, email: true#, :if => :auditor?
   has_secure_password
   validates :password, length: { minimum: 6 }
+ 
+  def auditor?
+    clientcontact.nil? && bankcontact.nil?
+  end
   
+  def authorized_email?
+    domain_name = TMail::Address.parse(email).domain
+    
+  end
+
   def self.test
     #user = User.find(1)
     puts "a string is returned" 
