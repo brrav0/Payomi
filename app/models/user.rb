@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     clientcontact.nil? && bankcontact.nil?
   end
   
-  def authorized_email?
-    domain_name = TMail::Address.parse(email).domain
-    
-  end
 
   def self.test
     #user = User.find(1)

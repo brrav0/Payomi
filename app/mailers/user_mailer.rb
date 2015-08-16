@@ -6,7 +6,17 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.account_activation.subject
   #
   def email_test
-    mail to: "bastien.ravandison@gmail.com", subject: "test pour rake"
+    @bankaccounts = Bankaccount.all
+    emails = Array.new
+    @bankaccounts.each do |bankaccount|
+      if !bankaccount.issued.nil? && bankaccount.answered.nil?
+        emails = emails.push(bankaccount.bank.email)
+        #but similar emails get arrayed so emails will be sent numerous time and error no implicit conversion of string into Array
+      end
+      end
+    emails.uniq.each do |email| 
+      mail to: email, subject: "Vous avez des circularisations en attente"
+    end
   end
 
   def account_activation(user)
