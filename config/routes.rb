@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   get 'test1' => 'users#test1'
-  get 'test2' => 'users#test2'
+  get 'rake' => 'users#rake'
 #  get 'static_pages/help'
   get 'help' => 'static_pages#help'
   get 'signup' => 'users#new'

@@ -12,7 +12,7 @@
     UserMailer.email_test.deliver_now
     redirect_to root_url
   end
-  def test2
+  def rake
     system "rake mytest"
     redirect_to root_url
   end
