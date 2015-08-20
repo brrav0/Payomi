@@ -8,14 +8,6 @@
       @users = User.paginate(page: params[:page], per_page: "5")
   end
 
-  def test1
-    UserMailer.email_test.deliver_now
-    redirect_to root_url
-  end
-  def rake
-    system "rake mytest"
-    redirect_to root_url
-  end
 
   def show
     @user = User.find(params[:id])

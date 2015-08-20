@@ -24,10 +24,10 @@ class User < ActiveRecord::Base
   end
   
 
-  def self.test
+  def self.notify_banks_of_pending_confirmations
     #user = User.find(1)
     puts "a string is returned" 
-    UserMailer.email_test.deliver_now
+    UserMailer.send_email_to_notify_banks_of_pending_confirmations.deliver_now
   end
 
   # Returns the hash digest of the given string.

@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.account_activation.subject
   #
-  def email_test
+  def send_email_to_notify_banks_of_pending_confirmations
     @bankaccounts = Bankaccount.all
     emails = Array.new
     @bankaccounts.each do |bankaccount|
@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
       end
       end
     emails.uniq.each do |email| 
-      mail to: email, subject: "Vous avez des circularisations en attente"
+      mail to: email, subject: "Vous avez des circularisations en attente de réponse"
     end
   end
 
