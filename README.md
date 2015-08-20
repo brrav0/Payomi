@@ -15,3 +15,5 @@ To do:
 12) Change the icon for the user
 13) Leave the option for the bank to see the final report as well so they can know what they confirmed
 14) refactor the action_depend_on_status thing to get something more robust and potentially testable
+15) bug if a second client is created I have the same client with 2 ids - the contact client get the first id and miss the other as a result a ssystem should be put in place so that two client.email can not be entered twice (e.g. loreal-contact-demo@circularisation.fr)
+16) template emails pour circularisation en attente
