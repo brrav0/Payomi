@@ -31,7 +31,7 @@ text "#{@client.city}"
 bounding_box([300, 525], :width => 200, :height => 50) do
   transparent(0) {stroke_bounds}
 text "Signataire autorisé :", :size=>12, :style => :bold
-text "#{@clientcontact.email}"
+text "#{@client.email}"
 end
 move_down 25
 stroke_horizontal_rule
@@ -63,7 +63,7 @@ move_down 10
 text "Suivi d'activité", :size=>12, :style=>:bold
 move_down 5
 
-table([["Description","Email","Date et Heure"],["Signature","#{@clientcontact.email}","#{@bankaccount.signed}"],["Envoi","#{@user.email}","#{@bankaccount.issued}"],["Réponse","#{@bankcontact.email}","#{@bankaccount.answered}"]], :row_colors => ["ffffff","d2c6c6"])
+table([["Description","Email","Date et Heure"],["Signature","#{@client.email}","#{@bankaccount.signed}"],["Envoi","#{@user.email}","#{@bankaccount.issued}"],["Réponse","#{@bankcontact.email}","#{@bankaccount.answered}"]], :row_colors => ["ffffff","d2c6c6"])
 move_down 12
 stroke_horizontal_rule
 move_down 10
