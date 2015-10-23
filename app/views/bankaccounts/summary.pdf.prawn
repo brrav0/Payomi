@@ -1,4 +1,5 @@
-image "#{Rails.root}/app/assets/images/logo-circularisation.png", :width => 270, :height => 30
+
+image "#{Rails.root}/app/assets/images/logo-circularisation.png", :width => 270, :height => 30, :at => [-12,725]
 
 bounding_box([0, 660], :width => 200, :height => 75) do
   transparent(0) {stroke_bounds}
