@@ -20,3 +20,4 @@ To do:
 15. Bug if a second client is created I have the same client with 2 ids - the contact client get the first id and miss the other as a result a ssystem should be put in place so that two client.email can not be entered twice (e.g. loreal-contact-demo@circularisation.fr)
 16. Template emails pour circularisation en attente
 17. Notification client only one email per day if auditor issue 10 confirmations (apply basiscally the same scheduler add-ones than banks ultimately)
+18. Test editing README for Bitbucket test
