@@ -2,9 +2,11 @@ module BankaccountsHelper
 
 def show_action_depending_on_bankaccount_status(bankaccount)
 
-#@bankaccountid = bankaccount.id
+
 @id = bankaccount.id
 @bankaccount = bankaccount
+
+
 
 if current_user.clientcontact?
 #l'utilisteur est un contact client

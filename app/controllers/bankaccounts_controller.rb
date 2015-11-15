@@ -2,6 +2,11 @@ class BankaccountsController < ApplicationController
 
 def index
 
+  @attachedfiles = AttachedFile.all
+  
+  puts "---------------------------------------------------------------------"
+  puts "@attachedfiles: " + @attachedfiles.size.to_s
+  
   @user = current_user
   #if user is logged and an auditor
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
@@ -15,6 +20,8 @@ def index
   clients.each do |client|
     @bankaccounts +=client.bankaccounts
   end
+
+
 
   @bankaccounts1 = @bankaccounts.paginate(page: params[:page], per_page: 5)
 
@@ -54,7 +61,7 @@ def index
 
   else
 
-  render 'static_pages/home'
+	  render 'static_pages/home'
 
   end
 
@@ -62,7 +69,12 @@ end
  
 
 def new
+  # Must add the files here
+  @attachedfiles = AttachedFile.all
+  puts "@attachedfiles: " + @attachedfiles.size.to_s
+  
   @bankaccount= Bankaccount.new
+  @attachedfile = AttachedFile.new
 end
 
 
@@ -80,15 +92,21 @@ def create
 end
 
 def destroy
-  Bankaccount.find(params[:id]).destroy
-flash[:success] = "Compte supprimé."
-redirect_to bankaccounts_url || root_url
+	Bankaccount.find(params[:id]).destroy
+	flash[:success] = "Compte supprimé."
+	redirect_to bankaccounts_url || root_url
+	
+	@attachedfile = AttachedFile.find(params[:id])
+    @attachedfile.destroy
+    redirect_to attached_files_path, notice:  "The attached file #{@attachedfile.name} has been deleted."
 end
 
 private
 
 def bankaccount_params
-  params.require(:bankaccount).permit(:number, :currency, :balance, :client_id, :bank_id)
+	params.require(:bankaccount).permit(:number, :currency, :balance, :client_id, :bank_id)
 end
+
+
 
 end

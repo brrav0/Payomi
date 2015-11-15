@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 gem 'bcrypt', '3.1.7'
 gem 'bootstrap-sass', '3.2.0.0'
 gem "will_paginate", "~> 3.0.4"
@@ -16,8 +16,11 @@ gem 'rufus-scheduler'
 gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre1'
 
+# Carrier Wave to upload file
+gem 'carrierwave', '~> 0.9'
+
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.3'
 gem 'rb-readline'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

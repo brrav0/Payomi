@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'attached_files/index'
+
+  get 'attached_files/new'
+
+  get 'attached_files/create'
+
+  get 'attached_files/destroy'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -29,7 +37,8 @@ Rails.application.routes.draw do
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
- 
+  resources :attached_files, only: [:index, :new, :create, :destroy]
+  
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
   resources :bankaccounts,          only: [:new, :create, :index, :edit, :destroy]
 
