@@ -46,6 +46,9 @@ def check
   @cac = @client.user
   @id = @bankaccount.id
   
+	# Must add the files here
+	@attachedfiles = AttachedFile.all
+  
   render '/bankaccounts/check/'
 end
 
