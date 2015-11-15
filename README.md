@@ -21,3 +21,4 @@ To do:
 16. Template emails pour circularisation en attente
 17. Notification client only one email per day if auditor issue 10 confirmations (apply basiscally the same scheduler add-ones than banks ultimately)
 18. Test editing README for Bitbucket test
+19. Test 15-11-2015
