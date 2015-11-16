@@ -18,6 +18,10 @@ gem 'activeadmin', '~> 1.0.0.pre1'
 
 # Carrier Wave to upload file
 gem 'carrierwave', '~> 0.9'
+gem "fog", "~> 1.35.0"
+gem 'net-ssh'
+gem 'aws-sdk'
+
 
 # Use postgresql as the database for Active Record
 gem 'pg', '0.18.3'
