@@ -11,7 +11,7 @@ class AttachedFilesController < ApplicationController
     @attachedfile = AttachedFile.new(attachedfile_params)
 
       if @attachedfile.save
-        redirect_to attached_files_path, notice: "The attached file #{@attachedfile.name} has been uploaded."
+        redirect_to '/bankaccounts/new', notice: "The attached file #{@attachedfile.name} has been uploaded."
       else
         render "new"
       end

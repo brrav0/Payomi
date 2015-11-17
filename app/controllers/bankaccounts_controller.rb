@@ -74,6 +74,7 @@ def new
   puts "@attachedfiles: " + @attachedfiles.size.to_s
   
   @bankaccount= Bankaccount.new
+  
   @attachedfile = AttachedFile.new
 end
 
