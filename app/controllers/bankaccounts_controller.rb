@@ -2,23 +2,25 @@ class BankaccountsController < ApplicationController
 
 def index
 
-  @attachedfiles = AttachedFile.all
+  #.find_by bankaccount_id: 9
+  @attachedfiles = []
+  puts '@attachedfiles: ' + @attachedfiles.to_s
   
-  puts "---------------------------------------------------------------------"
-  puts "@attachedfiles: " + @attachedfiles.size.to_s
   
   @user = current_user
   #if user is logged and an auditor
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
 
-#  for real application before deletion
-#  @bankaccounts = current_user.bankaccounts
-# for deletion
-# clients is an array - you cannot call a method on an array - you build another bankaccounts array by iterating through client  
-  clients = current_user.clients
-  @bankaccounts = Array.new
-  clients.each do |client|
+	#  for real application before deletion
+	#  @bankaccounts = current_user.bankaccounts
+	# for deletion
+	# clients is an array - you cannot call a method on an array - you build another bankaccounts array by iterating through client  
+  
+    clients = current_user.clients
+    @bankaccounts = Array.new
+    clients.each do |client|
     @bankaccounts +=client.bankaccounts
+  
   end
 
 
@@ -47,6 +49,8 @@ def index
   @bank = bankcontact.bank.name
   @bankaccounts = Bankaccount.where("bank_id = ?", @id).where.not(issued: nil) 
   @bankaccounts1 = @bankaccounts.paginate(page: params[:page], per_page: 5)
+  
+
   render 'bankaccounts/indexbank'
 
   elsif logged_in? && current_user.admin?
@@ -67,15 +71,59 @@ def index
 
 end
  
-
+#--- New File ---
 def new
-  # Must add the files here
-  @attachedfiles = AttachedFile.all
-  puts "@attachedfiles: " + @attachedfiles.size.to_s
+
   
   @bankaccount= Bankaccount.new
+  puts "@bankaccount: " + @bankaccount.to_s
   
   @attachedfile = AttachedFile.new
+  
+  
+  # --- Retrieve last attached file ---
+  # The big question is where are we come from ? If we have just attached a new file
+  # Then we need to retrieve all our attached files. If not, then we are freshly new
+  
+  # Retrieve the attached file from session
+  # If this file exists, we need to attached it
+  if !session[:last_attachedfile].nil?
+    attachedfileSaved = YAML.load(session[:last_attachedfile])
+    
+    
+    if !session[:involved_attachedfiles].nil?
+      # Retrieve here all session attached files
+      @attachedfiles = YAML.load(session[:involved_attachedfiles])
+    
+      @attachedfiles.push(attachedfileSaved)
+      # Save in session
+      session[:involved_attachedfiles] = @attachedfiles.to_yaml
+      else
+        @attachedfiles = []
+    end
+    
+    # After that we flush the data
+    session.delete(:last_attachedfile)
+    
+    puts "attachedfileSaved: " + attachedfileSaved.to_s
+    
+    
+    
+  else
+    # We are freshly new
+    puts "attachedfileSaved is nil"
+    session.delete(:last_attachedfile)
+    session.delete(:involved_attachedfiles)
+    
+    # Must add the files here
+    @attachedfiles = []
+    
+    # Save in session
+    session[:involved_attachedfiles] = @attachedfiles.to_yaml
+    
+    
+  end
+  
 end
 
 
@@ -84,12 +132,29 @@ def create
   client_id = params[:client_id]
   bank_id = params[:bank_id]
   @bankaccount = Bankaccount.new(bankaccount_params)
-  if @bankaccount.save
-    flash[:info]="Le compte bancaire a été sauvegardé"
-    redirect_to root_url
+  
+  # --- We need to update all attached file now ---
+  if !session[:involved_attachedfiles].nil?
+	  # Retrieve here all session attached files
+	  @attachedfiles = YAML.load(session[:involved_attachedfiles])
+  
+	  @bankaccount.attached_files << @attachedfiles
+	  if @bankaccount.save
+		flash[:info]="Le compte bancaire a été sauvegardé"
+		session.delete(:last_attachedfile)
+		session.delete(:involved_attachedfiles)
+		
+		
+		redirect_to root_url
+	  else
+		render '/bankaccounts/new'
+	  end  
   else
-    render '/bankaccounts/new'
+  	flash[:error]="No attached file"
+  	render '/bankaccounts/new'
   end
+  
+
 end
 
 def destroy

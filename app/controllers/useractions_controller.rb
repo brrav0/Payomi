@@ -46,8 +46,10 @@ def check
   @cac = @client.user
   @id = @bankaccount.id
   
-	# Must add the files here
-	@attachedfiles = AttachedFile.all
+  # Must add the files here
+  # --- We retrieve attached file to the account here ---
+  @attachedfiles = AttachedFile.where("bankaccount_id = ? AND is_audit = ?", params[:id], true)
+  puts 'bankcontact.bank_id: ' + @id.to_s
   
   render '/bankaccounts/check/'
 end
