@@ -2,7 +2,9 @@ class BankaccountsController < ApplicationController
 
 def index
 
-  #.find_by bankaccount_id: 9
+  # When we arrive first on index
+  # Fresh start we need an empty attached file
+  
   @attachedfiles = []
   puts '@attachedfiles: ' + @attachedfiles.to_s
   
@@ -84,6 +86,7 @@ def new
   # --- Retrieve last attached file ---
   # The big question is where are we come from ? If we have just attached a new file
   # Then we need to retrieve all our attached files. If not, then we are freshly new
+  # Remember: session is unsafe, you must not store any sensitive data here
   
   # Retrieve the attached file from session
   # If this file exists, we need to attached it
@@ -103,6 +106,8 @@ def new
     end
     
     # After that we flush the data
+    # When we arrive first on index
+    # Fresh start we need an empty attached file
     session.delete(:last_attachedfile)
     
     puts "attachedfileSaved: " + attachedfileSaved.to_s
@@ -137,24 +142,36 @@ def create
   if !session[:involved_attachedfiles].nil?
 	  # Retrieve here all session attached files
 	  @attachedfiles = YAML.load(session[:involved_attachedfiles])
+  	  
+  	  puts 'Size @attachedfiles: ' + @attachedfiles.size.to_s
+  	  
+  	  if @attachedfiles.size > 0
+  	  	  @bankaccount.attached_files << @attachedfiles
+		  if @bankaccount.save
+			flash[:info]="Le compte bancaire a été sauvegardé"
+			session.delete(:last_attachedfile)
+			session.delete(:involved_attachedfiles)
+		
+		
+			redirect_to root_url
+		  else
+			render '/bankaccounts/new'
+		  end
+  	  else
+		todo_when_attachedfile_is_empty
+  	  end
   
-	  @bankaccount.attached_files << @attachedfiles
-	  if @bankaccount.save
-		flash[:info]="Le compte bancaire a été sauvegardé"
-		session.delete(:last_attachedfile)
-		session.delete(:involved_attachedfiles)
-		
-		
-		redirect_to root_url
-	  else
-		render '/bankaccounts/new'
-	  end  
   else
-  	flash[:error]="No attached file"
-  	render '/bankaccounts/new'
+	todo_when_attachedfile_is_empty
   end
   
 
+end
+
+def todo_when_attachedfile_is_empty
+    # This point has not yet been tested
+  	flash[:danger]="Veuillez attacher au moins un scan à la demande"
+  	redirect_to '/bankaccounts/new'
 end
 
 def destroy
