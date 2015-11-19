@@ -29,9 +29,16 @@ Rails.application.routes.draw do
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
+  resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
  
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
+
+  patch '/confirmations/:id' => 'confirmations#answer'
   resources :bankaccounts,          only: [:new, :create, :index, :edit, :destroy]
+
+
+  get 'confirmations/:id/check_by_auditor' => 'confirmations#check_by_auditor', as: 'check_by_auditor'
+  get 'confirmations/:id/check_by_bank' => 'confirmations#check_by_bank', as: 'check_by_bank'
 
   get 'useractions/:id/share' => 'useractions#share', as: 'share'
   get 'useractions/:id/issue' => 'useractions#issue', as: 'issue'

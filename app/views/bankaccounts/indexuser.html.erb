@@ -16,7 +16,7 @@
 
 <div class="col-md-offset-8 col-md-2">
 <br>
-     <%= link_to "Ajouter un compte", new_bankaccount_path, class: "btn btn-primary round" %>
+     <%= link_to "Ajouter une circularisation", new_confirmation_path, class: "btn btn-primary round" %>
 </div>
 
 <br><br><br><br>
@@ -27,12 +27,12 @@
   <tr>
     <th><%= link_to "Banque", :sort => "bank" %></th>
     <th><%= link_to "Client", :sort => "client" %></th>
-    <th><%= link_to "Numéro de compte", :sort => "number" %></th>
-    <th><%= link_to "Devise", :sort => "currency" %></th>
-    <th><%= link_to "Solde", :sort => "balance" %></th>
+    <th><%= link_to "Référence de la circularisation", :sort => "number" %></th>
+   <!-- <th><%#= link_to "Devise", :sort => "currency" %></th>
+    <th><%#= link_to "Solde", :sort => "balance" %></th>-->
     <th><button type="button" class="custom-button-default" data-toggle="tooltip" data-placement="top" title="
-Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsque vous êtes en attente de l'intervention de l'une de ces deux parties prenantes."><%= link_to "Action", :sort => "action" %></button></th>
-
+Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsque vous êtes en attente de l'intervention de l'une de ces deux parties prenantes."><%= link_to "Statut", :sort => "action" %></button></th>
+    <th>Gestion</th>
   </tr>
 
 <% @bankaccounts.each do |bankaccount| %>
@@ -40,9 +40,12 @@ Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsqu
    <td><%= bankaccount.bank.name %></td>
     <td><%= bankaccount.client.name %></td>
     <td><%= bankaccount.number %></td>
-    <td><%= bankaccount.currency %></td>
-    <td><%= bankaccount.balance %></td> 
+    <!--<td><%#= bankaccount.currency %></td>
+    <td><%# bankaccount.balance %></td>-->
     <td><%= show_action_depending_on_bankaccount_status(bankaccount) %></td>
+    <td>
+      <%= link_to "Voir", check_by_auditor_path(bankaccount) %>
+    </td>
   </tr>
 
 
