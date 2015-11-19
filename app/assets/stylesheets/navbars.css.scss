@@ -1,0 +1,34 @@
+/* navbar */ 
+
+
+.btn-header {
+    border: 0 none;
+    font-size: 14px;
+    line-height: 1.428;
+    background: #222222;
+    color: #d9cbcb;
+}
+
+  .btn-header:hover, .btn-header:focus, .btn-header:active, .btn-header.active, .open > .dropdown-toggle.btn-header {
+    background: #6f6262;
+    color:white;
+    
+}
+
+.navbar-nav {
+  font-size: 15px;
+  line-height: 1.428;
+  float: left;
+}
+
+.dropdown:hover {
+ background:#3b3535;
+ color: #ece6e6;
+}
+
+ul.nav li:active {
+  background:#3b3535;
+  color: #ece6e6;
+}
+
+

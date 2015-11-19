@@ -2,67 +2,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*static_pages*/
+/*specific page components*/
 
+@import "static_pages.css.scss";
+@import "footer.css.scss";
+@import "header.css.scss";
 @import "static_pages.css";
 
-/*navbar*/
+/*class*/
+@import "navbars.css.scss";
+@import "forms.css.scss";
+@import "tables.css.scss";
+@import "links.css.scss";
+
 
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
-
-/* navbar */ 
-
-
-.btn-header {
-    border: 0 none;
-    font-size: 14px;
-    line-height: 1.428;
-    background: #222222;
-    color: #d9cbcb;
-}
-
-  .btn-header:hover, .btn-header:focus, .btn-header:active, .btn-header.active, .open > .dropdown-toggle.btn-header {
-    background: #6f6262;
-    color:white;
-    
-}
-/* font size adjustment in navbar */
-
-.navbar-nav {
-  font-size: 15px;
-  line-height: 1.428;
-  float: left;
-}
-
-.dropdown:hover {
- background:#3b3535;
- color: #ece6e6;
-}
-
-ul.nav li:active {
-  background:#3b3535;
-  color: #ece6e6;
-}
-
 
 /* universal */
 
@@ -85,150 +41,11 @@ textarea {
   }
 }
 
-/* typography used mainly in static pages*/
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-family: arial;
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-
-
-h2 {
-  font-size: 2em;
-  letter-spacing: -1px;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  text-align: left;
-  font-weight: normal;
-  color: $gray-light;
-}
-
-h3 {
-  font-family: arial;
-  font-size: 4em;
-  letter-spacing: -3px;
-  margin-bottom: 30px;
-  text-align: left;
-  font-weight: bold;
-}
-
-h5 {
-font-family: arial;
-text-align: left;
-}
-
-h7 {
-font-family: arial;
-font-size: 2em;
-text-align: left;
-color: black;
-}
-
-h8 {
-font-family: arial narrow;
-font-size: 1.5em;
-text-align: left;
-letter-spacing: -0.5px;
-}
-
-h9 {
-font-family: arial;
-text-align: center;
-font-size: 1.7em;
-font-weight:bold;
-}
-
-h10 {
-font-family: arial;
-text-align: center;
-font-size: 1.3em;
-font-weight:bold;
-}
-
-h11 {
-font-family: arial;
-font-size: 1.1em;
-text-align: left;
-}
-
-h12 {
-font-family: arial;
-text-align: left;
-}
-
-h13 {
-text-align: justify;
-text-justify: inter-word;
-font-size:0.9em;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  font-size:0.9em;
-}
 
 .divider {
   font-size: 0.8em;
   text-align: center;
 }
-
-
-/* header */
-
-.logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 2em;
-  color: white;
-  #text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 5px;
-  margin-top: 0px;
-  padding-bottom: 0px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-
-
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-
 
 
   /* sidebar format of some list such as auditeur*/
@@ -270,44 +87,6 @@ aside {
 
 }  
 
-
-  /* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
-
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
- .checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
 
 
 /* dashboard */
