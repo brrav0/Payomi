@@ -37,13 +37,10 @@ Rails.application.routes.draw do
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
-<<<<<<< HEAD
   resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
  
-=======
   resources :attached_files, only: [:index, :new, :create, :destroy]
   
->>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
 
   patch '/confirmations/:id' => 'confirmations#answer'
