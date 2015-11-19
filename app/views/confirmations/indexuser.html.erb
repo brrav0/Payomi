@@ -27,7 +27,7 @@
   <tr>
     <th><%= link_to "Banque", :sort => "bank" %></th>
     <th><%= link_to "Client", :sort => "client" %></th>
-    <th><%= link_to "Référence de la circularisation", :sort => "number" %></th>
+    <th><%= link_to "Référence", :sort => "number" %></th>
    <!-- <th><%#= link_to "Devise", :sort => "currency" %></th>
     <th><%#= link_to "Solde", :sort => "balance" %></th>-->
     <th><button type="button" class="custom-button-default" data-toggle="tooltip" data-placement="top" title="
@@ -35,23 +35,22 @@ Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsqu
     <th>Gestion</th>
   </tr>
 
-<% @bankaccounts.each do |bankaccount| %>
+<% @confirmations.each do |confirmation| %>
   <tr>
-   <td><%= bankaccount.bank.name %></td>
-    <td><%= bankaccount.client.name %></td>
-    <td><%= bankaccount.number %></td>
+   <td><%= @banks.where("id = ?", confirmation.bank_id).pluck(:name).first %></td>
+    <td><%= @clients.where("id = ?", confirmation.client_id).pluck(:name).first %></td>
+    <td><%= confirmation.reference %></td>
     <!--<td><%#= bankaccount.currency %></td>
     <td><%# bankaccount.balance %></td>-->
-    <td><%= show_action_depending_on_bankaccount_status(bankaccount) %></td>
+    <td><%= confirmation.status %></td>
     <td>
-      <%= link_to "Voir", check_by_auditor_path(bankaccount) %>
+      <%= link_to "Voir", check_by_auditor_path(confirmation) %>
     </td>
   </tr>
 
 
 <% end %>
 </table>
-<%= will_paginate @bankaccounts1 %>
 </div>
 
   <div class="col-md-2">

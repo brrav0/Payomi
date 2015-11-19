@@ -1,0 +1,57 @@
+
+
+
+
+<div class="row">
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="user"> <%= @user.name %></span><br>
+</div>
+
+
+<div class="row">
+
+<h2>Vos Circularisations en attente de réponse</h2><br>
+<%#- nothing - no need to add a button add account for banks %>
+</div>
+<div class="row">
+<div class="col-md-10">
+
+<table class="table table-hover">
+
+  <tr>
+    <th>Banque</th>
+    <th>Client</th>
+    <th>Référence</th>
+    <th>Action</th>
+  </tr>
+
+<% @confirmations.each do |confirmation| %>
+  <tr>
+    <td><%= @banks.where("id = ?", confirmation.bank_id).pluck(:name).first %></td>
+    <td><%= @clients.where("id = ?", confirmation.client_id).pluck(:name).first %></td>
+    <td><%= confirmation.reference %></td>
+    <td> <%= link_to "Voir", check_by_bank_path(confirmation) %></td>
+
+
+  </tr>
+                  <%= form_for (@bankaccount) do |f| %>
+                  <%= render 'shared/error_messages_bankaccount' %>
+                  <%= f.label :comments,"Commentaires" %>
+                  <%=f.text_area :comments, class: 'form-control form-comments', rows: '3' %>
+
+                  <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm" %>
+                  <%= f.submit "Rejeter (commentaires obligatoires)", class: "btn btn-lg btn-primary btn-reject" %>
+                  <% end %>
+
+
+
+<% end %>
+</table>
+</div>
+ <div class="col-md-2">
+  <%= form_tag(clients_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Rechercher Comptes", class: "form-control" %>
+    <%= submit_tag "Filtrer", :number => nil, class: "btn btn-primary btn-search btn-size-xs" %>
+  <% end %>
+</div>
+
+</div>

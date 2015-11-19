@@ -35,23 +35,18 @@ Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsqu
     <th>Gestion</th>
   </tr>
 
-<% @bankaccounts.each do |bankaccount| %>
   <tr>
-   <td><%= bankaccount.bank.name %></td>
-    <td><%= bankaccount.client.name %></td>
-    <td><%= bankaccount.number %></td>
+   <td>Rien</td>
+    <td>Rien</td>
+    <td>Rien</td>
     <!--<td><%#= bankaccount.currency %></td>
     <td><%# bankaccount.balance %></td>-->
-    <td><%= show_action_depending_on_bankaccount_status(bankaccount) %></td>
-    <td>
-      <%= link_to "Voir", check_by_auditor_path(bankaccount) %>
-    </td>
+    <td>Rien</td>
+    <td>Rien</td>
   </tr>
 
 
-<% end %>
 </table>
-<%= will_paginate @bankaccounts1 %>
 </div>
 
   <div class="col-md-2">

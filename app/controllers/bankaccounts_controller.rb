@@ -38,9 +38,8 @@ def index
   bankcontact = Bankcontact.find_by(email: email)
   @id = bankcontact.bank_id
   @bank = bankcontact.bank.name
-  @bankaccounts = Bankaccount.where("bank_id = ?", @id).where.not(issued: nil) 
-  @bankaccounts1 = @bankaccounts.paginate(page: params[:page], per_page: 5)
-  render 'bankaccounts/indexbank'
+  @confirmations = Confirmation.where("confirmation_id = ?", @id).where.not(status: "Terminée") 
+  render 'confirmations/indexbank'
 
   elsif logged_in? && current_user.admin?
 
@@ -77,6 +76,10 @@ def create
   else
     render '/bankaccounts/new'
   end
+end
+
+def edit
+  @bankaccount = Bankaccount.find(params[:id])
 end
 
 def destroy

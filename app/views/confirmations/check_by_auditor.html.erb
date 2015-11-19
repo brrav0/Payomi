@@ -1,0 +1,82 @@
+<script>
+  $(function () { 
+    $("[data-toggle='tooltip']").tooltip(); 
+});
+</script>
+
+
+	  <div class="row">
+            <div class="col-md-4">
+		  <h2>Détail de votre circularisation</h2>
+		  <hr>
+            </div>
+            <div class="col-md-offset-5 col-md-3">
+              <ul class="nav nav-tabs">
+    <li class="<%= is_active? bankaccounts_path %>">
+      <%= link_to "Revenir aux circularisations", confirmations_path %>
+    </li>
+  </ul>
+
+            </div>
+          </div>
+
+		<div class="row">
+			<div class="col-md-6">
+			<h4>Information de votre client</h4>
+                        Nom : <%= @client.name %><br>
+                        Numéro et rue : <%= @client.number_and_street %><br>
+                        Code Postal : <%= @client.zip_code %><br>
+                        Ville : <%= @client.city %><br><br>
+    			Signataire autorisé : <%= @client.email %>
+			</div>
+
+			<div class="col-md-6">
+			    <h4>Vos informations</h4><br>
+			    Nom : <%= @cac.name %><br>
+                            Email : <%= @cac.email %><br>
+			</div>
+		</div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-12">
+		            <h4>Circularisation</h4>
+			    Référence  de la circularisation: <%= @confirmation.reference %><br><br>
+Add here the attached file (mandatory as a confirmation can only be sent if all field have been filled out) - if the status is "sent" the answer from the bank is laid out as pending. If the status is "completed" the auditor should be able to retrieve the answer from the bank. 
+ 
+
+
+                  </div>
+                </div>
+
+                <hr>
+		 <div class="row">
+                  <div class="col-md-12">
+		            <h4>Suivi d'activité</h4>
+		            <table class="table table-condensed">
+ 				<tr>
+					<th>Description</th>
+					<th>Email</th>
+					<th>Date et heure</th>
+				</tr>
+				<tr>
+					<td>Envoi</td>
+					<td><%= @cac.email %></td>
+					<td><%= @confirmation.created_at %></td>
+				</tr>
+				<tr>
+					<td>Réponse</td>
+                                        <% if @confirmation.status == "Envoyée" %>
+					<td>En attente de réponse de la banque</td>
+					<td>En attente de réponde de la banque</td>
+                                        <% else %>
+                                        <td>La banque a répondu</td>
+                                        <td>La banque a répondu</td>
+                                    
+                                        <% end %>
+				</tr>
+                            </table>
+                  </div>
+
+                </div>
+

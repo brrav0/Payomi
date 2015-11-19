@@ -49,6 +49,19 @@ def check
   render '/bankaccounts/check/'
 end
 
+def check_by_auditor
+  @bankaccount = Bankaccount.find(params[:id])
+  @client = @bankaccount.client
+  @bank = @bankaccount.bank
+  @clientcontact = Clientcontact.find_by(client: @client)
+  @bankcontact = Bankcontact.find_by(bank: @bank)
+  @user = current_user
+  @cac = @client.user
+  @id = @bankaccount.id
+
+  render '/bankaccounts/check_by_auditor/'
+end
+
 def answer
   @bankaccount = Bankaccount.find(params[:id])
   if @bankaccount.update_attributes(bankaccount_params) && @bankaccount.update_attribute(:answered, Time.now.to_formatted_s(:short))

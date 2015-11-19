@@ -7,11 +7,11 @@
 </div>
 
 
-<% provide(:title, 'Ajouter un compte') %>
+<% provide(:title, 'Ajouter la circularisation') %>
 
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
-<h2>Ajouter un compte</h2>
+<h2>Ajouter une Circularisation</h2>
 <hr>
 </div>
 </div>
@@ -26,17 +26,18 @@
       <%= f.label :client_id, "Client" %>
       <%= f.collection_select :client_id, current_user.clients, :id, :name %>
 
-      <%= f.label :number, "Numéro de compte" %>
-      <%= f.text_field :number, class: 'form-control' %>
+      We have to add here the uploading module similarly to POC
+      <%#= f.label :number, "Numéro de compte" %>
+      <%#= f.text_field :number, class: 'form-control' %>
 
-      <%= f.label :currency, "Devise" %>
-      <%= f.text_field :currency, class: 'form-control' %>
+      <%#= f.label :currency, "Devise" %>
+      <%#= f.text_field :currency, class: 'form-control' %>
 
-      <%= f.label :balance, "Solde" %>
-      <%= f.text_field :balance, class: 'form-control' %>
+      <%#= f.label :balance, "Solde" %>
+      <%#= f.text_field :balance, class: 'form-control' %>
 
 
-<%= f.submit "Ajoutez le compte", class: "btn btn-primary" %>
+<%= f.submit "Ajoutez la circularisation", class: "btn btn-primary" %>
 
 <% end %>
 
