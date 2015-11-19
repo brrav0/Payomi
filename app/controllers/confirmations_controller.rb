@@ -171,6 +171,10 @@ def check_by_bank
   @user = current_user
   @cac = @client.user
   @id = @confirmation.id
+  
+  # Must add the files here
+  # --- We retrieve attached file to the account here ---
+  @attachedfiles = AttachedFile.where("confirmation_id = ? AND is_audit = ?", params[:id], true)
 
   render '/confirmations/check_by_bank/'
 end
