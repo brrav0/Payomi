@@ -1,5 +1,12 @@
+/*bootstrap*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*static_pages*/
+
+@import "static_pages.css";
+
+/*navbar*/
 
 /* mixins, variables, etc. */
 
@@ -78,7 +85,7 @@ textarea {
   }
 }
 
-/* typography */
+/* typography used mainly in static pages*/
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -224,7 +231,7 @@ footer {
 
 
 
-  /* sidebar */
+  /* sidebar format of some list such as auditeur*/
 
 aside {
   section.user_info {
