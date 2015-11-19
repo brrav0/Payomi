@@ -35,11 +35,43 @@
 			    Nom : <%= @cac.name %><br>
                             Email : <%= @cac.email %><br>
 			</div>
+			
 		</div>
-                <hr>
+		<hr>
+		<%-# START: Here is the scan block -%>
+		<div class="col-md-6">
+		<% if !flash[:notice].blank? %>
+		  <div class="alert alert-info">
+		  	<%= flash[:notice] %>
+		  </div>
+		<% end %>
+
+		<h4>Scan relatif à la demande</h4>
+		<table class="table table-bordered table-striped">
+		  <thead>
+			<tr>
+			  <th>Scan</th>
+			  <th>Lien téléchargement</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<% @attachedfiles.each do |attachedfile| %>
+			  <tr>
+				<td><%= attachedfile.name %></td>
+				<td><%= link_to "Cliquez pour télécharger le scan de la demande", attachedfile.attachment_url, class: "btn btn-primary" %></td>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
+		
+		</div>
+		<%-# END: Here is the scan block -%>	
+                
 
                 <div class="row">
+                 
                   <div class="col-md-12">
+                    <hr>
 		            <h4>Circularisation</h4>
 			    Référence : <%= @bankaccount.number %><br>
 			    Devise : <%= @bankaccount.currency %><br>

@@ -1,7 +1,4 @@
 
-
-
-
 <div class="row">
 <span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="user"> <%= @user.name %></span><br>
 </div>
@@ -30,21 +27,9 @@
     <td><%= @clients.where("id = ?", confirmation.client_id).pluck(:name).first %></td>
     <td><%= confirmation.reference %></td>
     <td> <%= link_to "Voir", check_by_bank_path(confirmation) %></td>
-
-
   </tr>
-                  <%= form_for (@bankaccount) do |f| %>
-                  <%= render 'shared/error_messages_bankaccount' %>
-                  <%= f.label :comments,"Commentaires" %>
-                  <%=f.text_area :comments, class: 'form-control form-comments', rows: '3' %>
-
-                  <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm" %>
-                  <%= f.submit "Rejeter (commentaires obligatoires)", class: "btn btn-lg btn-primary btn-reject" %>
-                  <% end %>
-
-
-
 <% end %>
+
 </table>
 </div>
  <div class="col-md-2">

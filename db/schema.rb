@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151118232148) do
+=======
+ActiveRecord::Schema.define(version: 20151118203617) do
+>>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +29,22 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.datetime "updated_at",        null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "attached_files", force: :cascade do |t|
+    t.string   "name"
+    t.string   "attachment"
+    t.boolean  "signed_bank"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "bankaccount_id"
+    t.boolean  "is_audit"
+    t.boolean  "is_bank"
+  end
+
+  add_index "attached_files", ["bankaccount_id"], name: "index_attached_files_on_bankaccount_id", using: :btree
+
+>>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
   create_table "bankaccounts", force: :cascade do |t|
     t.string   "number"
     t.string   "currency"
@@ -88,6 +108,7 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.string   "phone_number"
   end
 
+<<<<<<< HEAD
   create_table "confirmations", force: :cascade do |t|
     t.integer  "client_id"
     t.integer  "bank_id"
@@ -107,6 +128,17 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+=======
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+>>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -126,7 +158,11 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.string   "role"
   end
 
+<<<<<<< HEAD
   add_foreign_key "confirmations", "banks"
   add_foreign_key "confirmations", "clients"
   add_foreign_key "confirmations", "users"
+=======
+  add_foreign_key "attached_files", "bankaccounts"
+>>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
 end

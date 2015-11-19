@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'attached_files/index'
+
+  get 'attached_files/new'
+
+  get 'attached_files/create'
+
+  get 'attached_files/destroy'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -29,8 +37,13 @@ Rails.application.routes.draw do
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
+<<<<<<< HEAD
   resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
  
+=======
+  resources :attached_files, only: [:index, :new, :create, :destroy]
+  
+>>>>>>> f1dcb3244fa61e9ddd287fdaf5e00eeb8d419f3a
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
 
   patch '/confirmations/:id' => 'confirmations#answer'
@@ -62,6 +75,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'bankaccounts#index'
+   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
