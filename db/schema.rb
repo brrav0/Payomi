@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118232148) do
+ActiveRecord::Schema.define(version: 20151119204045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.string   "name"
     t.string   "attachment"
     t.boolean  "signed_bank"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "bankaccount_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.boolean  "is_audit"
     t.boolean  "is_bank"
+    t.integer  "confirmation"
+    t.integer  "confirmation_id"
   end
 
-  add_index "attached_files", ["bankaccount_id"], name: "index_attached_files_on_bankaccount_id", using: :btree
+  add_index "attached_files", ["confirmation_id"], name: "index_attached_files_on_confirmation_id", using: :btree
 
   create_table "bankaccounts", force: :cascade do |t|
     t.string   "number"
@@ -149,7 +150,7 @@ ActiveRecord::Schema.define(version: 20151118232148) do
     t.string   "role"
   end
 
-  add_foreign_key "attached_files", "bankaccounts"
+  add_foreign_key "attached_files", "confirmations"
   add_foreign_key "confirmations", "banks"
   add_foreign_key "confirmations", "clients"
   add_foreign_key "confirmations", "users"

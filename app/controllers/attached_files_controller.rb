@@ -21,7 +21,7 @@ class AttachedFilesController < ApplicationController
       	# Thus the bank account can retrieve it from the session.
       	session[:last_attachedfile] = @attachedfile.to_yaml
         
-        redirect_to '/bankaccounts/new', notice: "The attached file #{@attachedfile.name} has been uploaded."
+        redirect_to '/confirmations/new', notice: "The attached file #{@attachedfile.name} has been uploaded."
       else
         render "new"
       end

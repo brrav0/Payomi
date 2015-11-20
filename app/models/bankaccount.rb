@@ -2,7 +2,6 @@ class Bankaccount < ActiveRecord::Base
   belongs_to :client
   belongs_to :user
   belongs_to :bank
-  has_many :attached_files
   validates :client_id, presence: true
   validates :bank_id, presence: true
   validates :number, presence: true, length: { is: 11 }
