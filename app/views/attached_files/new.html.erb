@@ -14,7 +14,12 @@
     <%= f.text_field :name %>
     <%= f.label :attachment %>
     <%= f.file_field :attachment %>
-    <%= hidden_field_tag(:attach_origin, 'conf5_new') %>
+    
+    <%# Pass parameters to let the controller know where to redirect %>
+    <%= hidden_field_tag(:attach_origin, @attachOrigin) %>
+    <%= hidden_field_tag(:conf_id, @confIdToRedirect) %>
+    
+    
     <%= f.submit "Save", class: "btn btn-primary" %>
   <% end %>
 </div>

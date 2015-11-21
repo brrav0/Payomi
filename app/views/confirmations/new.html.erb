@@ -24,6 +24,9 @@
       <%= f.label :client_id, "Client" %>
       <%= f.collection_select :client_id, current_user.clients, :id, :name %>
 
+	  <br/>
+	  <br/>
+	  <hr>
 	   <%-# Here is the scan block -%>
 	   
 	   
@@ -32,8 +35,11 @@
 		  	<%= flash[:notice] %>
 		  </div>
 		<% end %>
-		<br />
-			<%= link_to "Attacher nouveau scan de la demande", new_attached_file_path + '?attach_origin=conf_new', class: "btn btn-primary" %>
+
+			<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
+			<%= link_to "Attacher nouveau scan de la demande",
+							new_attached_file_path + '?attach_origin=conf_new',
+							class: "btn btn-primary" %>
 		<br />
 		<br />
 		<table class="table table-bordered table-striped">
@@ -45,7 +51,7 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			<% @attachedfiles.each do |attachedfile| %>
+			<% @attachedRequestFiles.each do |attachedfile| %>
 			  <tr>
 				<td><%= attachedfile.name %></td>
 				<td><%= link_to "Télécharger le scan de la demande", attachedfile.attachment_url, class: "btn btn-primary" %></td>

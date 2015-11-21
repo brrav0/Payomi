@@ -49,6 +49,68 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
                   </div>
                 </div>
 
+				<hr>
+				<%-# START: request scan block -%>
+				<div class="col-md-6 text-muted">
+
+				<h4> Scan relatif à votre demande </h4>
+				<table class="table table-bordered table-striped">
+				  <thead>
+					<tr>
+					  <th>Scan</th>
+					  <th>Lien téléchargement</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<% @attachedRequestFiles.each do |attachedfile| %>
+					  <tr>
+						<td><%= attachedfile.name %></td>
+						<td><%= link_to "Cliquez pour télécharger le scan de la demande",
+											attachedfile.attachment_url,
+											class: "btn btn-default" %></td>
+					  </tr>
+					<% end %>
+				  </tbody>
+				</table>
+		
+				</div>
+				
+				<%-# END: request scan block -%>
+				
+				<%-# START: request scan block -%>
+				<div class="col-md-6">
+
+				<h4> Scan réponse de la banque </h4>
+				<table class="table table-bordered table-striped">
+				  <thead>
+					<tr>
+					  <th>Scan</th>
+					  <th>Lien téléchargement</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<% @attachedAnswerFiles.each do |attachedfile| %>
+					  <tr>
+						<td><%= attachedfile.name %></td>
+						<td><%= link_to "Cliquez pour télécharger le scan de la demande",
+											attachedfile.attachment_url,
+											class: "btn btn-primary" %></td>
+					  </tr>
+					<% end %>
+				  </tbody>
+				</table>
+		
+				</div>
+				
+				<%-# END: request scan block -%>
+
+
+
+
+
+
+
+
                 <hr>
 		 <div class="row">
                   <div class="col-md-12">

@@ -44,16 +44,12 @@
 			    Référence  de la circularisation: <%= @confirmation.reference %><br><br>
 Add here the attached file (mandatory as a confirmation can only be sent if all field have been filled out) - if the status is "sent" the answer from the bank is laid out as pending. If the status is "completed" the auditor should be able to retrieve the answer from the bank. 
 <br>
-				<hr>
-				<%-# START: Here is the scan block -%>
-				<div class="col-md-6">
-				<% if !flash[:notice].blank? %>
-				  <div class="alert alert-info">
-					<%= flash[:notice] %>
-				  </div>
-				<% end %>
 
-				<h4>Scan relatif à la demande</h4>
+				<hr>
+				<%-# START: request scan block -%>
+				<div class="col-md-6 text-muted">
+
+				<h4> Scan relatif à la demande </h4>
 				<table class="table table-bordered table-striped">
 				  <thead>
 					<tr>
@@ -62,10 +58,12 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 					</tr>
 				  </thead>
 				  <tbody>
-					<% @attachedfiles.each do |attachedfile| %>
+					<% @attachedRequestFiles.each do |attachedfile| %>
 					  <tr>
 						<td><%= attachedfile.name %></td>
-						<td><%= link_to "Cliquez pour télécharger le scan de la demande", attachedfile.attachment_url, class: "btn btn-primary" %></td>
+						<td><%= link_to "Cliquez pour télécharger le scan de la demande",
+											attachedfile.attachment_url,
+											class: "btn btn-default" %></td>
 					  </tr>
 					<% end %>
 				  </tbody>
@@ -73,9 +71,55 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 		
 				</div>
 				
-				<%-# END: Here is the scan block -%>
+				<%-# END: request scan block -%>
+				
+				
+			<div class="row col-lg-12">
+				<hr>
+				<%-# START: request scan block -%>
+				<div class="col-md-6">
+				<% if !flash[:notice].blank? %>
+				  <div class="alert alert-info">
+					<%= flash[:notice] %>
+				  </div>
+				<% end %>
 
-
+				<h4>Scan de votre réponse</h4>
+				<br />
+					<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
+					<%= link_to "Attacher nouveau scan de la demande",
+								new_attached_file_path + '?attach_origin=conf_asw&conf_id=' + @id.to_s,
+								class: "btn btn-primary" %>
+				<br />
+				<br />
+				<table class="table table-bordered table-striped">
+				  <thead>
+					<tr>
+					  <th>Scan</th>
+					  <th>Lien téléchargement</th>
+					  <th>&nbsp;</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<% @attachedAnswerFiles.each do |attachedfile| %>
+					  <tr>
+						<td><%= attachedfile.name %></td>
+						<td><%= link_to "Cliquez pour télécharger le scan de la demande",
+											attachedfile.attachment_url,
+											class: "btn btn-primary" %></td>
+						<td><%= link_to "Supprimer le scan de la demande", attachedfile, method: :delete, class: "btn btn-danger",
+                                  data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
+					  </tr>
+					<% end %>
+				  </tbody>
+				</table>
+		
+				</div>
+				
+				<%-# END: request scan block -%>
+			</div>	
+				
+				
                  </div>
                  
                  <div class="col-md-9">
