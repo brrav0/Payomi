@@ -10,7 +10,7 @@ class Client < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, length: {is: 10 }
 
   def self.search(query)
     where("name like ?","%#{query}%") 
