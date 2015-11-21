@@ -54,8 +54,12 @@
 			<% @attachedRequestFiles.each do |attachedfile| %>
 			  <tr>
 				<td><%= attachedfile.name %></td>
-				<td><%= link_to "Télécharger le scan de la demande", attachedfile.attachment_url, class: "btn btn-primary" %></td>
-				<td><%= link_to "Supprimer le scan de la demande", attachedfile, method: :delete, class: "btn btn-danger",
+				<td><%= link_to "Télécharger le scan de la demande",
+								attachedfile.attachment_url,
+								class: "btn btn-primary" %></td>
+				<td><%= link_to "Supprimer le scan de la demande",
+								attachedfile,
+								method: :delete, class: "btn btn-danger",
                                   data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
 			  </tr>
 			<% end %>

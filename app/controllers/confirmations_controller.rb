@@ -205,11 +205,17 @@ def check_by_bank
   # If this file exists, we need to attached it
   if !session[:last_attachedfile].nil?
     attachedfileSaved = YAML.load(session[:last_attachedfile])
+    # Here in the check by bank we must update the confirmation id has we know it.
+    attachedfileSaved.confirmation_id = @id
+    attachedfileSaved.save
     
     
     if !session[:involved_attachedfiles].nil?
       # Retrieve here all session attached files
       @attachedAnswerFiles = YAML.load(session[:involved_attachedfiles])
+      
+      
+    
     
       @attachedAnswerFiles.push(attachedfileSaved)
       # Save in session

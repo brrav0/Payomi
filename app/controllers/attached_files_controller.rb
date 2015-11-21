@@ -53,10 +53,29 @@ class AttachedFilesController < ApplicationController
 	end
   end
 
+# --- DESTROY --------------------------------------------------------------
   def destroy
     @attachedfile = AttachedFile.find(params[:id])
-    @attachedfile.destroy
-    redirect_to attached_files_path
+    confirmationIdToGetBack = AttachedFile.find(params[:id]).confirmation_id
+    puts "Delete @attachedfile: " + @attachedfile.to_s
+    
+	isAudit = @attachedfile.is_audit
+	puts "Delete isAudit: " + isAudit.to_s
+
+
+    
+    # We assume that default is to go on confirmation new
+    # i.e the auditor create a new confirmation
+    redirectionAfterAttachmentOperation = '/confirmations/new'
+    
+	if !isAudit
+		# Here we are not in the check by audit but by the bank
+		redirectionAfterAttachmentOperation = '/confirmations/' + confirmationIdToGetBack.to_s + '/check_by_bank'
+	end
+
+	# Finally destroy the attached file here
+    @attachedfile.destroy    
+    redirect_to redirectionAfterAttachmentOperation
   end
   
 private
