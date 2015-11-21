@@ -26,6 +26,14 @@ $gray-medium-light: #eaeaea;
 
 /* navbar */ 
 
+.navbar-inverse{
+	background-color: #3477C4;
+	border-color: #3477C4;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #C8DBF0;
+}
 
 .btn-header {
     border: 0 none;

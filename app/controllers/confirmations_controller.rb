@@ -7,6 +7,9 @@ def index
   
   @attachedfiles = []
   puts '@attachedfiles: ' + @attachedfiles.to_s
+  
+  @attachedfilesfrombank = []
+  puts '@attachedfilesfrombank: ' + @attachedfiles.to_s
 
   @user = current_user
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
@@ -173,8 +176,61 @@ def check_by_bank
   @id = @confirmation.id
   
   # Must add the files here
-  # --- We retrieve attached file to the account here ---
+  # --- We retrieve attached file audit to the account here ---
   @attachedfiles = AttachedFile.where("confirmation_id = ? AND is_audit = ?", params[:id], true)
+  
+  
+  @attachedfile = AttachedFile.new
+  
+  
+  # --- Code duplication !!!
+  # TODO: centralize it.
+  # --- Retrieve last attached file ---
+  # The big question is where are we come from ? If we have just attached a new file
+  # Then we need to retrieve all our attached files. If not, then we are freshly new
+  # Remember: session is unsafe, you must not store any sensitive data here
+  
+  # Retrieve the attached file from session
+  # If this file exists, we need to attached it
+  if !session[:last_attachedfile].nil?
+    attachedfileSaved = YAML.load(session[:last_attachedfile])
+    
+    
+    if !session[:involved_attachedfiles].nil?
+      # Retrieve here all session attached files
+      @attachedfilesfrombank = YAML.load(session[:involved_attachedfiles])
+    
+      @attachedfilesfrombank.push(attachedfileSaved)
+      # Save in session
+      session[:involved_attachedfiles] = @attachedfilesfrombank.to_yaml
+      else
+        @attachedfilesfrombank = []
+    end
+    
+    # After that we flush the data
+    # When we arrive first on index
+    # Fresh start we need an empty attached file
+    session.delete(:last_attachedfile)
+    
+    puts "attachedfileSaved: " + attachedfileSaved.to_s
+    
+    
+    
+  else
+    # We are freshly new check
+    puts "attachedfileSaved is nil"
+    session.delete(:last_attachedfile)
+    session.delete(:involved_attachedfiles)
+    
+    # Must add the files here
+    @attachedfilesfrombank = []
+    
+    # Save in session
+    session[:involved_attachedfiles] = @attachedfilesfrombank.to_yaml
+    
+    
+  end
+  
 
   render '/confirmations/check_by_bank/'
 end
