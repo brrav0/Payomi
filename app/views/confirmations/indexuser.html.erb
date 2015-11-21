@@ -25,13 +25,13 @@
 <table class="table table-hover table-condensed">
 
   <tr>
-    <th><%= link_to "Banque", :sort => "bank" %></th>
-    <th><%= link_to "Client", :sort => "client" %></th>
-    <th><%= link_to "Référence", :sort => "number" %></th>
+    <th>Banque</th>
+    <th>Client</th>
+    <th>Référence</th>
    <!-- <th><%#= link_to "Devise", :sort => "currency" %></th>
     <th><%#= link_to "Solde", :sort => "balance" %></th>-->
     <th><button type="button" class="custom-button-default" data-toggle="tooltip" data-placement="top" title="
-Envoyer au signataire puis à la banque. Aucune n'action n'est disponible lorsque vous êtes en attente de l'intervention de l'une de ces deux parties prenantes."><%= link_to "Statut", :sort => "action" %></button></th>
+Le status Envoyée signifie que votre circularisation a bien été envoyées à la banque et que vous êtes désormais en attente de réponse de sa part. Le statut Terminée signifie que la banque vous a répondu."> Statut</button></th>
     <th>Gestion</th>
   </tr>
 
