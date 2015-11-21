@@ -67,6 +67,10 @@ en:
         number_and_street: "L'adresse de votre client"
         zip_code: "Le code postal de votre client"
         city: "La ville de votre client"
+        first_name: "Le prénom de votre contact client"
+        last_name: "Le nom de votre contact client"
+        email: "L'email de votre contract client"
+        phone_number: "Le téléphone de votre contact client"
     errors:
       models:
         user:
@@ -80,6 +84,7 @@ en:
             password:
               blank: "est obligatoire"
               confirmation: "ne correspond pas %{attributes}"
+              too_short: "est trop court (au moins 6 caractères)"
             password_confirmation:
               confirmation: "ne correspond pas"
         accountingfirm:
@@ -145,6 +150,8 @@ en:
               blank: "est obligatoire"
         client:
           attributes:
+            name:
+              blank: "est obligatoire"
             number_and_street:
               blank: "est obligatoire"
             zip_code:
@@ -152,3 +159,12 @@ en:
               wrong_length: "doit contenir 5 chiffres"
             city:
               blank: "est obligatoire"
+            first_name:
+              blank: "est obligatoire"
+            last_name:
+              blank: "est obligatoire"
+            email:
+              blank: "est obligatoire"
+            phone_number:
+              blank: "est obligatoire"
+              wrong_length: "doit contenir 10 chiffres"

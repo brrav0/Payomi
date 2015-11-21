@@ -26,7 +26,7 @@ class AttachedFilesController < ApplicationController
       	# Thus the bank account can retrieve it from the session.
       	session[:last_attachedfile] = @attachedfile.to_yaml
         
-        redirect_to '/confirmations/new', notice: "The attached file #{@attachedfile.name} has been uploaded."
+        redirect_to '/confirmations/new'
       else
         render "new"
       end
@@ -35,7 +35,7 @@ class AttachedFilesController < ApplicationController
   def destroy
     @attachedfile = AttachedFile.find(params[:id])
     @attachedfile.destroy
-    redirect_to attached_files_path, notice:  "The attached file #{@attachedfile.name} has been deleted."
+    redirect_to attached_files_path
   end
   
 private

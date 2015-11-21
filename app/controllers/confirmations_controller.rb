@@ -126,7 +126,7 @@ def create
   	  if @attachedfiles.size > 0
   	  	  @confirmation.attached_files << @attachedfiles
 		  if @confirmation.save
-			flash[:info]="Le compte bancaire a été sauvegardé"
+			flash[:info]="La circularisation a été envoyée"
 			session.delete(:last_attachedfile)
 			session.delete(:involved_attachedfiles)
 		
