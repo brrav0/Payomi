@@ -5,7 +5,10 @@ class AttachedFilesController < ApplicationController
 
   def new
     @attachedfile = AttachedFile.new
-    puts "@bankaccount is nil: " + @bankaccount.nil?.to_s
+    
+    attachOrigin = params[:attach_origin] # conf_new/
+    
+    puts "new attachOrigin: " + attachOrigin
   end
 
   def create
@@ -13,6 +16,8 @@ class AttachedFilesController < ApplicationController
     @attachedfile.is_audit = true
     @attachedfile.is_bank = false
     
+    attachOrigin = params[:attach_origin] # conf_new/
+    puts "create attachOrigin: " + attachOrigin
 
       if @attachedfile.save
       	
