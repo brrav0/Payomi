@@ -1,7 +1,9 @@
   <header class="navbar navbar-default navbar-fixed-top navbar-inverse">
   <div class="container">
-<%= link_to image_tag("logo-circularisation-header_150.png", size: "425x75", alt: "Logo Circularisation"), root_path %>
     <nav>
+        <ul class="nav navbar-nav">
+<%= link_to image_tag("logo-circularisation-header.png", alt: "Logo Circularisation"), root_path %>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Accueil", root_path %></li>
         <% if logged_in? %>

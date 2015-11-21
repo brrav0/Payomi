@@ -77,43 +77,6 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 
 
                  </div>
-                 <br><br><br><br>
-                 <div class="col-md-6">
-                 		
-                 		<hr>
-                 	   <%-# Here is the scan block -%>
-	   
-	   
-						<% if !flash[:notice].blank? %>
-						  <div class="alert alert-info">
-							<%= flash[:notice] %>
-						  </div>
-						<% end %>
-						<br />
-							<%= link_to "Attacher nouveau scan à la confirmation", new_attached_file_path, class: "btn btn-primary" %>
-						<br />
-						<br />
-						<table class="table table-bordered table-striped col-md-6">
-						  <thead>
-							<tr>
-							  <th>Scan</th>
-							  <th>Lien téléchargement</th>
-							  <th>&nbsp;</th>
-							</tr>
-						  </thead>
-						  <tbody>
-							<% @attachedfilesfrombank.each do |attachedfile| %>
-							  <tr>
-								<td><%= attachedfile.name %></td>
-								<td><%= link_to "Télécharger le scan de la demande", attachedfile.attachment_url, class: "btn btn-primary" %></td>
-								<td><%= link_to "Supprimer le scan de la demande", attachedfile, method: :delete, class: "btn btn-danger",
-												  data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
-							  </tr>
-							<% end %>
-						  </tbody>
-						</table>
-                 </div>
-                 
                  
                  <div class="col-md-9">
                  <br><br><br><br>

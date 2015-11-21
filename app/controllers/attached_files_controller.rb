@@ -6,11 +6,6 @@ class AttachedFilesController < ApplicationController
   def new
     @attachedfile = AttachedFile.new
     puts "@bankaccount is nil: " + @bankaccount.nil?.to_s
-    
-    passedType = params[:type] # "value1"
-    puts "---------------------- passedType: " + passedType
-    
-    
   end
 
   def create
@@ -18,8 +13,6 @@ class AttachedFilesController < ApplicationController
     @attachedfile.is_audit = true
     @attachedfile.is_bank = false
     
-    passedType = params[:subaction] # "value1"
-    puts "---------------------- passedType: " + passedType
 
       if @attachedfile.save
       	
