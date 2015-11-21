@@ -1,5 +1,15 @@
 /* navbar */ 
 
+/* navbar */ 
+
+.navbar-inverse{
+	background-color: #3477C4;
+	border-color: #3477C4;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #C8DBF0;
+}
 
 .btn-header {
     border: 0 none;
@@ -22,13 +32,13 @@
 }
 
 .dropdown:hover {
- background:#3b3535;
- color: #ece6e6;
+ background:#40587F;
+ color: #40587F;
 }
 
 ul.nav li:active {
-  background:#3b3535;
-  color: #ece6e6;
+ background:#40587F;
+ color: #40587F;
 }
 
 
