@@ -52,7 +52,7 @@
 		  </thead>
 		  <tbody>
 			<% @attachedRequestFiles.each do |attachedfile| %>
-			  <tr>
+			  <tr id="row_<%= attachedfile.id %>">
 				<td><%= attachedfile.name %></td>
 				<td><%= link_to "Télécharger le scan de la demande",
 								attachedfile.attachment_url,

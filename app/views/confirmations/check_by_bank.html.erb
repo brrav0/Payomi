@@ -102,7 +102,7 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 				  </thead>
 				  <tbody>
 					<% @attachedAnswerFiles.each do |attachedfile| %>
-					  <tr>
+					  <tr id="row_<%= attachedfile.id %>">
 						<td><%= attachedfile.name %></td>
 						<td><%= link_to "Cliquez pour télécharger le scan de réponse",
 											attachedfile.attachment_url,

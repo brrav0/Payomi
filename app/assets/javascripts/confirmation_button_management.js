@@ -8,8 +8,6 @@ function updateButtonAvailability(){
 	else{
 		$( "#btn-add-confirmation" ).addClass('disabled');
 	}
-	
-	
 	// WARNING CODE DUPLICATION
 	// What we do here is we check if any element of the class attached-file does exist
 	// In other word do we have any attached file
@@ -29,15 +27,13 @@ function updateButtonAvailability(){
 // Note that due to turbo link the usual document ready from jQuery does not handle the haschanged feature
 // Go directly on the page load
 $( document ).ready(function() {
-	console.log('Start Log');
+	console.debug('Start Log');
 });
 
 var ready;
 ready = function() {
 
-	console.log('updateButtonAvailability3');
 	updateButtonAvailability();
-
 };
 
 $(document).ready(ready);

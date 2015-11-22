@@ -75,7 +75,9 @@ class AttachedFilesController < ApplicationController
 
 	# Finally destroy the attached file here
     @attachedfile.destroy    
-    redirect_to redirectionAfterAttachmentOperation
+    
+    # Specific note here. We usually redirect here but now the delete is handle by javascript
+    #redirect_to redirectionAfterAttachmentOperation, status: 303
   end
   
 private
