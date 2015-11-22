@@ -52,12 +52,17 @@ $.rails.showConfirmationDialog = function(link){
   var urlToReachForDelete = link.context.href;
   console.debug('urlToReachForDelete: ' + urlToReachForDelete);
   
-  bootbox.confirm(message, 
+  bootbox.confirm(
+  		message, 
   		function(result){
-  			
-  			var parameterToWork = link[0].attributes[3];
-  			console.debug('Clicked in bootbox.confirm - link[0].attributes[3]: ' + link[0].attributes[3]);
-  			
-  			handleDeleteAfterConfirmation(urlToReachForDelete, parameterToWork);
+  			console.debug('result: ' + result);
+  			if(result){
+				var parameterToWork = link[0].attributes[3];
+				console.debug('Clicked in bootbox.confirm - link[0].attributes[3]: ' + link[0].attributes[3]);
+				handleDeleteAfterConfirmation(urlToReachForDelete, parameterToWork);
+  			}
+  			else{
+  				console.debug('bootbox.confirm: Nothing to do as clicked on cancel');
+  			}
   		})
 }
