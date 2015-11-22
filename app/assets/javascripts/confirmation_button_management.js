@@ -11,4 +11,15 @@ $( document ).ready(function() {
 	else{
 		$( "#btn-add-confirmation" ).addClass('disabled');
 	}
+	
+	
+	// WARNING CODE DUPLICATION
+	// What we do here is we check if any element of the class attached-file does exist
+	// In other word do we have any attached file
+	if ( $( ".bank-attached-file" ).length ) {
+		$( "#btn-answer-confirmation" ).removeClass('disabled');
+	}
+	else{
+		$( "#btn-answer-confirmation" ).addClass('disabled');
+	}
 });

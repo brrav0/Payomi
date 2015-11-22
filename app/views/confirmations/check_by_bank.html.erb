@@ -87,7 +87,7 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 				<h4>Scan de votre réponse</h4>
 				<br />
 					<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-					<%= link_to "Attacher nouveau scan de la demande",
+					<%= link_to "Attacher nouveau scan de réponse",
 								new_attached_file_path + '?attach_origin=conf_asw&conf_id=' + @id.to_s,
 								class: "btn btn-primary" %>
 				<br />
@@ -104,10 +104,10 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
 					<% @attachedAnswerFiles.each do |attachedfile| %>
 					  <tr>
 						<td><%= attachedfile.name %></td>
-						<td><%= link_to "Cliquez pour télécharger le scan de la demande",
+						<td><%= link_to "Cliquez pour télécharger le scan de réponse",
 											attachedfile.attachment_url,
-											class: "btn btn-primary" %></td>
-						<td><%= link_to "Supprimer le scan de la demande", attachedfile, method: :delete, class: "btn btn-danger",
+											class: "btn btn-primary bank-attached-file" %></td>
+						<td><%= link_to "Supprimer le scan de réponse", attachedfile, method: :delete, class: "btn btn-danger",
                                   data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
 					  </tr>
 					<% end %>
@@ -126,7 +126,7 @@ Add here the attached file (mandatory as a confirmation can only be sent if all 
                  <br><br><br><br>
                   <%= form_for (@confirmation) do |f| %>
 
-                  <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm" %>
+                  <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm", id: "btn-answer-confirmation" %>
                   <% end %>
  				</div>
 
