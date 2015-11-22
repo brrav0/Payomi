@@ -71,6 +71,8 @@ en:
         last_name: "Le nom de votre contact client"
         email: "L'email de votre contract client"
         phone_number: "Le téléphone de votre contact client"
+      attached_file:
+        browse: "parcourir"
     errors:
       models:
         user:

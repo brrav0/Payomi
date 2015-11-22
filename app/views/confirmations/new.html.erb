@@ -24,8 +24,6 @@
       <%= f.label :client_id, "Client" %>
       <%= f.collection_select :client_id, current_user.clients, :id, :name %>
 
-	  <br/>
-	  <br/>
 	  <hr>
 	   <%-# Here is the scan block -%>
 	   
@@ -37,7 +35,7 @@
 		<% end %>
 
 			<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-			<%= link_to "Attacher nouveau scan de la demande",
+			<%= link_to "Attacher la circularisation",
 							new_attached_file_path + '?attach_origin=conf_new',
 							class: "btn btn-primary" %>
 		<br />
@@ -66,7 +64,7 @@
 		  </tbody>
 		</table>
 
-      <%= f.submit "Ajoutez une circularisation", class: "btn btn-primary", id: "btn-add-confirmation" %>
+      <%= f.submit "Envoyez la circularisation", class: "btn btn-primary", id: "btn-add-confirmation" %>
 
     <% end %>
   </div>
