@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require confirmation_new.js
 //= require_tree .
 
 //$(document).ready(function () {
