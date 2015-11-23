@@ -100,7 +100,7 @@
 						<td><%= link_to "Télécharger l'attestation de solde",
 											attachedfile.attachment_url,
 											class: "btn btn-primary bank-attached-file" %></td>
-						<td><%= link_to "Supprimer l'attestation de solde", attachedfile, method: :delete, class: "btn btn-danger",
+						<td><%= link_to "", attachedfile, method: :delete, class: "btn btn-danger glyphicon glyphicon-trash",
                                   data: { confirm: "Êtes-vous sûr de vouloir supprimer le fichier #{attachedfile.name}?" } %></td>
 					  </tr>
 					<% end %>

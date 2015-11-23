@@ -1,3 +1,5 @@
+//app/assets/javascripts/confirmation_button_management.js
+
 // Update button here
 function updateButtonAvailability(){
 	// What we do here is we check if any element of the class attached-file does exist

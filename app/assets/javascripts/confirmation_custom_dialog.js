@@ -1,3 +1,4 @@
+//app/assets/javascripts/confirmation_custom_dialog.js
 
 // What we do here is we delete on the fly the unwanted row
 // Plus we delete it at the end

@@ -55,9 +55,9 @@
 				<td><%= link_to "Télécharger le scan de la demande",
 								attachedfile.attachment_url,
 								class: "btn btn-primary auditor-attached-file" %></td>
-				<td><%= link_to "Supprimer le scan de la demande",
+				<td><%= link_to "",
 								attachedfile,
-								method: :delete, class: "btn btn-danger",
+								method: :delete, class: "btn btn-danger glyphicon glyphicon-trash",
                                   data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
 			  </tr>
 			<% end %>
