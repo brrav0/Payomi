@@ -44,7 +44,7 @@ Le status Envoyée signifie que votre circularisation a bien été envoyées à 
     <td><%# bankaccount.balance %></td>-->
     <td><%= confirmation.status %></td>
     <td>
-      <%= link_to "Voir", check_by_auditor_path(confirmation) %>
+      <%= link_to "Voir", check_by_auditor_path(confirmation), class: "table-links" %>
     </td>
   </tr>
 
