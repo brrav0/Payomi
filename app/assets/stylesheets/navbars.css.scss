@@ -45,4 +45,7 @@ ul.nav li:active {
   color: #ece6e6;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #3C577B;
+}
 
