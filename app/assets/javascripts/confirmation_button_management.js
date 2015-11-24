@@ -1,7 +1,7 @@
 //app/assets/javascripts/confirmation_button_management.js
 
 // Update button here
-function updateButtonAvailability(){
+function updateConfirmationButtonAvailability(){
 	// What we do here is we check if any element of the class attached-file does exist
 	// In other word do we have any attached file
 	if ( $( ".auditor-attached-file" ).length ) {
@@ -29,13 +29,13 @@ function updateButtonAvailability(){
 // Note that due to turbo link the usual document ready from jQuery does not handle the haschanged feature
 // Go directly on the page load
 $( document ).ready(function() {
-	console.debug('Start Log');
+	console.debug('Start debug');
 });
 
 var ready;
 ready = function() {
 
-	updateButtonAvailability();
+	updateConfirmationButtonAvailability();
 };
 
 $(document).ready(ready);

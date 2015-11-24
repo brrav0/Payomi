@@ -26,16 +26,18 @@
 <div class="col-md-6">
   <%= form_for @attachedfile, html: { multipart: true } do |f| %>
     <%= f.label :name,"Veuillez donner un nom au fichier"  %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %> <%# note that id is attached_file_name%>
+    
     <%= f.label :attachment, "Lettre de circularisation jointe à la demande" %>
-    <%= f.file_field :attachment %>
+    <%= f.file_field :attachment %> <%# note that id is attached_file_attachment%>
+    
     
     <%# Pass parameters to let the controller know where to redirect %>
     <%= hidden_field_tag(:attach_origin, @attachOrigin) %>
     <%= hidden_field_tag(:conf_id, @confIdToRedirect) %>
     
     
-    <%= f.submit "Sauvegarder la circularisation", class: "btn btn-primary" %>
+    <%= f.submit "Sauvegarder la circularisation", class: "btn btn-primary", id: "btn-save-attached-file" %>
   <% end %>
 </div>
 <div class="col-md-offset-3">
