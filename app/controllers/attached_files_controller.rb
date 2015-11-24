@@ -3,13 +3,23 @@ class AttachedFilesController < ApplicationController
     @attachedfiles = AttachedFile.all
     @attachOrigin = ""
     @confIdToRedirect = nil
+    
+
   end
 
   def new
     @attachedfile = AttachedFile.new
     
+    @viewTextH2 = "Ajouter la copie numérisée de votre courrier"
+    @viewTextSaveButton = "Sauvegarder la circularisation"
+    
     @attachOrigin = params[:attach_origin] # conf_new/
     @confIdToRedirect = params[:conf_id] # id for redirection
+    
+    if @attachOrigin.eql? 'conf_asw'
+        @viewTextH2 = "Ajouter l'attestation de solde"
+    	@viewTextSaveButton = "Sauvegarder l'attestation de solde"
+    end 
     
     puts "new @attachOrigin: " + @attachOrigin
   end
@@ -62,7 +72,25 @@ class AttachedFilesController < ApplicationController
 	isAudit = @attachedfile.is_audit
 	puts "Delete isAudit: " + isAudit.to_s
 
-
+	  #Before any redirection we need to remove from session
+	  # --- We need to update all attached file now ---
+	  # --- If the file is not removed from the session it will be retrieved by error and display
+	  if !session[:involved_attachedfiles].nil?
+	      puts "Value to delete: " + params[:id]
+		  # Retrieve here all session attached files
+		  @attachedAnswerFiles = YAML.load(session[:involved_attachedfiles])
+		  puts 'Before Size @attachedRequestFiles: ' + @attachedAnswerFiles.size.to_s
+		  @attachedAnswerFiles.delete_at(@attachedAnswerFiles.index(@attachedfile))
+		  puts 'End Size @attachedRequestFiles: ' + @attachedAnswerFiles.size.to_s
+		  
+		  # Save in session
+    	  session[:involved_attachedfiles] = @attachedAnswerFiles.to_yaml
+		  
+	  end
+    
+    
+    
+    
     
     # We assume that default is to go on confirmation new
     # i.e the auditor create a new confirmation

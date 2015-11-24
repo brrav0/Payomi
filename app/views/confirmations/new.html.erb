@@ -36,7 +36,7 @@
 
 			<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
 			<%= link_to "Attacher la circularisation",
-							new_attached_file_path + '?attach_origin=conf_new',
+							new_attached_file_path(:attach_origin=> "conf_new"),
 							class: "btn btn-primary" %>
 		<br />
 		<br />

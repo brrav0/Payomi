@@ -13,7 +13,7 @@
 </div>
 <div class="col-md-10">
 
-  <h2>Ajouter la copie numérisée de votre courrier</h2>
+  <h2><%= @viewTextH2 %></h2>
 <hr>
 </div>
 <div class="col-md-1">
@@ -37,7 +37,7 @@
     <%= hidden_field_tag(:conf_id, @confIdToRedirect) %>
     
     
-    <%= f.submit "Sauvegarder la circularisation", class: "btn btn-primary", id: "btn-save-attached-file" %>
+    <%= f.submit @viewTextSaveButton, class: "btn btn-primary", id: "btn-save-attached-file" %>
   <% end %>
 </div>
 <div class="col-md-offset-3">

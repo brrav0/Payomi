@@ -81,7 +81,7 @@
 				<h4>Votre réponse</h4><br>
 					<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
 					<%= link_to "Attacher votre attestation de solde",
-								new_attached_file_path + '?attach_origin=conf_asw&conf_id=' + @id.to_s,
+								new_attached_file_path(:attach_origin=> "conf_asw", :conf_id=> @id.to_s),
 								class: "btn btn-primary" %>
 				<br />
 				<br />
