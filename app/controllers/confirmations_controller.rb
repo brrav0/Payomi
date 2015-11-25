@@ -265,7 +265,7 @@ def answer
 	  # Retrieve here all session attached files
 	  @attachedAnswerFiles = YAML.load(session[:involved_attachedfiles])
   	  
-  	  puts 'Size @attachedRequestFiles: ' + @attachedAnswerFiles.size.to_s
+  	  puts 'Size @attachedAnswerFiles: ' + @attachedAnswerFiles.size.to_s
   	  
   	  if @attachedAnswerFiles.size > 0
   	  	  @confirmation.attached_files << @attachedAnswerFiles
