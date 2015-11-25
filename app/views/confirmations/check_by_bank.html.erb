@@ -80,7 +80,7 @@
 
 				<h4>Votre réponse</h4><br>
 					<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-					<%= link_to "Attacher votre attestation de solde",
+					<%= link_to '<i class="glyphicon glyphicon-paperclip"></i> Attacher votre attestation de solde'.html_safe,
 								new_attached_file_path(:attach_origin=> "conf_asw", :conf_id=> @id.to_s),
 								class: "btn btn-primary" %>
 				<br />
@@ -100,8 +100,9 @@
 						<td><%= link_to "Télécharger l'attestation de solde",
 											attachedfile.attachment_url,
 											class: "btn btn-primary bank-attached-file" %></td>
-						<td><%= link_to " Supprimer", attachedfile, method: :delete,
-									class: "btn btn-danger glyphicon glyphicon-trash",
+						<td><%= link_to '<i class="glyphicon glyphicon-trash"></i> Supprimer'.html_safe,
+									attachedfile, method: :delete,
+									class: "btn btn-danger",
                                   	data: { confirm: "Êtes-vous sûr de vouloir supprimer le fichier #{attachedfile.name}?" } %></td>
 					  </tr>
 					<% end %>

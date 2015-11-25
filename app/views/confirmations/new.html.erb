@@ -35,7 +35,7 @@
 		<% end %>
 
 			<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-			<%= link_to "Attacher la circularisation",
+			<%= link_to '<i class="glyphicon glyphicon-paperclip"></i> Attacher la circularisation'.html_safe,
 							new_attached_file_path(:attach_origin=> "conf_new"),
 							class: "btn btn-primary" %>
 		<br />
@@ -55,10 +55,12 @@
 				<td><%= link_to "Télécharger le scan de la demande",
 								attachedfile.attachment_url,
 								class: "btn btn-primary auditor-attached-file" %></td>
-				<td><%= link_to " Supprimer",
+				<td><%= link_to '<i class="glyphicon glyphicon-trash"></i> Supprimer'.html_safe,
 								attachedfile,
-								method: :delete, class: "btn btn-danger glyphicon glyphicon-trash",
-                                  data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" } %></td>
+								method: :delete, class: "btn btn-danger",
+                                  data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" }%>
+                                  	
+                                  </td>
 			  </tr>
 			<% end %>
 		  </tbody>
