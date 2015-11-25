@@ -9,7 +9,7 @@ class Confirmation < ActiveRecord::Base
   validates :user_id, presence: true
 
   def default_status
-    self.status ||= 'Envoyée'
+    self.status ||= 'En cours'
   end
 
 end

@@ -39,7 +39,7 @@ def index
   @bank = bankcontact.bank.name
   # @attachedRequestFiles = AttachedFile.where("bankaccount_id = ? AND is_audit = ?", params[:id], true)
   # @confirmations = Confirmation.where("bank_id = ?", @id).where.not(status: "Terminée")
-  @confirmations = Confirmation.where("bank_id = ? AND status != ?", @id, "Terminée")
+  @confirmations = Confirmation.where("bank_id = ?", @id)
   render 'confirmations/indexbank'
 
 

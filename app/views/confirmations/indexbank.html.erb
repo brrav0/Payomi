@@ -18,6 +18,7 @@
     <th>Banque</th>
     <th>Client</th>
     <th>Référence</th>
+    <th>Statut</th>
     <th>Action</th>
   </tr>
 
@@ -26,6 +27,7 @@
     <td><%= @banks.where("id = ?", confirmation.bank_id).pluck(:name).first %></td>
     <td><%= @clients.where("id = ?", confirmation.client_id).pluck(:name).first %></td>
     <td><%= confirmation.reference %></td>
+    <td><%= confirmation.status  %></td>
     <td> <%= link_to "Voir", check_by_bank_path(confirmation) %></td>
   </tr>
 <% end %>

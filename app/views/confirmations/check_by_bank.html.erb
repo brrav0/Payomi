@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="col-md-6">
-			    <h4>Vos informations</h4><br>
+			    <h4>Informations du commissaire aux comptes de vos clients</h4><br>
 			    Nom : <%= @cac.name %><br>
                             Email : <%= @cac.email %><br>
 			</div>
@@ -42,6 +42,8 @@
                   <div class="col-md-4">
 		            <h4>Circularisation</h4>
 			    Référence  de la circularisation: <%= @confirmation.reference %><br>
+		            <h4>Circularisation</h4>
+			    Statut: <%= @confirmation.status %><br>
 
 				<%-# START: request scan block -%>
                   </div>
