@@ -1,5 +1,6 @@
 class ConfirmationsController < ApplicationController
 
+
 def index
 
   # When we arrive first on index
@@ -40,6 +41,7 @@ def index
   # @attachedRequestFiles = AttachedFile.where("bankaccount_id = ? AND is_audit = ?", params[:id], true)
   # @confirmations = Confirmation.where("bank_id = ?", @id).where.not(status: "Terminée")
   @confirmations = Confirmation.where("bank_id = ?", @id)
+  @confirmations_pagination = @confirmations.paginate(:page => 1, per_page: 5)
   render 'confirmations/indexbank'
 
 
