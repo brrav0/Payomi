@@ -7,10 +7,6 @@ Rails.application.routes.draw do
 
   get 'attached_files/destroy'
 
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
   get 'sessions/new'
 
   get 'users/new'
