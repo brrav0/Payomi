@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'attached_files/index'
-
-  get 'attached_files/new'
-
-  get 'attached_files/create'
-
-  get 'attached_files/destroy'
 
   get 'sessions/new'
 
@@ -34,6 +27,7 @@ Rails.application.routes.draw do
   resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
   resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
+  resources :attachments,          only: [:new, :create, :show, :index, :destroy]
  
   resources :attached_files, only: [:index, :new, :create, :destroy]
   

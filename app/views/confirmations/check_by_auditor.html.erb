@@ -58,14 +58,13 @@
 					</tr>
 				  </thead>
 				  <tbody>
-					<% @attachedRequestFiles.each do |attachedfile| %>
+                                          
 					  <tr>
-						<td><%= attachedfile.name %></td>
+						<td>Votre circularisation</td>
 						<td><%= link_to "Télécharger la circularisation",
-											attachedfile.attachment_url,
+											@confirmation.file.url,
 											class: "btn btn-default" %></td>
 					  </tr>
-					<% end %>
 				  </tbody>
 				</table>
 		
@@ -84,16 +83,6 @@
 					  <th>Fichier</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<% @attachedAnswerFiles.each do |attachedfile| %>
-					  <tr>
-						<td><%= attachedfile.name %></td>
-						<td><%= link_to "Télécharger la réponse de la banque",
-											attachedfile.attachment_url,
-											class: "btn btn-primary" %></td>
-					  </tr>
-					<% end %>
-				  </tbody>
 				</table>	
 				</div>
 				

@@ -24,8 +24,6 @@
       <%= f.label :client_id, "Client" %>
       <%= f.collection_select :client_id, current_user.clients, :id, :name %>
 
-      <%= f.file_field :file %>
-
 	  <hr>
 	   <%-# Here is the scan block -%>
 	   
@@ -50,9 +48,25 @@
 			  <th>&nbsp;</th>
 			</tr>
 		  </thead>
+		  <tbody>
+			<% @attachedRequestFiles.each do |attachedfile| %>
+			  <tr id="row_<%= attachedfile.id %>">
+				<td><%= attachedfile.name %></td>
+				<td><%= link_to "Télécharger le scan de la demande",
+								attachedfile.attachment_url,
+								class: "btn btn-primary auditor-attached-file" %></td>
+				<td><%= link_to '<i class="glyphicon glyphicon-trash"></i> Supprimer'.html_safe,
+								attachedfile,
+								method: :delete, class: "btn btn-danger",
+                                  data: { confirm: "Are you sure that you wish to delete #{attachedfile.name}?" }%>
+                                  	
+                                  </td>
+			  </tr>
+			<% end %>
+		  </tbody>
 		</table>
 
-      <%= f.submit "Envoyer la circularisation", class: "btn btn-primary" %>
+      <%= f.submit "Envoyer la circularisation", class: "btn btn-primary", id: "btn-add-confirmation" %>
 
     <% end %>
   </div>
