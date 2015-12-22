@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
 
-  patch '/confirmations/:id' => 'confirmations#answer'
+  patch '/confirmations/:id' => 'confirmations#update'
   resources :bankaccounts,          only: [:new, :create, :index, :edit, :destroy]
 
 

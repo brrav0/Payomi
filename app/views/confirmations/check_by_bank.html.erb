@@ -41,89 +41,53 @@
                 <div class="row">
                   <div class="col-md-4">
 		            <h4>Circularisation</h4>
-			    Référence  de la circularisation: <%= @confirmation.reference %><br>
+			    Référence  de la circularisation : <%= @confirmation.reference %><br>
 		            <h4>Circularisation</h4>
-			    Statut: <%= @confirmation.status %><br>
+			    Statut : <%= @confirmation.status %><br>
 
-				<%-# START: request scan block -%>
                   </div>
 	          <div class="col-md-6 text-muted">
 				<h4>La circularisation du commissaire aux comptes de votre client</h4>
 				<table class="table table-bordered table-striped">
 				  <thead>
 					<tr>
-					  <th>Nom</th>
 					  <th>Fichier</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<% @attachedRequestFiles.each do |attachedfile| %>
-					  <tr>
-						<td><%= attachedfile.name %></td>
-						<td><%= link_to "Télécharger la circularisation",
-											attachedfile.attachment_url,
-											class: "btn btn-default" %></td>
-					  </tr>
-					<% end %>
-				  </tbody>
+					  <td><%= link_to "Consulter la circularisation", @confirmation.file.url, class: "btn btn-default" %>
+		       		  </tbody>
 				</table>
 		   </div>
                  </div>
-				<%-# END: request scan block -%>
 				<hr>
 			<div class="row">
-				<%-# START: request scan block -%>
 				<div class="col-md-6">
-				<% if !flash[:notice].blank? %>
-				  <div class="alert alert-info">
-					<%= flash[:notice] %>
-				  </div>
-				<% end %>
 
-				<h4>Votre réponse</h4><br>
-					<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-					<%= link_to '<i class="glyphicon glyphicon-paperclip"></i> Attacher votre attestation de solde'.html_safe,
-								new_attached_file_path(:attach_origin=> "conf_asw", :conf_id=> @id.to_s),
-								class: "btn btn-primary" %>
-				<br />
+				<h4>Votre réponse</h4>
+                               <%= form_for(@confirmation) do |f| %> 
+                                  <%#= f.file_field :file_answer %>
+                                  <%= f.file_field :file_answer %>
+                                  <%= f.submit "Confirmer", class: "btn btn-lg btn-primary btn-confirm" %>
+
+                               <% end %>
 				<br />
 				<table class="table table-bordered table-striped">
-				  <thead>
 					<tr>
-					  <th>Nom</th>
 					  <th>Fichier</th>
-					  <th>&nbsp;</th>
 					</tr>
-				  </thead>
-				  <tbody>
-					<% @attachedAnswerFiles.each do |attachedfile| %>
-					  <tr id="row_<%= attachedfile.id %>">
-						<td><%= attachedfile.name %></td>
-						<td><%= link_to "Télécharger l'attestation de solde",
-											attachedfile.attachment_url,
-											class: "btn btn-primary bank-attached-file" %></td>
-						<td><%= link_to '<i class="glyphicon glyphicon-trash"></i> Supprimer'.html_safe,
-									attachedfile, method: :delete,
-									class: "btn btn-danger",
-                                  	data: { confirm: "Êtes-vous sûr de vouloir supprimer le fichier #{attachedfile.name}?" } %></td>
-					  </tr>
-					<% end %>
-				  </tbody>
+    					<td>
+					  <%= link_to "Consulter votre réponse", @confirmation.file_answer.url, class: "btn btn-default" %>
+					</td>
 				</table>
 		
 				</div>
 				
-				<%-# END: request scan block -%>
 			</div>	
 				
 				
                  <div class="row">
   
                  <div class="col-md-9">
-                   <%= form_for (@confirmation) do |f| %>
-
-                   <%= f.submit "Confirmer",:name=>"conf", class: "btn btn-lg btn-primary btn-confirm", id: "btn-answer-confirmation" %>
-                   <% end %>
  		 </div>
 
 

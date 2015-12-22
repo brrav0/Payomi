@@ -11,6 +11,7 @@ class Confirmation < ActiveRecord::Base
   validates :user_id, presence: true
 
   mount_uploader :file, FileUploader
+  mount_uploader :file_answer, FileUploader
 
   def default_status
     self.status ||= 'En cours'

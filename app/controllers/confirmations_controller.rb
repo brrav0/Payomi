@@ -70,11 +70,6 @@ def create
  
 end
 
-def todo_when_attachedfile_is_empty
-    # This point has not yet been tested
-  	flash[:danger]="Veuillez attacher au moins un scan"
-  	redirect_to '/confirmations/new'
-end
 
 # --- CHECK BY AUDITOR --------------------------------------------------------------
 def check_by_auditor
@@ -92,118 +87,38 @@ end
 
 
 # --- CHECK BY BANK --------------------------------------------------------------
-def check_by_bank
-  @confirmation = Confirmation.find(params[:id])
-  @client = @confirmation.client
-  @clientcontact = Clientcontact.find_by(client: @client)
-  @bankcontact = Bankcontact.find_by(bank: @bank)
-  @user = current_user
-  @cac = @client.user
-  @id = @confirmation.id
-  
-  # Must add the files here
-  # --- We retrieve attached file to the account here ---
-  @attachedRequestFiles = AttachedFile.where("confirmation_id = ? AND is_audit = ?", params[:id], true)
-  
-  
-  
-  
-  
-  
-  # --- START: Retrieve last attached file ---
-  # TODO Please avoid duplication on this !!!
-  # The big question is where are we come from ? If we have just attached a new file
-  # Then we need to retrieve all our attached files. If not, then we are freshly new
-  # Remember: session is unsafe, you must not store any sensitive data here
-  
-  # Retrieve the attached file from session
-  # If this file exists, we need to attached it
-  if !session[:last_attachedfile].nil?
-    attachedfileSaved = YAML.load(session[:last_attachedfile])
-    # Here in the check by bank we must update the confirmation id has we know it.
-    attachedfileSaved.confirmation_id = @id
-    attachedfileSaved.save
-    
-    
-    if !session[:involved_attachedfiles].nil?
-      # Retrieve here all session attached files
-      @attachedAnswerFiles = YAML.load(session[:involved_attachedfiles])
-      
-      
-    
-    
-      @attachedAnswerFiles.push(attachedfileSaved)
-      # Save in session
-      session[:involved_attachedfiles] = @attachedAnswerFiles.to_yaml
-      else
-        @attachedAnswerFiles = AttachedFile.where("confirmation_id = ? AND is_bank = ?", params[:id], true)
-    end
-    
-    # After that we flush the data
-    # When we arrive first on index
-    # Fresh start we need an empty attached file
-    session.delete(:last_attachedfile)
-    
-    puts "attachedfileSaved: " + attachedfileSaved.to_s
-    
-    
-    
-  else
-    # We are freshly new
-    puts "attachedfileSaved is nil"
-    session.delete(:last_attachedfile)
-    session.delete(:involved_attachedfiles)
-    
-    # Must add the files here
-    @attachedAnswerFiles = AttachedFile.where("confirmation_id = ? AND is_bank = ?", params[:id], true)
-    
-    # Save in session
-    session[:involved_attachedfiles] = @attachedAnswerFiles.to_yaml
-    
-    
+  def check_by_bank
+    @confirmation = Confirmation.find(params[:id])
+    @client = @confirmation.client
+    @clientcontact = Clientcontact.find_by(client: @client)
+    @bankcontact = Bankcontact.find_by(bank: @bank)
+    @user = current_user
+    @cac = @client.user
+    @id = @confirmation.id
+    @status = @confirmation.status
   end
   
-  # --- END: Retrieve last attached file ---
-
-  
-
-  render '/confirmations/check_by_bank/'
+def answer
+  @confirmation = Confirmation.find(params[:id]) 
+    if @confirmation.save and @confirmation.update_attribute(:status, "Terminée")
+      flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."		
+      redirect_to confirmations_url
+    else
+      flash[:info]="Une erreur est survenue. Veuillez nous contacter."
+      redirect_to confirmations_url
+    end 
 end
 
-# --- ANSWER --------------------------------------------------------------
-def answer
-  @confirmation = Confirmation.find(params[:id])
-  
-  # --- We need to update all attached file now ---
-  # TODO Please avoid duplicated code
-  if !session[:involved_attachedfiles].nil?
-	  # Retrieve here all session attached files
-	  @attachedAnswerFiles = YAML.load(session[:involved_attachedfiles])
-  	  
-  	  puts 'Size @attachedAnswerFiles: ' + @attachedAnswerFiles.size.to_s
-  	  
-  	  if @attachedAnswerFiles.size > 0
-  	  	  @confirmation.attached_files << @attachedAnswerFiles
-		  
-		  if @confirmation.save and @confirmation.update_attribute(:status, "Terminée")
-			flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."
-			session.delete(:last_attachedfile)
-			session.delete(:involved_attachedfiles)
-		
-		
-			redirect_to confirmations_url
-		  else
-		  	flash[:info]="Une erreur est survenue. Veuillez nous contacter."
-			redirect_to confirmations_url
-		  end
-  	  else
-		todo_when_attachedfile_is_empty
-  	  end
-  
-  else
-	todo_when_attachedfile_is_empty
-  end
-  
+def update
+  @confirmation = Confirmation.find(params[:id]) 
+    #if @confirmation.update_attribute(:file_answer, params[:file_answer]) and @confirmation.save and @confirmation.update(confirmation_params)
+    if @confirmation.update(confirmation_params)
+      flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."		
+      redirect_to confirmations_url
+    else
+      flash[:info]="Une erreur est survenue. Veuillez nous contacter."
+      redirect_to confirmations_url
+    end 
 end
 
 def destroy
@@ -218,8 +133,7 @@ end
 private
 
 def confirmation_params
-  params.require(:confirmation).permit(:client_id, :bank_id, :status, :reference, :file)
+  params.require(:confirmation).permit(:client_id, :bank_id, :status, :reference, :file,:file_answer)
 end
-
 
 end
