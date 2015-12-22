@@ -76,6 +76,7 @@ def check_by_auditor
   @confirmation = Confirmation.find(params[:id])
   @client = @confirmation.client
   @clientcontact = Clientcontact.find_by(client: @client)
+  @bank = Bank.find(@confirmation.bank_id)
   @bankcontact = Bankcontact.find_by(bank: @bank)
   @user = current_user
   @cac = @client.user
@@ -91,6 +92,7 @@ end
     @confirmation = Confirmation.find(params[:id])
     @client = @confirmation.client
     @clientcontact = Clientcontact.find_by(client: @client)
+    @bank = Bank.find(@confirmation.bank_id)
     @bankcontact = Bankcontact.find_by(bank: @bank)
     @user = current_user
     @cac = @client.user
@@ -112,7 +114,7 @@ end
 def update
   @confirmation = Confirmation.find(params[:id]) 
     #if @confirmation.update_attribute(:file_answer, params[:file_answer]) and @confirmation.save and @confirmation.update(confirmation_params)
-    if @confirmation.update(confirmation_params)
+    if @confirmation.update(confirmation_params) and @confirmation.update_attribute(:status, "Terminée") and @confirmation.update_attribute(:answered_at, Time.now.to_formatted_s(:short))
       flash[:info]="Votre réponse a été communiquée au commissaire aux comptes."		
       redirect_to confirmations_url
     else

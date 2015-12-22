@@ -22,7 +22,7 @@
 
 		<div class="row">
 			<div class="col-md-6">
-			<h4>Information de votre client</h4>
+			<h4>Client</h4>
                         Nom : <%= @client.name %><br>
                         Numéro et rue : <%= @client.number_and_street %><br>
                         Code Postal : <%= @client.zip_code %><br>
@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="col-md-6">
-			    <h4>Vos informations</h4><br>
+			    <h4>Cabinet d'audit</h4><br>
 			    Nom : <%= @cac.name %><br>
                             Email : <%= @cac.email %><br>
 			</div>
@@ -39,10 +39,18 @@
                 <hr>
 
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-6">
 		            <h4>Circularisation</h4>
-			    Référence  de la circularisation: <%= @confirmation.reference %><br><br>
+			    Référence de la circularisation : <%= @confirmation.reference %><br>
+			    Statut : <%= @confirmation.status %>
                   </div>
+                <div class="row">
+                  <div class="col-md-6">
+		            <h4>Banque</h4>
+			    Nom : <%= @bank.name %><br>
+                  </div>
+
+
                 </div>
 
 				<hr>
@@ -70,24 +78,13 @@
 		
 				</div>
 				
-				<%-# END: request scan block -%>
 				
-				<%-# START: request scan block -%>
-				<div class="col-md-6">
-
-				<h4>Réponse de la banque </h4>
-				<table class="table table-bordered table-striped">
-				  <thead>
-					<tr>
-					  <th>Réponse</th>
-					  <th>Fichier</th>
-					</tr>
-				  </thead>
-				</table>	
-				</div>
+		<div class="col-md-6">
+		  <% if @confirmation.status == "Terminée" %>
+		    <%= render "confirmations/access_to_answer" %>
+		  <% end %>
+		</div>
 				
-				<%-# END: request scan block -%>
-
                 <hr>
 		 <div class="row">
                   <div class="col-md-12">
@@ -97,23 +94,17 @@
 		            <table class="table table-condensed">
  				<tr>
 					<th>Description</th>
-					<th>Email</th>
+					<th>Contact</th>
 					<th>Date et heure</th>
 				</tr>
 				<tr>
-					<td>Envoi</td>
+					<td>Circularisation</td>
 					<td><%= @cac.email %></td>
 					<td><%= @confirmation.created_at %></td>
 				</tr>
 				<tr>
-					<td>Réponse</td>
-                                        <% if @confirmation.status == "Envoyée" %>
-					<td>En attente de réponse de la banque</td>
-					<td>En attente de réponde de la banque</td>
-                                        <% else %>
-                                        <td>La banque a répondu</td>
-                                        <td>La banque a répondu</td>
-                                    
+                                        <% if @confirmation.status == "Terminée" %>
+					  <%= render 'confirmations/bank_log' %>
                                         <% end %>
 				</tr>
                             </table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221162935) do
+ActiveRecord::Schema.define(version: 20151222134644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20151221162935) do
     t.string   "reference"
     t.string   "file"
     t.string   "file_answer"
+    t.datetime "answered_at"
   end
 
   add_index "confirmations", ["bank_id"], name: "index_confirmations_on_bank_id", using: :btree

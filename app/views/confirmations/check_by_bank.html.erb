@@ -42,11 +42,10 @@
                   <div class="col-md-4">
 		            <h4>Circularisation</h4>
 			    Référence  de la circularisation : <%= @confirmation.reference %><br>
-		            <h4>Circularisation</h4>
 			    Statut : <%= @confirmation.status %><br>
 
                   </div>
-	          <div class="col-md-6 text-muted">
+	          <div class="col-md-6">
 				<h4>La circularisation du commissaire aux comptes de votre client</h4>
 				<table class="table table-bordered table-striped">
 				  <thead>
@@ -61,41 +60,21 @@
                  </div>
 				<hr>
 			<div class="row">
-				<div class="col-md-6">
-
-				<h4>Votre réponse</h4>
-                               <%= form_for(@confirmation) do |f| %> 
-                                  <%#= f.file_field :file_answer %>
-                                  <%= f.file_field :file_answer %>
-                                  <%= f.submit "Confirmer", class: "btn btn-lg btn-primary btn-confirm" %>
-
-                               <% end %>
-				<br />
-				<table class="table table-bordered table-striped">
-					<tr>
-					  <th>Fichier</th>
-					</tr>
-    					<td>
-					  <%= link_to "Consulter votre réponse", @confirmation.file_answer.url, class: "btn btn-default" %>
-					</td>
-				</table>
-		
-				</div>
-				
+			<div class="col-md-6">
+			<% if @confirmation.status != "Terminée" %>     
+			  <%= render "confirmations/answer_upload_from_banks" %>
+			<% end %>
+                        <% if @confirmation.status == "Terminée" %>
+	                  <%= render "confirmations/access_to_answer" %>	
+                        <% end %>
+			</div>	
 			</div>	
 				
 				
-                 <div class="row">
-  
+                 <div class="row"> 
                  <div class="col-md-9">
  		 </div>
-
-
-                  
                 </div>
-
-
-
                 <hr>
 		 <div class="row">
                   <div class="col-md-12">
@@ -103,23 +82,17 @@
 		            <table class="table table-condensed">
  				<tr>
 					<th>Description</th>
-					<th>Email</th>
+					<th>Contact</th>
 					<th>Date et heure</th>
 				</tr>
 				<tr>
-					<td>Envoi</td>
+					<td>Circularisation</td>
 					<td><%= @cac.email %></td>
 					<td><%= @confirmation.created_at %></td>
 				</tr>
 				<tr>
-					<td>Réponse</td>
-                                        <% if @confirmation.status == "Envoyée" %>
-					<td>En attente de votre réponse</td>
-					<td>En attente de votre réponse</td>
-                                        <% else %>
-                                        <td>La banque a répondu</td>
-                                        <td>La banque a répondu</td>
-                                    
+                                        <% if @confirmation.status == "Terminée" %>
+					  <%= render 'confirmations/bank_log' %>
                                         <% end %>
 				</tr>
                             </table>

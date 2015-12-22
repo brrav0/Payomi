@@ -27,30 +27,6 @@
       <%= f.file_field :file %>
 
 	  <hr>
-	   <%-# Here is the scan block -%>
-	   
-	   
-		<% if !flash[:notice].blank? %>
-		  <div class="alert alert-info">
-		  	<%= flash[:notice] %>
-		  </div>
-		<% end %>
-
-			<%# attach_origin is the parameter to let the controller knows what to do with this attached file %>
-			<%= link_to '<i class="glyphicon glyphicon-paperclip"></i> Attacher la circularisation'.html_safe,
-							new_attached_file_path(:attach_origin=> "conf_new"),
-							class: "btn btn-primary" %>
-		<br />
-		<br />
-		<table class="table table-bordered table-striped">
-		  <thead>
-			<tr>
-			  <th>Scan</th>
-			  <th>Lien téléchargement</th>
-			  <th>&nbsp;</th>
-			</tr>
-		  </thead>
-		</table>
 
       <%= f.submit "Envoyer la circularisation", class: "btn btn-primary" %>
 
