@@ -1,2 +1,0 @@
-module UseractionsHelper
-end
