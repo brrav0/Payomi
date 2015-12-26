@@ -3,8 +3,8 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionController::TestCase
   test "should get home" do
     get :home
-    #assert_response :success
-    #assert_select "title", "Circularisation"
+    assert_response :success
+    assert_select "title", "Circularisation"
   end
 
   test "should get help" do
