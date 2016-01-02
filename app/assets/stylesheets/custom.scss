@@ -1,0 +1,23 @@
+/*bootstrap*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*specific page components*/
+
+@import "static_pages.scss";
+@import "footer.scss";
+@import "header.scss";
+@import "static_pages.scss";
+
+/*class*/
+@import "navbars.scss";
+@import "forms.scss";
+@import "table.scss";
+@import "buttons.scss";
+@import "links.scss";
+
+/*variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+

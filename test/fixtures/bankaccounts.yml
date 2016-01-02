@@ -1,8 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-bankaccount:
-  number: 99999999999
-  currency: EUR
-  balance: 9.99
-  client_id: 6 
-  bank_id: 1
