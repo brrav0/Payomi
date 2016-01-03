@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
-  validates :email, uniqueness: true
+  validates :email, presence:true, uniqueness: true
   #validates :email, format: { with: VALID_EMAIL_REGEX, message: 'revoir votre adresse email' }
   #validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisée. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' },:if => :auditor?
   #validates :email, email: true#, :if => :auditor?

@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
-  get 'static_pages/home'
 #  get 'static_pages/about'
+  get 'home' => 'static_pages#home'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   resources :clients,          only: [:new, :create, :destroy, :show, :index, :edit, :update]
   resources :banks,          only: [:new, :create, :show, :index, :destroy, :edit, :update]
   resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
-  resources :clientcontacts,          only: [:new, :create, :destroy, :show, :index]
   resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
   resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
   resources :attachments,          only: [:new, :create, :show, :index, :destroy]
@@ -34,21 +33,10 @@ Rails.application.routes.draw do
   patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
 
   patch '/confirmations/:id' => 'confirmations#update'
-  resources :bankaccounts,          only: [:new, :create, :index, :edit, :destroy]
 
 
   get 'confirmations/:id/check_by_auditor' => 'confirmations#check_by_auditor', as: 'check_by_auditor'
   get 'confirmations/:id/check_by_bank' => 'confirmations#check_by_bank', as: 'check_by_bank'
-
-  get 'useractions/:id/share' => 'useractions#share', as: 'share'
-  get 'useractions/:id/issue' => 'useractions#issue', as: 'issue'
-  get 'useractions/:id/sign' => 'useractions#sign', as: 'sign'
-  get 'useractions/:id/answer' => 'useractions#answer', as: 'answer'
-  get 'useractions/:id/reject' => 'useractions#reject', as: 'reject'
-  get 'useractions/:id/check' => 'useractions#check', as: 'check'
-  get 'useractions/:id/report' => 'useractions#report', as: 'report'
-  get 'useractions/reset/:id' => 'useractions#reset', as: 'reset'
-  get 'useractions/reset_bank_only/:id' => 'useractions#reset_bank_only', as: 'reset_bank_only'
 
   get 'users/bankcontactupdate/:id' => 'users#bankcontactupdate', as: 'bankcontactupdate'
   get 'users/clientcontactupdate/:id' => 'users#clientcontactupdate', as: 'clientcontactupdate'

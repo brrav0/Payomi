@@ -1,8 +1,8 @@
 class ConfirmationsController < ApplicationController
 
+before_action :logged_in_user, only: [:new, :create, :check_by_auditor, :check_by_bank, :update, :destroy]
 
 def index
-
 
   @user = current_user
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
@@ -136,6 +136,14 @@ private
 
 def confirmation_params
   params.require(:confirmation).permit(:client_id, :bank_id, :status, :reference, :file,:file_answer)
+end
+
+def logged_in_user
+  unless logged_in?
+    store_location
+    flash[:danger] = "Veuillez vous connecter."
+    redirect_to login_url
+  end
 end
 
 end
