@@ -34,7 +34,7 @@
 Le status Envoyée signifie que votre circularisation a bien été envoyées à la banque et que vous êtes désormais en attente de réponse de sa part. Le statut Terminée signifie que la banque vous a répondu."> Statut</button></th>
     <th>Gestion</th>
   </tr>
-
+<% if @confirmations %>
 <% @confirmations.each do |confirmation| %>
   <tr>
    <td><%= @banks.where("id = ?", confirmation.bank_id).pluck(:name).first %></td>
@@ -49,7 +49,7 @@ Le status Envoyée signifie que votre circularisation a bien été envoyées à 
     </td>
   </tr>
 
-
+<% end %>
 <% end %>
 </table>
 </div>

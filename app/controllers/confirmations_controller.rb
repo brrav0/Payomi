@@ -3,7 +3,6 @@ class ConfirmationsController < ApplicationController
 before_action :logged_in_user, only: [:new, :create, :check_by_auditor, :check_by_bank, :update, :destroy]
 
 def index
-
   @user = current_user
   if logged_in? && !current_user.admin? && !current_user.bankcontact? && !current_user.clientcontact?
 
@@ -145,5 +144,6 @@ def logged_in_user
     redirect_to login_url
   end
 end
+
 
 end

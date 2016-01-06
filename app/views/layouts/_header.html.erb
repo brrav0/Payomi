@@ -2,8 +2,7 @@
   <div class="container">
     <nav>
         <ul class="nav navbar-nav">
-        	<%-# orca-theme -%>
-			<%= link_to image_tag("logo_circularisation_238_100.2.png", size: "238x50", alt: "Logo Circularisation"), root_path %>
+	    <%= render 'shared/logo' %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Accueil", root_path %></li>
