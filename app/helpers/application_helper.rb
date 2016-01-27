@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title = '')
-  base_title = "Circularisation"
+  base_title = "INSEADers on the move!"
     if page_title.empty?
       base_title
     else

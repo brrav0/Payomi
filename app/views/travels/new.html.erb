@@ -1,0 +1,46 @@
+<div class="row">
+<% provide(:title, 'Add a travel') %>
+<div class="col-md-6 col-md-offset-3">
+<h2>Add travel</h2>
+<hr>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@travel) do |f| %>
+      <%#= render 'shared/error_messages_client' %>
+      <%= render 'shared/error_messages', object: f.object %>
+<h8>You</h8>
+
+<br><br>
+      <%= f.label :firstname, "First Name" %>
+      <%= f.text_field :firstname, class: 'form-control' %>
+
+      <%= f.label :lastname, "Last Name" %>
+      <%= f.text_field :lastname, class: 'form-control' %>
+
+      <%= f.label :whatsapp, "Whatsapp" %>
+      <%= f.text_field :whatsapp, class: 'form-control' %>
+
+      <%= f.label :email, "Email" %>
+      <%= f.text_field :email, class: 'form-control' %>
+
+<h8>Your travel</h8>
+<hr>
+
+      <%= f.label :From, "From" %>
+      <%= f.text_field :from, class: 'form-control' %>
+
+      <%= f.label :To, "To" %>
+      <%= f.text_field :to, class: 'form-control' %>
+
+      <%= f.label :pickuptime, "Pickup time" %>
+      <%= f.text_field :pickuptime, class: 'form-control' %>
+
+
+      <%= f.submit "Add travel", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+

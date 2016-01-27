@@ -9,47 +9,25 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
-  get 'test1' => 'users#test1'
-  get 'rake' => 'users#rake'
-#  get 'static_pages/help'
   get 'help' => 'static_pages#help'
-  get 'signup' => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  #get 'signup' => 'users#new'
+  #get    'login'   => 'sessions#new'
+  #post   'login'   => 'sessions#create'
+  #delete 'logout'  => 'sessions#destroy'
   resources :contacts, only: [:new, :create]
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :clients,          only: [:new, :create, :destroy, :show, :index, :edit, :update]
-  resources :banks,          only: [:new, :create, :show, :index, :destroy, :edit, :update]
-  resources :accountingfirms,          only: [:new, :create, :show, :index, :destroy, :edit]
-  resources :bankcontacts,          only: [:new, :create, :show, :index, :destroy]
-  resources :confirmations,          only: [:new, :create, :show, :index, :destroy]
-  resources :attachments,          only: [:new, :create, :show, :index, :destroy]
+  resources :travels,          only: [:new, :create, :show, :index, :destroy]
  
-  resources :attached_files, only: [:index, :new, :create, :destroy]
   
-  patch '/bankaccounts/:id' => 'useractions#answer_with_comments'
 
-  patch '/confirmations/:id' => 'confirmations#update'
-
-
-  get 'confirmations/:id/check_by_auditor' => 'confirmations#check_by_auditor', as: 'check_by_auditor'
-  get 'confirmations/:id/check_by_bank' => 'confirmations#check_by_bank', as: 'check_by_bank'
-
-  get 'users/bankcontactupdate/:id' => 'users#bankcontactupdate', as: 'bankcontactupdate'
-  get 'users/clientcontactupdate/:id' => 'users#clientcontactupdate', as: 'clientcontactupdate'
-
-  get 'bankuser/new' => 'users#new_bankuser' 
-
-  get 'test'=>'tests#scheduler'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'confirmations#index'
+   root 'static_pages#home'
    
 
   # Example of regular route:
