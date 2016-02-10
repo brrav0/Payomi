@@ -10,15 +10,16 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   get 'help' => 'static_pages#help'
-  #get 'signup' => 'users#new'
-  #get    'login'   => 'sessions#new'
-  #post   'login'   => 'sessions#create'
-  #delete 'logout'  => 'sessions#destroy'
+  get 'signup' => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :contacts, only: [:new, :create]
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :travels,          only: [:new, :create, :show, :index, :destroy]
+  resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
  
   
 

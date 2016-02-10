@@ -26,9 +26,15 @@ def update
 end
 
 def create
+  @firstname = current_user.name
+  @whatsapp = current_user.whatsapp
+  @email = current_user.email
   @travel = Travel.new(travel_params)
     if @travel.save
       flash[:info]="Your travel has been added"
+      @travel.update_attribute(:firstname, @firstname)
+      @travel.update_attribute(:whatsapp, @whatsapp)
+      @travel.update_attribute(:email, @email)
       redirect_to root_url
     else
       render '/travel/new'
@@ -44,7 +50,7 @@ end
 private
 
 def travel_params
-  params.require(:travel).permit(:firstname, :lastname, :whatsapp, :email, :from, :to, :pickuptime)
+  params.require(:travel).permit(:from, :to, :pickuptime)
 end
 
 end

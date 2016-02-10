@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127223619) do
+ActiveRecord::Schema.define(version: 20160210215506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "accountingfirms", force: :cascade do |t|
-    t.string   "name"
-    t.string   "number_and_street"
-    t.string   "zip_code"
-    t.string   "city"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -58,68 +49,6 @@ ActiveRecord::Schema.define(version: 20160127223619) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "attached_files", force: :cascade do |t|
-    t.string   "name"
-    t.string   "attachment"
-    t.boolean  "signed_bank"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "is_audit"
-    t.boolean  "is_bank"
-    t.integer  "confirmation"
-    t.integer  "confirmation_id"
-  end
-
-  add_index "attached_files", ["confirmation_id"], name: "index_attached_files_on_confirmation_id", using: :btree
-
-  create_table "bankaccounts", force: :cascade do |t|
-    t.string   "number"
-    t.string   "currency"
-    t.decimal  "balance"
-    t.integer  "client_id"
-    t.integer  "bank_id"
-    t.datetime "shared"
-    t.datetime "signed"
-    t.datetime "issued"
-    t.datetime "answered"
-    t.string   "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "answer"
-  end
-
-  create_table "bankcontacts", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.integer  "bank_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "banks", force: :cascade do |t|
-    t.string   "name"
-    t.string   "number_and_street"
-    t.string   "zip_code"
-    t.string   "city"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "email"
-  end
-
-  create_table "clientcontacts", force: :cascade do |t|
-    t.string   "number_and_street"
-    t.string   "zip_code"
-    t.string   "city"
-    t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "email"
-    t.integer  "client_id"
-    t.string   "first_name"
-    t.string   "last_name"
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.string   "number_and_street"
@@ -134,48 +63,16 @@ ActiveRecord::Schema.define(version: 20160127223619) do
     t.string   "phone_number"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer  "bankaccount_id"
-    t.string   "comment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "confirmations", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "bank_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.string   "status"
-    t.string   "reference"
-    t.string   "file"
-    t.string   "file_answer"
-    t.datetime "answered_at"
-  end
-
-  add_index "confirmations", ["bank_id"], name: "index_confirmations_on_bank_id", using: :btree
-  add_index "confirmations", ["client_id"], name: "index_confirmations_on_client_id", using: :btree
-  add_index "confirmations", ["user_id"], name: "index_confirmations_on_user_id", using: :btree
-
-  create_table "contacts", force: :cascade do |t|
+  create_table "restaurants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "city"
+    t.integer  "likes"
+    t.integer  "user_id"
   end
 
-  create_table "galleries", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "paintings", force: :cascade do |t|
-    t.integer  "gallery_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image"
-  end
+  add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
@@ -186,12 +83,6 @@ ActiveRecord::Schema.define(version: 20160127223619) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
-
-  create_table "statuses", force: :cascade do |t|
-    t.text     "label"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "travels", force: :cascade do |t|
     t.string   "firstname"
@@ -221,6 +112,8 @@ ActiveRecord::Schema.define(version: 20160127223619) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "role"
+    t.string   "whatsapp"
   end
 
+  add_foreign_key "restaurants", "users"
 end

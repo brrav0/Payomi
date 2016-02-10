@@ -1,35 +1,19 @@
 class User < ActiveRecord::Base
 
-  has_many :clients, dependent: :destroy
-  has_many :bankaccounts, through: :clients
-  has_many :confirmations
-  belongs_to :accountingfirm#only if auditor otherwise - nil
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
+  has_many :restaurants
 
 
   validates :name,  presence: true, length: { maximum: 20 }
  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  #CIRCULARISATION_REGEX = /\b[A-Z0-9._%a-z\-]+@circularisation\.com\z/
-  validates :email, presence:true, uniqueness: true
-  #validates :email, format: { with: VALID_EMAIL_REGEX, message: 'revoir votre adresse email' }
-  #validates :email, format: { with: CIRCULARISATION_REGEX, message: 'est non autorisée. Votre cabinet doit être autorisé par Circularisation.com afin de pouvoir opérer sur le site. Veuillez nous contacter pour plus dinformation.' },:if => :auditor?
-  #validates :email, email: true#, :if => :auditor?
+  #validates :email, presence:true, uniqueness: true
   has_secure_password
   validates :password, length: { minimum: 6 }
  
-  def auditor?
-    clientcontact.nil? && bankcontact.nil?
-  end
   
-
-  def self.notify_banks_of_pending_confirmations
-    #user = User.find(1)
-    puts "a string is returned" 
-    UserMailer.send_email_to_notify_banks_of_pending_confirmations.deliver_now
-  end
 
   # Returns the hash digest of the given string.
   def User.digest(string)

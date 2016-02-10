@@ -28,6 +28,7 @@
   <tr>
     <th>Restaurant</th>
     <th>City</th>
+    <th>Added by</th>
     <th>Likes</th>
     <th>Add a "like"</th>
   </tr>
@@ -37,8 +38,9 @@
   <tr>
     <td><%= restaurant.name %></td>
     <td><%= restaurant.city %></td>
-    <td><%= restaurant.likes %></td>
-    <td>Add</td>
+    <td><%= restaurant.user.name %></td>
+    <td>Pending</td>
+    <td>Pending</td>
   </tr>
 <% end %>
 </table>

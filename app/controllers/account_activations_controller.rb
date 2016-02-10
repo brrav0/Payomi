@@ -5,10 +5,10 @@
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate
       log_in user
-      flash[:success] = "Votre compte est activé !"
+      flash[:success] = "Your account is activated!"
       redirect_to user
     else
-      flash[:danger] = "Lien invalide"
+      flash[:danger] = "Invalid link"
       redirect_to root_url
     end
   end

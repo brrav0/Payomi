@@ -1,0 +1,30 @@
+
+<div class="row">
+<% provide(:title, 'Change Restaurant') %>
+<div class="col-md-6 col-md-offset-3">
+<h2>Change your place</h2>
+<hr>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for :restaurant, url: restaurant_path(@restaurant), method: :patch do |f| %>
+      <%= render 'shared/error_messages_restaurant' %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name, "Name of the place" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :city, "City" %>
+      <%= f.text_field :city, class: 'form-control' %>
+
+
+
+<%= f.submit "Change place", class: "btn btn-primary" %>
+
+<% end %>
+
+  </div>
+</div>
+
+

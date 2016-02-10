@@ -25,17 +25,11 @@
   def create
     @user = User.new(user_params)
     @email = @user.email
-    
-    if Client.where(email: @email).exists?
-      @user.update_attribute(:clientcontact, true)
-    elsif Bankcontact.where(email: @email).exists?
-      @user.update_attribute(:bankcontact, true) 
-    end
-
-    #only hereunder is the save into the database 
+    @user.update_attribute(:activated, true)
     if @user.save
-  @user.send_activation_email
-      flash[:info] = "Consultez vos emails pour activer votre compte."
+  #@user.send_activation_email
+      #flash[:info] = "Check your emails to activate your account."
+      flash[:info] = "Congratulation! You are signed up."
       redirect_to root_url
 
     else
@@ -54,7 +48,7 @@
 
     def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "Utilisateurs supprimés"
+    flash[:success] = "Users deleted"
     redirect_to users_url
   end
 
@@ -63,7 +57,7 @@
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
 
-      flash[:success] = "Votre profil a été mis à jour"
+      flash[:success] = "Your profile has been updated."
       redirect_to @user
 
       # Handle a successful update.
