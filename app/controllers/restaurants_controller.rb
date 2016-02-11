@@ -31,7 +31,7 @@ def create
     @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
       flash[:info]="Your place has been added"
-      redirect_to root_url
+      redirect_to restaurants_url
     else
       render '/restaurant/new'
     end

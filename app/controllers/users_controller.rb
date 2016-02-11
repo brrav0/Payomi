@@ -30,7 +30,10 @@
   #@user.send_activation_email
       #flash[:info] = "Check your emails to activate your account."
       flash[:info] = "Congratulation! You are signed up."
-      redirect_to root_url
+      #temporary as no activation necessary
+      log_in @user
+      #end
+      redirect_to restaurants_url
 
     else
       render 'new'
