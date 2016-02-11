@@ -1,8 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-accountingfirm:
-  name: bigfour
-  number_and_street: bigfour_number_and_street
-  zip_code: 99999
-  city: bigfour_city
- 

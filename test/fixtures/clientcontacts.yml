@@ -1,8 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-xavier:
-  first_name: Xavier
-  last_name: Niel
-  email: xavier.niel@fre.fr
-  client_id: 1 
-  
