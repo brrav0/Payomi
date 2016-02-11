@@ -8,7 +8,7 @@ class Restaurant < ActiveRecord::Base
 
 
   def default_likes
-    self.likes ||= 0
+    self.nboflikes ||= 0
   end
 
 end

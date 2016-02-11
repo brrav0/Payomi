@@ -39,9 +39,7 @@ end
 
 def like
   @restaurant = Restaurant.find(params[:format])
-  @priornboflikes = @restaurant.nboflikes
-  @newnboflikes = @priornboflikes + 1
-  @restaurant.update_attribute(:likes, 1)
+  @restaurant.increment(:nboflikes, by = 1)
   redirect_to restaurants_url
 end
 

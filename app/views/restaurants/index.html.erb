@@ -34,13 +34,14 @@
   </tr>
 
 
-<% @restaurants.each do |restaurant| %>
+<% @restaurants.order("name asc").each do |restaurant| %>
   <tr>
     <td><%= restaurant.name %></td>
     <td><%= restaurant.city %></td>
     <td><%= restaurant.user.name %></td>
-    <td>Pending</td>
-    <td>Pending</td>
+    <td><%= restaurant.nboflikes %></td>
+    <td><%#= link_to "Like", like_url(restaurant) %>
+     <%= link_to "Like", like_url(restaurant) %><td>
   </tr>
 <% end %>
 </table>

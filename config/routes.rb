@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'signup' => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'like'   => 'likes#update'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :contacts, only: [:new, :create]
