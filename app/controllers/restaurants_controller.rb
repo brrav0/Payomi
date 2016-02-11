@@ -37,6 +37,14 @@ def create
     end
 end
 
+def like
+  @restaurant = Restaurant.find(params[:format])
+  @priornboflikes = @restaurant.nboflikes
+  @newnboflikes = @priornboflikes + 1
+  @restaurant.update_attribute(:likes, 1)
+  redirect_to restaurants_url
+end
+
 def destroy
   Restaurant.find(params[:id]).destroy
   flash[:success]="The restaurant has been deleted"

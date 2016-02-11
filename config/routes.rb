@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
  
   
+  get    'like_restaurant'   => 'restaurants#like'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
