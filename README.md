@@ -2,6 +2,8 @@
 
 To do:
 
+Bug
+1. Push on Heroku from INSEAD is not possible due to firewall - do not insist :)
 
 1. Deploy latest version on Heroku
 2. Test live within close circles
