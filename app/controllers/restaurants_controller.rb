@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-
 before_action :logged_in_user, only: [:index, :new, :edit, :update]
 
 def index
@@ -15,7 +14,8 @@ def edit
 end
 
 def show
-  @restaurant = Restaurant.find(params[:id])
+  @user = User.find(params[:id])
+  #@restaurants = @user.restaurants.paginate(page: params[:page])
 end
 
 def update
@@ -31,7 +31,7 @@ def create
     @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
       flash[:info]="Your place has been added"
-      redirect_to restaurants_url
+      redirect_to root_url
     else
       render '/restaurant/new'
     end
@@ -52,7 +52,7 @@ end
 private
 
 def restaurant_params
-  params.require(:restaurant).permit(:name, :city, :likes)
+  params.require(:restaurant).permit(:name, :city, :likes, :comments)
 end
 
 def logged_in_user

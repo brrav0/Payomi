@@ -11,6 +11,7 @@
 
   def show
     @user = User.find(params[:id])
+    @restaurants = @user.restaurants
   end
 
   def new
