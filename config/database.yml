@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: restoq_development
+  database: payomi_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: restoq_test
+  database: payomi_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: restoq_production
-  username: restoq
+  database: payomi_production
+  username: payomi
   password: <%= ENV['RESTOQ_DATABASE_PASSWORD'] %>

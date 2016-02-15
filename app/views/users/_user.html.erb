@@ -1,10 +1,8 @@
  <li>
   <%= link_to user.name, user %>
-  <%= link_to "Changer en contact banque", bankcontactupdate_path(user.id) %> 
-  <%= link_to "Changer en contact client", clientcontactupdate_path(user.id) %> 
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "Supprimer", user, method: :delete,
-                                  data: { confirm: "Veuillez confirmer ?" } %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
   <% end %>
 
 

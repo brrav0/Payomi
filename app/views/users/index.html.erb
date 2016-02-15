@@ -1,46 +1,30 @@
-<div class="row">
-<%= render 'shared/navbaradmin'%>
-</div>
 
 
 <div class="row">
 <div class="col-md-2">
-<h2>Utilisateurs</h2>
+<h2>Users</h2>
 
 </div>
 
-  <div class="col-md-offset-8 col-md-2">
-  <br>
-    <%= link_to "Ajouter un utilisateur", new_user_path, class: "btn btn-primary round" %>
-  </div>
 </div>
 
 <br>
 
 <div class="row">
 <div class="col-md-10">
-<table class="table table-hover">
 
-  <tr>
-    <th>Nom</th>
-    <th>Email</th>
-  </tr> 
+<ul class="user">
+  <%= render @users %>
+</ul>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-  </tr>
-<% end %>
-</table>
 <%= will_paginate @users %>
 
 </div>
 
 <div class="col-md-2">
     <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Chercher Utilisateurs", class: "form-control" %>
-    <%= submit_tag "Filtrer", :name => nil, class: "btn btn-primary btn-search" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+    <%= submit_tag "Filter", :name => nil, class: "btn btn-primary btn-search" %>
     <% end %>
 </div>
 

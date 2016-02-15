@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-	if logged_in?
-		@restaurant = current_user.restaurants.build
-		@feed_items = current_user.feed
-	end
+    if logged_in?
+      @restaurant = current_user.restaurants.build
+      @feed_items = current_user.feed
+    end
   end
 
   def help

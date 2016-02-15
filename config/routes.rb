@@ -16,12 +16,16 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :contacts, only: [:new, :create]
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+    end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :travels,          only: [:new, :create, :show, :index, :destroy]
   resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
- 
+  resources :relationships,       only: [:create, :destroy] 
   
   get    'like_restaurant'   => 'restaurants#like'
 
