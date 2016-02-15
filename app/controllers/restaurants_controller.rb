@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 before_action :logged_in_user, only: [:index, :new, :edit, :update]
 
 def index
-  @restaurants = Restaurant.all
+  @restaurants = Restaurant.paginate(page: params[:page], per_page: "5")
 end
 
 def new
@@ -15,7 +15,7 @@ end
 
 def show
   @user = User.find(params[:id])
-  #@restaurants = @user.restaurants.paginate(page: params[:page])
+  @restaurants = @user.restaurants.paginate(page: params[:page], per_page: "5")
 end
 
 def update

@@ -10,7 +10,7 @@
 
   def show
     @user = User.find(params[:id])
-    @restaurants = @user.restaurants
+    @restaurants = @user.restaurants.paginate(page: params[:page])
   end
 
   def new
@@ -33,7 +33,7 @@
       #temporary as no activation necessary
       log_in @user
       #end
-      redirect_to restaurants_url
+      redirect_to home_url
 
     else
       render 'new'
