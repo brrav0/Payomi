@@ -1,0 +1,14 @@
+<footer class="footer">
+  <small>
+Payomi is an INSEAD project<br><br>
+  </small>
+  <nav>
+    <ul>
+      <li><%#= link_to "Contact", contact_path %></li>
+      <li><%#= link_to "Terms", terms_and_conditions_path %></li>
+      <li><%#= link_to "Test1", test1_path %></li>
+      <li><%#= link_to "Test2", rake_path %></li>
+      
+    </ul>
+  </nav>
+</footer>

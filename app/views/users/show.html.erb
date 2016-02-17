@@ -18,10 +18,11 @@
   <%= render 'follow_form' if logged_in? %>
     <% if @user.restaurants.any? %>
       <h4>Recommendations (<%= @user.restaurants.count %>)</h4>
-      <ol class="restaurants">
+      <div class="restaurants">
         <%= render @restaurants %>
-      </ol>
+      </div>
       <%= will_paginate @restaurants %>
     <% end %>
 
+</div>
 </div>
