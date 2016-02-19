@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212152633) do
+ActiveRecord::Schema.define(version: 20160219180332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,27 @@ ActiveRecord::Schema.define(version: 20160212152633) do
 
   add_index "likes", ["restaurant_id"], name: "index_likes_on_restaurant_id", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "microposts", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "microposts", ["spot_id"], name: "index_microposts_on_spot_id", using: :btree
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "recommendations", ["restaurant_id"], name: "index_recommendations_on_restaurant_id", using: :btree
+  add_index "recommendations", ["user_id"], name: "index_recommendations_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -51,6 +72,16 @@ ActiveRecord::Schema.define(version: 20160212152633) do
 
   add_index "restaurants", ["user_id"], name: "index_restaurants_on_user_id", using: :btree
 
+  create_table "saves", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "saves", ["restaurant_id"], name: "index_saves_on_restaurant_id", using: :btree
+  add_index "saves", ["user_id"], name: "index_saves_on_user_id", using: :btree
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -60,6 +91,13 @@ ActiveRecord::Schema.define(version: 20160212152633) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "spots", force: :cascade do |t|
+    t.string   "name"
+    t.string   "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -82,5 +120,11 @@ ActiveRecord::Schema.define(version: 20160212152633) do
 
   add_foreign_key "likes", "restaurants"
   add_foreign_key "likes", "users"
+  add_foreign_key "microposts", "spots"
+  add_foreign_key "microposts", "users"
+  add_foreign_key "recommendations", "restaurants"
+  add_foreign_key "recommendations", "users"
   add_foreign_key "restaurants", "users"
+  add_foreign_key "saves", "restaurants"
+  add_foreign_key "saves", "users"
 end
