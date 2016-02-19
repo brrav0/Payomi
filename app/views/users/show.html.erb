@@ -16,12 +16,12 @@
 
   <div class="col-md-8">
   <%= render 'follow_form' if logged_in? %>
-    <% if @user.restaurants.any? %>
-      <h4>Recommendations (<%= @user.restaurants.count %>)</h4>
-      <div class="restaurants">
-        <%= render @restaurants %>
+    <% if @user.microposts.any? %>
+      <h4>Recommendations (<%= @user.microposts.count %>)</h4>
+      <div class="microposts">
+        <%= render @microposts %>
       </div>
-      <%= will_paginate @restaurants %>
+      <%= will_paginate @microposts %>
     <% end %>
 
 </div>
