@@ -3,15 +3,15 @@
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user, class:"profile-link" %> recommended
   </span>
-  <span class="recommendation"><%= feed_item.name %></span> in <%= feed_item.city %><br>
-  <span class="comments"><%= feed_item.comments %></span>
-  <span class="timestamp"><% if !feed_item.comments.blank? %><br><% end %>
+  <span class="recommendation"><%= feed_item.spot.try(:name) %></span> in <%= feed_item.spot.try(:city) %><br>
+  <span class="content"><%= feed_item.content %></span>
+  <span class="timestamp"><% if !feed_item.content.blank? %><br><% end %>
    Posted <%= time_ago_in_words(feed_item.created_at) %> ago 
   </span>
   <% if current_user?(feed_item.user) %>|
     <%= link_to "delete", feed_item, method: :delete,
                                      confirm: "You sure?",
-                                     title: feed_item.name, class:"delete-link" %>
+                                     class:"delete-link" %>
   <% end %><br>
 </li>
 

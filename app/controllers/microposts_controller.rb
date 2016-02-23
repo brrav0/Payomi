@@ -30,6 +30,7 @@ end
 
 def create
     @micropost = current_user.microposts.build(micropost_params)
+    #@spot = current_user.spots.build(spot_params)
     if @micropost.save
       flash[:info]="Your place has been added"
       redirect_to root_url
@@ -54,6 +55,10 @@ private
 
 def micropost_params
   params.require(:micropost).permit(:content)
+end
+
+def spot_params
+  params.require(:spot).permit(:name, :city)
 end
 
 def logged_in_user

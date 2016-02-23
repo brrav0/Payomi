@@ -1,0 +1,12 @@
+<div id="restaurant-<%= restaurant.id %>">
+  <%#= link_to gravatar_for(restaurant.user, size: 50), restaurant.user %>
+    <span class="user"><%#= link_to restaurant.user.name, restaurant.user %></span>
+    <span class="user"><%= restaurant.name %></span>
+    <span class="user"><%= restaurant.city %></span>
+    <span class="content"><%# restaurant.comment %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(restaurant.created_at) %> ago.
+    <br>
+    </span>
+<br>
+</div>

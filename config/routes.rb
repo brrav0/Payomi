@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :travels,          only: [:new, :create, :show, :index, :destroy]
   resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
   resources :microposts,          only: [:new, :create, :show, :index, :destroy]
+  resources :spots,          only: [:new, :create, :show, :index, :destroy]
   resources :relationships,       only: [:create, :destroy] 
   
   get    'like_restaurant'   => 'restaurants#like'

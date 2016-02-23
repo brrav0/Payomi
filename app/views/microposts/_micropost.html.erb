@@ -1,0 +1,13 @@
+<div id="micropost-<%= restaurant.id %>">
+  <%#= link_to gravatar_for(micropost.user, size: 50), restaurant.user %>
+    <span class="user"><%#= link_to micropost.user.name, restaurant.user %></span>
+    <span class="user"><%= micropost.name %></span>
+    <span class="user"><%= micropost.city %></span>
+    <span class="content"><%# micropost.comment %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <br>
+    </span>
+<br>
+</div>
+

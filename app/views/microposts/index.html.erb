@@ -1,0 +1,52 @@
+  <script>
+
+  $(function () { 
+    $("[data-toggle='tooltip']").tooltip(); 
+});
+</script>
+
+
+<div class="row">
+
+<div class="col-md-2">
+<h2>Restaurants</h2>
+</div>
+<div class="col-md-offset-8 col-md-2">
+<br>
+<%= link_to "Add a micropost", new_restaurant_path, class: "btn btn-primary round" %>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+<div class="col-md-10">
+<table class="table table-hover table-condensed">
+
+  <tr>
+    <th>Micropost</th>
+    <th>City</th>
+    <th>Added by</th>
+    <th>Likes</th>
+    <th></th>
+  </tr>
+
+
+<% @microposts.order("name asc").each do |micropost| %>
+  <tr>
+    <td><%= micropost.name %></td>
+    <td><%= micropost.city %></td>
+    <td><%= micropost.user.name %></td>
+    <td><%= micropost.nboflikes %></td>
+    <td><%#= link_to "Like", like_url(micropost) %>
+     <%= link_to "Like", like_url(micropost) %><td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<div class="col-md-2">
+</div>
+</div>

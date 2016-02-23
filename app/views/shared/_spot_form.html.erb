@@ -1,0 +1,20 @@
+<%= form_for(@spot) do |f| %>
+  <%= render 'shared/error_messages', object: @spot %>
+  <div class="field">
+    <%= f.text_area :name, placeholder: "Name..." %>
+    <%= f.text_area :city, placeholder: "City..." %>
+    <%#= f.textrarea :content, placeholder: "Comment shortly on the spot..." %>
+  </div>
+    <%= fields_for :micropost do |s| %>
+    <%= s.text_area :content, placeholder: "Content..." %>
+    <% end %>
+    <%= fields_for :recommendation do |r| %>
+    <%= r.hidden_field :user, :value => @current_user %>
+    <% end %>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<%#= form_for(@micropost) do |m| %>
+  <%#= m.text_area :content, placeholder: "Content..."%>
+  <%#= m.submit "Post", class: "btn btn-large btn-primary" %>
+<%# end %>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   has_many :restaurants
   has_many :microposts
-  has_many :likes
+  has_many :spots
   has_many :active_relationships, class_name: "Relationship",
 				  foreign_key: "follower_id",
 				  dependent: :destroy
@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
  
   def feed
-    Restaurant.where("user_id =?", id)
-  end  
+    Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
+                    following_ids: following_ids, user_id: id)
+  end
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -90,11 +91,6 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
-    # Returns a user's status feed.
-  def feed
-        Restaurant.where("user_id IN (:following_ids) OR user_id = :user_id",
-                    following_ids: following_ids, user_id: id)
-  end
 
     # Follows a user.
   def follow(other_user)

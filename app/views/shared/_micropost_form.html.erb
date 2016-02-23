@@ -1,0 +1,10 @@
+<%= form_for(@spot) do |f| %>
+  <%= render 'shared/error_messages', object: @spot %>
+  <div class="field">
+    <%= f.text_area :name, placeholder: "Name..." %>
+  </div>
+    <%#= fields_for :recommendation, @micropost.recommendation do |s| %>
+    <%#= s.hidden_field :user_id, :value => current_user %>
+    <%# end %>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
