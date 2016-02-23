@@ -16,7 +16,8 @@ end
 
 def show
   @user = User.find(params[:id])
-  @microposts = @user.restaurants.paginate(page: params[:page], per_page: "5")
+  #@microposts = @user.restaurants.paginate(page: params[:page], per_page: "5")
+  @microposts = @user.microposts.paginate(page: params[:page], per_page: "5")
 end
 
 def update
