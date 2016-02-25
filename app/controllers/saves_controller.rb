@@ -14,12 +14,23 @@ def index
 end
 
 def create
-  flash[:info] = "test"
+  @save = Save.new
+  #@save = current_user.saves.build
+  @save.user_id = params[:user_id]
+  @save.spot_id = params[:spot_id]
+  @save.save
+  flash[:info] = "The spot has been added to your saved list!"
+  redirect_to root_url
 end
 
 def destroy
-  @user = User.find(params[:id])
-  @restaurant = Restaurant.find(params[:id])
+  flash[:info] = "Unsaved!"
+  save_to_destroy = Save.where("user_id = ?", params[:user_id]).where("spot_id = ?", params[:spot_id])
+  save_to_destroy.each do |s|
+    s.destroy
+  end
+  #Save.find(params[:id]).destroy
+  redirect_to root_url
 end
 
 end

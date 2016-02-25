@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get    'like'   => 'likes#update'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  delete 'saves'  => 'saves#destroy'
   resources :contacts, only: [:new, :create]
   resources :users do
     member do
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
   resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
   resources :microposts,          only: [:new, :create, :show, :index, :destroy]
   resources :spots,          only: [:new, :create, :show, :index, :destroy]
+  resources :saves,          only: [:new, :create, :show, :index]
+  resources :recommendations,          only: [:new, :create, :show, :index, :destroy]
   resources :relationships,       only: [:create, :destroy] 
   
   get    'like_restaurant'   => 'restaurants#like'

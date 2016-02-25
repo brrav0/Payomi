@@ -1,7 +1,6 @@
-<%#= form_for(@save) do |f| %>
-  <div><%#= hidden_field_tag :user_id, @user.id %></div>
-  <div><%#= hidden_field_tag :restaurant_id, @restaurant.id %></div>
-  <%#= f.submit "Save", class: "btn btn-save btn-sm" %>
-<%# end %>
-  <%= form_tag({controller: "saves", action: "create"}, method: "post", restaurant: feed_item.name, user: feed_item.user) %>
-  <%= submit_tag("Save") %>
+  <%= form_for(@save) do |s| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <%= s.submit "Save", class: "btn btn-primary save" %>
+  <% end %>
+

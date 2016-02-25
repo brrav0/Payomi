@@ -19,6 +19,7 @@ def show
   @spots = @user.spots.paginate(page: params[:page], per_page: "5")
 end
 
+
 def update
   @post = Spot.find(params[:id])
   if @spot.update(spot_params)

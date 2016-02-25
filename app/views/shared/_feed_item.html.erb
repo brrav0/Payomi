@@ -1,3 +1,6 @@
+<div class="row">
+
+<div class="col-md-8">
 <li id="<%= feed_item.id %>">
   <%#= link_to gravatar_for(feed_item.user), feed_item.user %>
   <span class="user">
@@ -14,4 +17,39 @@
                                      class:"delete-link" %>
   <% end %><br>
 </li>
+</div>
 
+<div class="col-md-2">
+  <%= form_for(@recommendation) do |f| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <%= f.submit "Re-recommend", class: "btn btn-primary rerecommend" %>
+  <% end %>
+</div>
+
+  <% if !@array_of_spot_id.include?(feed_item.spot_id) %>
+  <div class="col-md-1">
+  <%= form_for(@save) do |s| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <%= s.submit "Save", class: "btn btn-primary save" %>
+  <% end %>
+  </div>
+
+  <% else %>
+
+  <div class="col-md-1">
+  <%= form_for(@save, html: {method: :delete}) do |s| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <%= s.submit "Unsave", class: "btn btn-primary unsave" %>
+  <% end %>
+  </div>
+  
+  <% end %>
+ 
+
+<div class="col-md-1">
+</div>
+</div>
+<hr>

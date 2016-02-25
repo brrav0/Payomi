@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-  has_many :restaurants
+  has_many :recommendations
   has_many :microposts
   has_many :spots
+  has_many :saves
   has_many :active_relationships, class_name: "Relationship",
 				  foreign_key: "follower_id",
 				  dependent: :destroy

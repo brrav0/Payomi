@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219180332) do
+ActiveRecord::Schema.define(version: 20160223201211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20160219180332) do
 
   create_table "recommendations", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "spot_id"
   end
 
-  add_index "recommendations", ["restaurant_id"], name: "index_recommendations_on_restaurant_id", using: :btree
+  add_index "recommendations", ["spot_id"], name: "index_recommendations_on_spot_id", using: :btree
   add_index "recommendations", ["user_id"], name: "index_recommendations_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 20160219180332) do
 
   create_table "saves", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "spot_id"
   end
 
-  add_index "saves", ["restaurant_id"], name: "index_saves_on_restaurant_id", using: :btree
+  add_index "saves", ["spot_id"], name: "index_saves_on_spot_id", using: :btree
   add_index "saves", ["user_id"], name: "index_saves_on_user_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20160219180332) do
   add_foreign_key "likes", "users"
   add_foreign_key "microposts", "spots"
   add_foreign_key "microposts", "users"
-  add_foreign_key "recommendations", "restaurants"
+  add_foreign_key "recommendations", "spots"
   add_foreign_key "recommendations", "users"
   add_foreign_key "restaurants", "users"
-  add_foreign_key "saves", "restaurants"
+  add_foreign_key "saves", "spots"
   add_foreign_key "saves", "users"
 end

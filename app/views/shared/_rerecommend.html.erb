@@ -1,5 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@recommendation) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
-  <div><%= hidden_field_tag :restaurant_id, @restaurant.id %></div>
-  <%= f.submit "Recommend", class: "btn btn-rerecommend" %>
+  <%= f.submit "Re-recommend", class: "btn btn-primary" %>
 <% end %>
