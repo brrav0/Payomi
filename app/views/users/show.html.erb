@@ -1,6 +1,6 @@
  <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <h1>
         <%#= gravatar_for @user %>
@@ -9,13 +9,14 @@
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
+  <br><%= render 'follow_form' if logged_in? %>
     </section>
 
 
   </aside>
-
-  <div class="col-md-8">
-  <%= render 'follow_form' if logged_in? %>
+  <div class="col-md-1">
+  </div>
+    <div class="col-md-4">
     <% if @user.microposts.any? %>
       <h4>Recommendations (<%= @user.microposts.count %>)</h4>
       <div class="microposts">
@@ -24,6 +25,16 @@
       <%= will_paginate @microposts %>
     <% end %>
   </div>
-
+  <div class="col-md-4">
+    <% if @saved_items.any? %>
+      <h4>Saved items (<%= @saved_items.count %>)</h4>
+      <div class="saved-items">
+        <% @array_of_saved_spots.each do |spot| %>
+          <%= spot.name %><br><br>
+        <% end %>
+      </div>
+      <%#= will_paginate @saved_items %>
+    <% end %>
+  </div>
 
 </div>
