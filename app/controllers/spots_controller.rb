@@ -30,23 +30,36 @@ def update
 end
 
 def create
-    @spot = Spot.new(spot_params)
 
-    @micropost = @spot.microposts.build(micropost_params)
-    @micropost.user = current_user
+    #test already set
+    array_of_spots_name = []
+    @all_spots = Spot.all
+    @all_spots.each do |spot|
+      array_of_spots_name.push(spot.name)
+      if spot.name = params[:name]
+        @id_of_the_spot_already_entered = spot.id
+      end
+    end
+
+      @spot = Spot.new(spot_params)
+      @micropost = @spot.microposts.build(micropost_params)
+      @micropost.user = current_user
+      @micropost.save
+
+
 
     @recommendation = Recommendation.new
-    @micropost.save
+    
 
-    if @spot.save
-      flash[:info]="Your place has been added"
-      @recommendation.update_attribute(:spot_id, @spot.id)
-      @recommendation.update_attribute(:user_id, current_user.id)
-      @recommendation.save
-      redirect_to root_url
-    else
-      render '/spot/new'
-    end
+    flash[:info]="Your spot has been added"
+
+    #@recommendation.update_attribute(:spot_id, @spot.id)
+    #@recommendation.update_attribute(:user_id, current_user.id)
+    #@recommendation.save
+
+
+
+    redirect_to root_url
 end
 
 def destroy
