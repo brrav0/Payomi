@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
+  before_save   :default_score
   before_create :create_activation_digest
   has_many :recommendations
   has_many :microposts
@@ -24,6 +25,10 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
  
+  def default_score
+    self.score ||= 0
+  end
+
   def feed
     Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
                     following_ids: following_ids, user_id: id)

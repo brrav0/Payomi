@@ -14,7 +14,7 @@
   end
 
   def showme
-    @user = User.find(params[:id])
+    @user = User.find(params[:format])
     @microposts = @user.microposts.paginate(page: params[:page])
     @saved_items = Save.where("user_id = ?", current_user.id)
     @array_of_saved_spots = []

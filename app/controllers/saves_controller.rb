@@ -19,6 +19,7 @@ def create
   @save.user_id = params[:user_id]
   @save.spot_id = params[:spot_id]
   @save.save
+  
   flash[:info] = "The spot has been added to your saved list!"
   redirect_to root_url
 end

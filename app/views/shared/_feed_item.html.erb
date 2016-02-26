@@ -25,6 +25,7 @@
   <%= form_for(@recommendation) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
   <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <div><%= hidden_field_tag :recommender_id, feed_item.user_id %></div>
   <%= f.submit "Re-recommend", class: "btn btn-primary rerecommend" %>
   <% end %>
 </div>
@@ -36,7 +37,6 @@
   <%= form_for(@recommendation, html: {method: :delete}) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
   <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
-  <div><%= hidden_field_tag :recommender_id, feed_item.user_id %></div>
   <%= f.submit "Unrecommend", class: "btn btn-primary unrecommend" %>
   <% end %>
 </div>
@@ -48,6 +48,7 @@
   <%= form_for(@save) do |s| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
   <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <div><%= hidden_field_tag :poster_id, feed_item.user_id %></div>
   <%= s.submit "Save", class: "btn btn-primary save" %>
   <% end %>
   </div>
