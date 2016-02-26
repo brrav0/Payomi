@@ -9,10 +9,16 @@ class StaticPagesController < ApplicationController
 
       #build an array of the current_user saved spots
       @saved = Save.where("user_id =?", current_user.id)
-        @array_of_spot_id = []
+        @array_of_saved_spot_id = []
 	  @saved.each do |p|
-	    @array_of_spot_id.push(p.spot_id)
+	    @array_of_saved_spot_id.push(p.spot_id)
 	  end
+    @recommended = Recommendation.where("user_id = ?", current_user.id)
+      @array_of_recommended_spot_id = []
+	@recommended.each do |r|
+	  @array_of_recommended_spot_id.push(r.spot_id)
+	end
+
     end
 
   end

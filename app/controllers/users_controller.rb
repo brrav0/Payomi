@@ -11,6 +11,7 @@
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @saved_items = Save.where("user_id = ?", current_user.id)
   end
 
   def new

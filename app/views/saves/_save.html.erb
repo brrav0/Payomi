@@ -1,0 +1,11 @@
+<div id="micropost-<%#= restaurant.id %>">
+  <%#= link_to gravatar_for(micropost.user, size: 50), restaurant.user %>
+    <span class="user"><%#= link_to micropost.user.name, restaurant.user %></span>
+    <% @saved_items.each do |item| %>
+      <%= item.spot_id %>
+    <% end %>
+    <br>
+    </span>
+<br>
+</div>
+

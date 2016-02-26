@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
+        <%#= gravatar_for @user %>
         <%= @user.name %>
       </h1>
     </section>
@@ -14,7 +14,7 @@
 
   </aside>
 
-  <div class="col-md-8">
+  <div class="col-md-4">
   <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h4>Recommendations (<%= @user.microposts.count %>)</h4>
@@ -23,6 +23,17 @@
       </div>
       <%= will_paginate @microposts %>
     <% end %>
+  </div>
+  <div class="col-md-4">
+  <%= render 'follow_form' if logged_in? %>
+    <% if @saved_items.any? %>
+      <h4>Saved items (<%= @saved_items.count %>)</h4>
+      <div class="saved-items">
+        <%= render @saved_items %>
+      </div>
+      <%#= will_paginate @saved_items %>
+    <% end %>
+  </div>
 
-</div>
+
 </div>

@@ -15,7 +15,7 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+0.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -29,7 +29,7 @@ end
 
 #Restaurant
 users = User.order(:created_at).take(6)
-50.times do
+0.times do
   name = Faker::Name.first_name
   city = Faker::Name.last_name
   users.each { |user| user.restaurants.create!(name: name, city: city) }

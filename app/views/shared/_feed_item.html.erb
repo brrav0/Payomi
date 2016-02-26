@@ -19,6 +19,8 @@
 </li>
 </div>
 
+  <% if !@array_of_recommended_spot_id.include?(feed_item.spot_id) %>
+
 <div class="col-md-2">
   <%= form_for(@recommendation) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
@@ -27,7 +29,20 @@
   <% end %>
 </div>
 
-  <% if !@array_of_spot_id.include?(feed_item.spot_id) %>
+  <% else %>
+
+
+<div class="col-md-2">
+  <%= form_for(@recommendation, html: {method: :delete}) do |f| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <div><%= hidden_field_tag :spot_id, feed_item.spot_id %></div>
+  <%= f.submit "Unrecommend", class: "btn btn-primary unrecommend" %>
+  <% end %>
+</div>
+
+  <% end %>
+
+  <% if !@array_of_saved_spot_id.include?(feed_item.spot_id) %>
   <div class="col-md-1">
   <%= form_for(@save) do |s| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
