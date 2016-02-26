@@ -40,7 +40,7 @@ def create
 
     if @spot.save
       flash[:info]="Your place has been added"
-      @recommendation.update_attribute(:restaurant_id, @spot.id)
+      @recommendation.update_attribute(:spot_id, @spot.id)
       @recommendation.update_attribute(:user_id, current_user.id)
       @recommendation.save
       redirect_to root_url

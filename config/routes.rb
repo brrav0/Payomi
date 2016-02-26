@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get    'login'   => 'sessions#new'
   get    'like'   => 'likes#update'
+  get    'showme'   => 'users#showme'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   delete 'saves'  => 'saves#destroy'
