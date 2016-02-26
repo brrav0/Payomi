@@ -15,8 +15,7 @@ def edit
 end
 
 def show
-  @user = User.find(params[:id])
-  @spots = @user.spots.paginate(page: params[:page], per_page: "5")
+  @spot = Spot.find(params[:id])
 end
 
 
@@ -36,15 +35,14 @@ def create
       @spot = Spot.new(spot_params)
       @micropost = @spot.microposts.build(micropost_params)
       @micropost.user = current_user
-      @micropost.save
       @spot.save
       flash[:info]="Your micropost has been added"
 
 
     @recommendation = Recommendation.new
-    #@recommendation.update_attribute(:spot_id, @spot.id)
-    #@recommendation.update_attribute(:user_id, current_user.id)
-    #@recommendation.save
+    @recommendation.update_attribute(:spot_id, @spot.id)
+    @recommendation.update_attribute(:user_id, current_user.id)
+    @recommendation.save
 
 
 
