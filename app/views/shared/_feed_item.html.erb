@@ -18,7 +18,7 @@
   <% end %><br>
 </li>
 </div>
-
+  <% if feed_item.user != current_user %>
   <% if !@array_of_recommended_spot_id.include?(feed_item.spot_id) %>
 
 <div class="col-md-2">
@@ -64,7 +64,7 @@
   </div>
   
   <% end %>
- 
+  <% end %>
 
 <div class="col-md-1">
 </div>
