@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :travels,          only: [:new, :create, :show, :index, :destroy]
-  resources :restaurants,          only: [:new, :create, :show, :index, :destroy]
   resources :microposts,          only: [:new, :create, :show, :index, :destroy]
   resources :spots,          only: [:new, :create, :show, :index, :destroy]
   resources :saves,          only: [:new, :create, :show, :index]
